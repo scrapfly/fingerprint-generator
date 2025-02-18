@@ -35,3 +35,6 @@ orjson = "*"
 numpy = "*"
 zstandard = "*"
 httpx = "*"
+
+[tool.poetry.scripts]
+fpgen = "fpgen.__main__:cli"
