@@ -1,6 +1,6 @@
 # Fingerprint Generator
 
-Fpgen (Fingerprint Generator) is an exhaustive browser fingerprint generator that mimics real world traffic & browser API data in the wild.
+A fast & comprehensive browser fingerprint generator that mimics real world traffic & browser API data in the wild.
 
 ---
 
