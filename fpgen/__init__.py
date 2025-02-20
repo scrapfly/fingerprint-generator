@@ -15,7 +15,7 @@ def __check_module__() -> None:
         prev, launch = stack[-2:]
         try:
             if (launch.function, prev.function) == ('_run_module_as_main', '_get_module_details'):
-                os.environ['FPGEN_RAN_AS_MODULE'] = '1'
+                os.environ['FPGEN_NO_AUTO_DOWNLOAD'] = '1'
         except AttributeError:
             pass
 
