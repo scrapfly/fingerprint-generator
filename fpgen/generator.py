@@ -21,8 +21,8 @@ assert_downloaded(NETWORK_FILE)
 
 
 @dataclass
-class Screen:
-    """Constrains the screen dimensions of the generated fingerprint"""
+class WindowBounds:
+    """Constrains the window size of the generated fingerprint"""
 
     min_width: Optional[int] = None
     max_width: Optional[int] = None
@@ -37,7 +37,7 @@ class Screen:
             and self.min_height > self.max_height
         ):
             raise ValueError(
-                "Invalid screen constraints: min values cannot be greater than max values"
+                "Invalid window constraints: min values cannot be greater than max values"
             )
 
     def is_set(self) -> bool:
@@ -58,7 +58,7 @@ class Generator:
         self,
         constraints_dict: Optional[Dict[str, Any]] = None,
         *,
-        screen_size: Optional[Screen] = None,
+        window_bounds: Optional[WindowBounds] = None,
         strict: bool = True,
         **constraints: Any,
     ):
@@ -66,7 +66,7 @@ class Generator:
         Initializes the FingerprintGenerator with the given options.
 
         Parameters:
-            screen (Screen, optional): Screen constraints for the generated fingerprint.
+            window (WindowBounds, optional): WindowBounds size constraints for the generated fingerprint.
             strict (bool, optional): Whether to raise an exception if the constraints are too strict. Default is False.
             **constraints: Constrains for the network
         """
@@ -74,7 +74,7 @@ class Generator:
             raise ValueError("Cannot pass values as dict & as parameters")
 
         # Set default options
-        self.screen_size: Optional[Screen] = screen_size
+        self.window_bounds: Optional[WindowBounds] = window_bounds
         self.strict: bool = strict
         self.filtered_values: Dict[str, List[str]] = {}
 
@@ -89,7 +89,7 @@ class Generator:
         self,
         constraints_dict: Optional[Dict[str, Any]] = None,
         *,
-        screen: Optional[Screen] = None,
+        window_bounds: Optional[WindowBounds] = None,
         strict: Optional[bool] = None,
         target: str,
         **constraints: Any,
@@ -100,7 +100,7 @@ class Generator:
         self,
         constraints_dict: Optional[Dict[str, Any]] = None,
         *,
-        screen: Optional[Screen] = None,
+        window_bounds: Optional[WindowBounds] = None,
         strict: Optional[bool] = None,
         target: Optional[StrContainer] = None,
         **constraints: Any,
@@ -110,7 +110,7 @@ class Generator:
         self,
         constraints_dict: Optional[Dict[str, Any]] = None,
         *,
-        screen_size: Optional[Screen] = None,
+        window_bounds: Optional[WindowBounds] = None,
         strict: Optional[bool] = None,
         target: Optional[Union[str, StrContainer]] = None,
         **constraints: Any,
@@ -120,7 +120,7 @@ class Generator:
         specified in the constructor and their possible overrides provided here.
 
         Parameters:
-            screen (Screen, optional): Screen constraints for the generated fingerprint.
+            window_bounds (WindowBounds, optional): Constrain the output window size.
             strict (bool, optional): Whether to raise an exception if the constraints are too strict.
             constraints: Constrains for the network
             target (Optional[Union[str, StrContainer]]): Only generate specific value(s)
@@ -141,13 +141,13 @@ class Generator:
             filtered_values = self.filtered_values
 
         # Merge new options with old
-        screen_size = _first(screen_size, self.screen_size)
+        window_bounds = _first(window_bounds, self.window_bounds)
         strict = _first(strict, self.strict)
 
-        # Handle screen constraints
-        if screen_size and isinstance(screen_size, Screen):
-            self._filter_by_screen(
-                strict=strict, screen=screen_size, filtered_values=filtered_values
+        # Handle window constraints
+        if isinstance(window_bounds, WindowBounds):
+            self._filter_by_window(
+                strict=strict, window=window_bounds, filtered_values=filtered_values
             )
 
         # Convert targets to set
@@ -245,44 +245,43 @@ class Generator:
                     raise InvalidConstraints(f'{value_con} is not a possible value for "{key}"')
                 filtered_values[key].append(lookup_index)
 
-    def _filter_by_screen(
-        self, strict: Optional[bool], screen: Screen, filtered_values: Dict
+    def _filter_by_window(
+        self, strict: Optional[bool], window: WindowBounds, filtered_values: Dict
     ) -> None:
         """
-        Generates partial content security policy (CSP) based on the provided options and filtered values.
+        Filters the network based on the window constraints.
         """
-        possible_screens = _lookup_possibilities('screen')
-        if possible_screens is None:
-            raise Exception("No possible screens found. Bad network?")
+        possible_windows = _lookup_possibilities('window')
+        if possible_windows is None:
+            raise Exception("No possible windows found. Bad network?")
 
-        filtered_values['screen'] = [
+        # Get a list of window node possibilities that are valid
+        filtered_values['window'] = [
             lookup_value
-            for screen_screen, lookup_value in possible_screens.items()
-            if self._is_screen_within_constraints(screen_screen, screen)
+            for window_string, lookup_value in possible_windows.items()
+            if self._is_window_within_constraints(window_string, window)
         ]
 
-        if not filtered_values['screen']:
+        if not filtered_values['window']:
             if strict:
-                raise InvalidScreenConstraints("No possible screens found. Bad network?")
-            del filtered_values['screen']
+                raise InvalidScreenConstraints("No possible windows found. Bad network?")
+            del filtered_values['window']
 
     @staticmethod
-    def _is_screen_within_constraints(screen_string: str, screen: Screen) -> bool:
+    def _is_window_within_constraints(window_string: str, window: WindowBounds) -> bool:
         """
-        Checks if the given screen dimensions are within the specified constraints.
+        Checks if the given window size are within the specified constraints.
         """
-        screen_data = orjson.loads(screen_string)
-        if (
-            not isinstance(screen_data, dict)
-            or not isinstance(screen_data['width'], int)
-            or not isinstance(screen_data['height'], int)
-        ):
+        window_data = orjson.loads(window_string)
+        width = window_data['outerwidth'] or window_data['innerwidth']
+        height = window_data['outerheight'] or window_data['innerheight']
+        if not isinstance(width, int) or not isinstance(height, int):
             return False  # bad data
         return (
-            screen_data['width'] >= (screen.min_width or 0)
-            and screen_data['width'] <= (screen.max_width or 1e5)
-            and screen_data['height'] >= (screen.min_height or 0)
-            and screen_data['height'] <= (screen.max_height or 1e5)
+            width >= (window.min_width or 0)
+            and width <= (window.max_width or 1e5)
+            and height >= (window.min_height or 0)
+            and height <= (window.max_height or 1e5)
         )
 
 
