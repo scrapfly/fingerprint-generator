@@ -115,4 +115,3 @@ def make_output_dict(data):
         d[parts[-1]] = orjson.loads(value)
 
     return result_dict
-    return result_dict

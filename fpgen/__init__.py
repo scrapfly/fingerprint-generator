@@ -23,6 +23,6 @@ def __check_module__() -> None:
 __check_module__()
 
 
-from .generator import Generator, Screen
+from .generator import Generator, Screen, possibilities
 
-__all__ = ['Generator', 'Screen']
+__all__ = ['Generator', 'Screen', 'possibilities']

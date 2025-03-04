@@ -125,8 +125,11 @@ class Generator:
             constraints: Constrains for the network
             target (Optional[Union[str, StrContainer]]): Only generate specific value(s)
         """
-        if constraints_dict and constraints:
-            raise ValueError("Cannot pass values as dict & as parameters")
+        if constraints_dict:
+            if constraints:
+                raise ValueError("Cannot pass values as dict & as parameters")
+            if not isinstance(constraints_dict, dict):
+                raise ValueError("Constraints must be passed as kwargs or as a dictionary.")
 
         if constraints_dict:
             constraints = constraints_dict
@@ -185,8 +188,7 @@ class Generator:
             try:
                 data = _at_path(fingerprint, target.split('.'), casefold=True)
             except ConstraintKeyError as key:
-                raise InvalidConstraints(f'{key} is not a possible key in {target}')
-
+                raise InvalidConstraints(f"'{target}' is not a valid key path (missing {key}).")
             result[target] = data
         return result
 
@@ -297,37 +299,23 @@ def _at_path(data: Mapping, path: StrContainer, *, casefold=False) -> Any:
     return data
 
 
-def get_values(node_name: str) -> Optional[List[Any]]:
-    """
-    Returns the possible values for the given node name.
-    """
-    possible_values = _lookup_possibilities(node_name, casefold=False)
-    # Dedupe, load jsons, and return as list
-    if possible_values is not None:
-        return list(map(orjson.loads, set(possible_values.keys())))
-
-    # User passed a nested key. Attempt to find a root node
-    nested_keys: List[str] = []
-    node_name, possible_values = _lookup_root_possibilities(
-        node_name, nested_keys=nested_keys, casefold=False
-    )
-    # Fetch value at the nested path, and convert back to hashable type to dedupe
-    data = set(
-        orjson.dumps(_at_path(orjson.loads(val), nested_keys)) for val in possible_values.keys()
-    )
-    # Load values back to python objects
-    return list(map(orjson.loads, data))
-
-
 def _lookup_root_possibilities(
-    key: str, nested_keys: Optional[List[str]] = None, casefold: bool = True
+    key: str,
+    nested_keys: Optional[List[str]] = None,
+    casefold: bool = True,
+    none_if_missing: bool = False,
 ) -> Any:
     """
-    Finds the root node of a given key
+    Finds the first avaliable root node of a given key
     """
+    if not key:
+        raise InvalidConstraints('Key cannot be empty.')
     while key:
         keys = key.rsplit('.', 1)
+        # Ran out of keys to parse
         if len(keys) != 2:
+            if none_if_missing:
+                return None
             raise InvalidConstraints(f'{key} is not a valid constraint key')
         key, sliced_key = keys
 
@@ -341,6 +329,8 @@ def _lookup_root_possibilities(
             break
 
     if possible_values is None:
+        if none_if_missing:
+            return None
         raise InvalidConstraints(f'{key} is not a valid constraint key')
 
     if nested_keys:
@@ -353,7 +343,6 @@ def _lookup_possibilities(node_name: str, casefold: bool = True) -> Optional[Dic
     """
     Returns the possible values for the given node name.
     Returns as a dictionary {value: lookup_index}
-
     """
     if node_name not in Generator.network.nodes_by_name:
         return None
@@ -381,6 +370,26 @@ def _tupilize(value) -> Union[List[str], Tuple[str, ...]]:
     return value if isinstance(value, (tuple, list)) else (value,)
 
 
+def _search_downward(domain: str):
+    """
+    Searches for all nodes that begin with a specific key
+    """
+    found = False
+    for node in Generator.network.nodes_by_name:
+        if not node.startswith(domain):
+            continue
+        # Check if its a . afterward
+        key_len = len(domain)
+        if len(node) > key_len and node[key_len] != '.':
+            continue
+        if not found:
+            found = True
+        yield node
+
+    if not found:
+        raise InvalidConstraints(f'Unknown node: "{domain}"')
+
+
 def _find_roots(targets: Union[str, StrContainer]) -> Iterator[str]:
     """
     Given a list of targets, return all nodes that make up that target's data
@@ -401,18 +410,55 @@ def _find_roots(targets: Union[str, StrContainer]) -> Iterator[str]:
 
             # We are at the root key.
             # Find potential keys before quitting
-            found = False
-            for node in Generator.network.nodes_by_name:
-                if not node.startswith(keys[0]):
-                    continue
-                # Check if its a . afterward
-                key_len = len(keys[0])
-                if len(node) > key_len and node[key_len] != '.':
-                    continue
-                found = True
-                yield node
-
-            if not found:
-                raise InvalidConstraints(f'Unknown node: {target}')
-
+            yield from _search_downward(keys[0])
             break
+
+
+def possibilities(node: str) -> Union[Dict[str, Any], List[Any]]:
+    """
+    Pull a list of possibilities given a node.
+    """
+    # Check node list first
+    values = _lookup_possibilities(node, casefold=False)
+    if values:
+        return [orjson.loads(d) for d in values]
+
+    # Target is within a node. Need to look up the tree
+    nested_keys: List[str] = []
+    data = _lookup_root_possibilities(
+        node, nested_keys=nested_keys, none_if_missing=True, casefold=False
+    )
+    if data is not None:
+        # Read possibile values as jsons
+        output = map(orjson.loads, data[1])
+        # Pull the item at the target path
+        output = map(lambda d: _at_path(d, nested_keys), output)
+        # Return a deduped list
+        return list(set(output))
+
+    # Helper to unflatten dicts
+    def unflatten(dictionary):
+        resultDict = dict()
+        for key, value in dictionary.items():
+            parts = key.split(".")
+            d = resultDict
+            for part in parts[:-1]:
+                if part not in d:
+                    d[part] = dict()
+                d = d[part]
+            d[parts[-1]] = value
+        return resultDict
+
+    # Search down the tree
+    data = _search_downward(node)
+    return unflatten(
+        {
+            # Remove the current node path
+            key.removeprefix(f'{node}.'): [
+                # Parse each possible value via orjson
+                orjson.loads(d)
+                for d in (_lookup_possibilities(key, casefold=False) or [])
+            ]
+            for key in data
+        }
+    )
