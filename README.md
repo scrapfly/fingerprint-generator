@@ -1,6 +1,8 @@
-# Fingerprint Generator
+<h1 align="center">Fingerprint Generator</h1>
 
-A fast & comprehensive browser fingerprint generator that mimics real world traffic & browser API data in the wild.
+<p align="center">A fast & comprehensive browser fingerprint generator that mimics real world traffic & browser API data in the wild.</p>
+
+<p align="center">Created by <a href="https://github.com/daijro">daijro</a>. Data provided by Scrapfly.</p>
 
 ---
 
@@ -173,5 +175,3 @@ If multiple targets are provided as an array, the output will be a dictionary co
 - And much more!
 
 ---
-
-Made by [daijro](https://github.com/daijro)
