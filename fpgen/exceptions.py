@@ -2,8 +2,8 @@ class InvalidConstraints(ValueError):
     """Raises when a constraint doesn't exist"""
 
 
-class InvalidScreenConstraints(InvalidConstraints):
-    """Raises when screen constraints are impossible"""
+class InvalidWindowBounds(InvalidConstraints):
+    """Raises when window bounds are too restrictive"""
 
 
 class ConstraintKeyError(KeyError):

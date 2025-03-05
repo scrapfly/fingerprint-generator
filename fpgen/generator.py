@@ -6,12 +6,8 @@ from typing import Any, Dict, Iterator, List, Mapping, Optional, Tuple, Union, o
 import orjson
 
 from fpgen.bayesian_network import BayesianNetwork, StrContainer
-from fpgen.exceptions import (
-    ConstraintKeyError,
-    InvalidConstraints,
-    InvalidScreenConstraints,
-)
-from fpgen.structs import CaseInsensitiveDict
+from fpgen.exceptions import ConstraintKeyError, InvalidConstraints, InvalidWindowBounds
+from fpgen.structs import CaseInsensitiveDict, _dedupe, _merge_dicts, _unflatten
 from fpgen.unpacker import flatten, lookup_value_list, make_output_dict
 
 from .pkgman import __is_module__, assert_downloaded
@@ -70,8 +66,7 @@ class Generator:
             strict (bool, optional): Whether to raise an exception if the constraints are too strict. Default is False.
             **constraints: Constrains for the network
         """
-        if constraints_dict and constraints:
-            raise ValueError("Cannot pass values as dict & as parameters")
+        _assert_dict_xor_kwargs(constraints_dict, constraints)
 
         # Set default options
         self.window_bounds: Optional[WindowBounds] = window_bounds
@@ -125,11 +120,7 @@ class Generator:
             constraints: Constrains for the network
             target (Optional[Union[str, StrContainer]]): Only generate specific value(s)
         """
-        if constraints_dict:
-            if constraints:
-                raise ValueError("Cannot pass values as dict & as parameters")
-            if not isinstance(constraints_dict, dict):
-                raise ValueError("Constraints must be passed as kwargs or as a dictionary.")
+        _assert_dict_xor_kwargs(constraints_dict, constraints)
 
         if constraints_dict:
             constraints = constraints_dict
@@ -264,7 +255,7 @@ class Generator:
 
         if not filtered_values['window']:
             if strict:
-                raise InvalidScreenConstraints("No possible windows found. Bad network?")
+                raise InvalidWindowBounds("Window bound constraints are too restrictive.")
             del filtered_values['window']
 
     @staticmethod
@@ -273,10 +264,8 @@ class Generator:
         Checks if the given window size are within the specified constraints.
         """
         window_data = orjson.loads(window_string)
-        width = window_data['outerwidth'] or window_data['innerwidth']
-        height = window_data['outerheight'] or window_data['innerheight']
-        if not isinstance(width, int) or not isinstance(height, int):
-            return False  # bad data
+        width, height = window_data['outerwidth'], window_data['outerheight']
+        # Compare the sizes
         return (
             width >= (window.min_width or 0)
             and width <= (window.max_width or 1e5)
@@ -369,6 +358,21 @@ def _tupilize(value) -> Union[List[str], Tuple[str, ...]]:
     return value if isinstance(value, (tuple, list)) else (value,)
 
 
+def _assert_dict_xor_kwargs(
+    passed_dict: Optional[Dict[str, Any]], passed_kwargs: Optional[Dict[str, Any]]
+) -> None:
+    """
+    Confirms a dict is either passed as an argument, xor kwargs are passed.
+    """
+    if passed_dict:
+        if passed_kwargs:
+            raise ValueError("Cannot pass values as dict & as parameters")
+        if not isinstance(passed_dict, dict):
+            raise ValueError(
+                "Invalid argument. Constraints must be passed as kwargs or as a dictionary."
+            )
+
+
 def _search_downward(domain: str):
     """
     Searches for all nodes that begin with a specific key
@@ -420,7 +424,11 @@ def possibilities(node: str) -> Union[Dict[str, Any], List[Any]]:
     # Check node list first
     values = _lookup_possibilities(node, casefold=False)
     if values:
-        return [orjson.loads(d) for d in values]
+        output: Union[Tuple, map]
+        output = tuple(map(orjson.loads, values))
+        if all(isinstance(d, dict) for d in output):
+            return _merge_dicts(output)
+        return _dedupe(output)
 
     # Target is within a node. Need to look up the tree
     nested_keys: List[str] = []
@@ -432,25 +440,18 @@ def possibilities(node: str) -> Union[Dict[str, Any], List[Any]]:
         output = map(orjson.loads, data[1])
         # Pull the item at the target path
         output = map(lambda d: _at_path(d, nested_keys), output)
-        # Return a deduped list
-        return list(set(output))
+        output = tuple(output)
 
-    # Helper to unflatten dicts
-    def unflatten(dictionary):
-        resultDict = dict()
-        for key, value in dictionary.items():
-            parts = key.split(".")
-            d = resultDict
-            for part in parts[:-1]:
-                if part not in d:
-                    d[part] = dict()
-                d = d[part]
-            d[parts[-1]] = value
-        return resultDict
+        # If they are all dicts, merge them
+        if all(isinstance(d, dict) for d in output):
+            return _merge_dicts(output)
+
+        # Return a deduped list
+        return _dedupe(output)
 
     # Search down the tree
     data = _search_downward(node)
-    return unflatten(
+    return _unflatten(
         {
             # Remove the current node path
             key.removeprefix(f'{node}.'): [

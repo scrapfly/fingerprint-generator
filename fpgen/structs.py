@@ -40,3 +40,53 @@ class CaseInsensitiveDict(dict):
         for k in list(self.keys()):
             v = super(CaseInsensitiveDict, self).pop(k)
             self.__setitem__(k, v)
+
+
+# ***********************
+# Miscellaneous python list/dict helpers
+# ***********************
+
+
+def _dedupe(lst):
+    # Dedupe and sort
+    if not any(isinstance(d, (list, dict)) for d in lst):
+        return sorted(set(lst))
+    # Dedupe unhashable items
+    result = []
+    for item in lst:
+        if item not in result:
+            result.append(item)
+    return result
+
+
+def _unflatten(dictionary):
+    # Unflatten dicts
+    result_dict = dict()
+    for key, value in dictionary.items():
+        parts = key.split(".")
+        d = result_dict
+        for part in parts[:-1]:
+            if part not in d:
+                d[part] = dict()
+            d = d[part]
+        d[parts[-1]] = value
+    return result_dict
+
+
+def _merge_dicts(dict_list):
+    # Merge items in a list of dicts
+    if not dict_list:
+        return {}
+    merged = {}
+    # iterate over the keys from the first dictionary
+    for key in dict_list[0]:
+        # if the value is a dictionary, merge recursively
+        if isinstance(dict_list[0][key], dict):
+            merged[key] = _merge_dicts([d[key] for d in dict_list])
+        else:
+            # deduplicate the list of values
+            merged[key] = _dedupe([d[key] for d in dict_list])
+    return merged
+
+
+__all__ = ['CaseInsensitiveDict', '_dedupe', '_unflatten', '_merge_dicts']
