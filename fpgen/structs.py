@@ -48,14 +48,25 @@ class CaseInsensitiveDict(dict):
 
 
 def _dedupe(lst):
-    # Dedupe and sort
-    if not any(isinstance(d, (list, dict)) for d in lst):
-        return sorted(set(lst))
-    # Dedupe unhashable items
-    result = []
+    # Group items by their type, deduping each group
+    groups = {}
     for item in lst:
-        if item not in result:
-            result.append(item)
+        t = type(item)
+        if t not in groups:
+            groups[t] = []
+        # Only add item if it's not already in its type group
+        if item not in groups[t]:
+            groups[t].append(item)
+
+    result = []
+    # Process groups in order sorted by type name
+    for t in sorted(groups.keys(), key=lambda typ: typ.__name__):
+        items = groups[t]
+        # For list and dict types, dedupe but don't sort
+        if t in (list, dict):
+            result.extend(items)
+        else:
+            result.extend(sorted(items))
     return result
 
 

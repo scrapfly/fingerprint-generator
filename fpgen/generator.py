@@ -6,7 +6,12 @@ from typing import Any, Dict, Iterator, List, Mapping, Optional, Tuple, Union, o
 import orjson
 
 from fpgen.bayesian_network import BayesianNetwork, StrContainer
-from fpgen.exceptions import ConstraintKeyError, InvalidConstraints, InvalidWindowBounds
+from fpgen.exceptions import (
+    InvalidConstraints,
+    InvalidNode,
+    InvalidWindowBounds,
+    NodePathError,
+)
 from fpgen.structs import CaseInsensitiveDict, _dedupe, _merge_dicts, _unflatten
 from fpgen.unpacker import flatten, lookup_value_list, make_output_dict
 
@@ -178,8 +183,8 @@ class Generator:
         for target in targets:
             try:
                 data = _at_path(fingerprint, target.split('.'), casefold=True)
-            except ConstraintKeyError as key:
-                raise InvalidConstraints(f"'{target}' is not a valid key path (missing {key}).")
+            except NodePathError as key:
+                raise InvalidNode(f"'{target}' is not a valid key path (missing {key}).")
             result[target] = data
         return result
 
@@ -217,7 +222,7 @@ class Generator:
                         # check if the value is a possible value at the nested path
                         try:
                             target_value = _at_path(outputted_possible, nested_keys)
-                        except ConstraintKeyError:
+                        except NodePathError:
                             continue  # Path didn't exist, bad data
                         if target_value == val:
                             filtered_values[key].append(lookup_index)
@@ -282,7 +287,7 @@ def _at_path(data: Mapping, path: StrContainer, *, casefold=False) -> Any:
         if casefold:
             data = CaseInsensitiveDict(data)
         if not isinstance(data, MutableMapping) or key not in data:
-            raise ConstraintKeyError(key)
+            raise NodePathError(key)
         data = data[key]
     return data
 
@@ -297,14 +302,14 @@ def _lookup_root_possibilities(
     Finds the first avaliable root node of a given key
     """
     if not key:
-        raise InvalidConstraints('Key cannot be empty.')
+        raise InvalidNode('Key cannot be empty.')
     while key:
         keys = key.rsplit('.', 1)
         # Ran out of keys to parse
         if len(keys) != 2:
             if none_if_missing:
                 return None
-            raise InvalidConstraints(f'{key} is not a valid constraint key')
+            raise InvalidNode(f'{key} is not a valid node')
         key, sliced_key = keys
 
         if nested_keys is not None:
@@ -319,7 +324,7 @@ def _lookup_root_possibilities(
     if possible_values is None:
         if none_if_missing:
             return None
-        raise InvalidConstraints(f'{key} is not a valid constraint key')
+        raise InvalidNode(f'{key} is not a valid node')
 
     if nested_keys:
         nested_keys.reverse()
@@ -390,7 +395,7 @@ def _search_downward(domain: str):
         yield node
 
     if not found:
-        raise InvalidConstraints(f'Unknown node: "{domain}"')
+        raise InvalidNode(f'Unknown node: "{domain}"')
 
 
 def _find_roots(targets: Union[str, StrContainer]) -> Iterator[str]:

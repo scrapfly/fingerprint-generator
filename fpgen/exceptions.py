@@ -1,12 +1,20 @@
-class InvalidConstraints(ValueError):
-    """Raises when a constraint doesn't exist"""
+class NetworkError(ValueError):
+    """Error with the network"""
+
+
+class InvalidConstraints(NetworkError):
+    """Raises when a constraint isn't possible"""
+
+
+class InvalidNode(NetworkError):
+    """Raises when a node doesn't exist"""
 
 
 class InvalidWindowBounds(InvalidConstraints):
     """Raises when window bounds are too restrictive"""
 
 
-class ConstraintKeyError(KeyError):
+class NodePathError(InvalidNode):
     """Raises when a key path doesn't exist"""
 
 
