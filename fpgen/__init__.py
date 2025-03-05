@@ -15,7 +15,8 @@ def __check_module__() -> None:
         prev, launch = stack[-2:]
         try:
             if (launch.function, prev.function) == ('_run_module_as_main', '_get_module_details'):
-                os.environ['FPGEN_NO_AUTO_DOWNLOAD'] = '1'
+                # Enable "partial execution mode" to prevent automatic downloads, starting network, etc.
+                os.environ['FPGEN_NO_INIT'] = '1'
         except AttributeError:
             pass
 
@@ -23,6 +24,7 @@ def __check_module__() -> None:
 __check_module__()
 
 
-from .generator import Generator, WindowBounds, possibilities
+from .generator import Generator, WindowBounds
+from .query import query
 
-__all__ = ['Generator', 'WindowBounds', 'possibilities']
+__all__ = ['Generator', 'WindowBounds', 'query']

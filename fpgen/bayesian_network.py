@@ -97,9 +97,10 @@ class BayesianNetwork:
             BayesianNode(node_def, index)
             for index, node_def in enumerate(network_definition['nodes'])
         ]
-        self.nodes_by_name = CaseInsensitiveDict(
-            {node.name: node for node in self.nodes_in_sampling_order}
-        )
+        nodes_by_name = {node.name: node for node in self.nodes_in_sampling_order}
+        self.nodes_by_name = CaseInsensitiveDict(nodes_by_name)
+        # Keep a list of the original names
+        self.node_names = tuple(nodes_by_name.keys())
 
     def generate_certain_nodes(
         self,

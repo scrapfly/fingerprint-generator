@@ -1,9 +1,8 @@
 import click
 import zstandard
 
-from fpgen.pkgman import download_model
-
-from .generator import NETWORK_FILE
+from .pkgman import download_model
+from .query import NETWORK_FILE
 from .unpacker import VALUES_DATA, VALUES_JSON
 
 FILES_TO_COMPRESS = {

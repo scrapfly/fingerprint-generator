@@ -119,4 +119,4 @@ def __is_module__() -> bool:
     '''
     Checks if fpgen is being ran as a module
     '''
-    return bool(os.getenv('FPGEN_NO_AUTO_DOWNLOAD'))
+    return bool(os.getenv('FPGEN_NO_INIT'))

@@ -1,24 +1,20 @@
-from collections.abc import MutableMapping
 from dataclasses import dataclass
-from pathlib import Path
-from typing import Any, Dict, Iterator, List, Mapping, Optional, Tuple, Union, overload
+from typing import Any, Dict, List, Optional, Tuple, Union, overload
 
 import orjson
 
-from fpgen.bayesian_network import BayesianNetwork, StrContainer
-from fpgen.exceptions import (
-    InvalidConstraints,
-    InvalidNode,
-    InvalidWindowBounds,
-    NodePathError,
+from .bayesian_network import StrContainer
+from .exceptions import InvalidConstraints, InvalidWindowBounds, NodePathError
+from .query import (
+    NETWORK,
+    _assert_network_exists,
+    _at_path,
+    _find_roots,
+    _lookup_possibilities,
+    _lookup_root_possibilities,
+    _reassemble_targets,
 )
-from fpgen.structs import CaseInsensitiveDict, _dedupe, _merge_dicts, _unflatten
-from fpgen.unpacker import flatten, lookup_value_list, make_output_dict
-
-from .pkgman import __is_module__, assert_downloaded
-
-NETWORK_FILE = Path(__file__).parent / 'data' / "fingerprint-network.json"
-assert_downloaded(NETWORK_FILE)
+from .unpacker import flatten, make_output_dict
 
 
 @dataclass
@@ -50,10 +46,6 @@ class WindowBounds:
 
 class Generator:
     """Generates realistic browser fingerprints"""
-
-    if not __is_module__():
-        # Do not attempt to load the network if we are running as a module
-        network = BayesianNetwork(NETWORK_FILE)
 
     def __init__(
         self,
@@ -126,6 +118,7 @@ class Generator:
             target (Optional[Union[str, StrContainer]]): Only generate specific value(s)
         """
         _assert_dict_xor_kwargs(constraints_dict, constraints)
+        _assert_network_exists()
 
         if constraints_dict:
             constraints = constraints_dict
@@ -157,9 +150,9 @@ class Generator:
         while True:
             # If we only are searching for certain targets, call generate_certain_nodes
             if target_roots:
-                fingerprint = self.network.generate_certain_nodes(filtered_values, target_roots)
+                fingerprint = NETWORK.generate_certain_nodes(filtered_values, target_roots)
             else:
-                fingerprint = self.network.generate_consistent_sample(filtered_values)
+                fingerprint = NETWORK.generate_consistent_sample(filtered_values)
 
             # Found the fingerprint
             if fingerprint is not None:
@@ -173,20 +166,10 @@ class Generator:
         # If we arent searching for certain targets, we can return right away
         output = make_output_dict(fingerprint)
         if target:
-            output = self._reassemble_targets(_tupilize(target), output)
+            output = _reassemble_targets(_tupilize(target), output)
             if isinstance(target, str):
                 return output[target]
         return output
-
-    def _reassemble_targets(self, targets: StrContainer, fingerprint: Dict[str, Any]):
-        result = {}
-        for target in targets:
-            try:
-                data = _at_path(fingerprint, target.split('.'), casefold=True)
-            except NodePathError as key:
-                raise InvalidNode(f"'{target}' is not a valid key path (missing {key}).")
-            result[target] = data
-        return result
 
     @staticmethod
     def _build_constraints(
@@ -279,76 +262,6 @@ class Generator:
         )
 
 
-def _at_path(data: Mapping, path: StrContainer, *, casefold=False) -> Any:
-    """
-    Checks the value at athe given path in a dictionary
-    """
-    for key in path:
-        if casefold:
-            data = CaseInsensitiveDict(data)
-        if not isinstance(data, MutableMapping) or key not in data:
-            raise NodePathError(key)
-        data = data[key]
-    return data
-
-
-def _lookup_root_possibilities(
-    key: str,
-    nested_keys: Optional[List[str]] = None,
-    casefold: bool = True,
-    none_if_missing: bool = False,
-) -> Any:
-    """
-    Finds the first avaliable root node of a given key
-    """
-    if not key:
-        raise InvalidNode('Key cannot be empty.')
-    while key:
-        keys = key.rsplit('.', 1)
-        # Ran out of keys to parse
-        if len(keys) != 2:
-            if none_if_missing:
-                return None
-            raise InvalidNode(f'{key} is not a valid node')
-        key, sliced_key = keys
-
-        if nested_keys is not None:
-            nested_keys.append(sliced_key)
-
-        # if a nested key is avaliable, enter it
-        possible_values = _lookup_possibilities(key, casefold)
-        # iterate backwards until we find the node
-        if possible_values is not None:
-            break
-
-    if possible_values is None:
-        if none_if_missing:
-            return None
-        raise InvalidNode(f'{key} is not a valid node')
-
-    if nested_keys:
-        nested_keys.reverse()
-
-    return key, possible_values
-
-
-def _lookup_possibilities(node_name: str, casefold: bool = True) -> Optional[Dict]:
-    """
-    Returns the possible values for the given node name.
-    Returns as a dictionary {value: lookup_index}
-    """
-    if node_name not in Generator.network.nodes_by_name:
-        return None
-
-    lookup_values = Generator.network.nodes_by_name[node_name].possible_values
-    actual_values = lookup_value_list(lookup_values)
-
-    return {
-        (actual.casefold() if casefold else actual): lookup
-        for actual, lookup in zip(actual_values, lookup_values)
-    }
-
-
 def _first(*values):
     """
     Simple function that returns the first non-None value passed
@@ -378,92 +291,4 @@ def _assert_dict_xor_kwargs(
             )
 
 
-def _search_downward(domain: str):
-    """
-    Searches for all nodes that begin with a specific key
-    """
-    found = False
-    for node in Generator.network.nodes_by_name:
-        if not node.startswith(domain):
-            continue
-        # Check if its a . afterward
-        key_len = len(domain)
-        if len(node) > key_len and node[key_len] != '.':
-            continue
-        if not found:
-            found = True
-        yield node
-
-    if not found:
-        raise InvalidNode(f'Unknown node: "{domain}"')
-
-
-def _find_roots(targets: Union[str, StrContainer]) -> Iterator[str]:
-    """
-    Given a list of targets, return all nodes that make up that target's data
-    """
-    for target in targets:
-        target = target.casefold()
-        while True:
-            # Found a valid target
-            if target in Generator.network.nodes_by_name:
-                yield target
-                break
-
-            keys = target.rsplit('.', 1)
-            if len(keys) > 1:
-                # Move target back 1
-                target = keys[0]
-                continue
-
-            # We are at the root key.
-            # Find potential keys before quitting
-            yield from _search_downward(keys[0])
-            break
-
-
-def possibilities(node: str) -> Union[Dict[str, Any], List[Any]]:
-    """
-    Pull a list of possibilities given a node.
-    """
-    # Check node list first
-    values = _lookup_possibilities(node, casefold=False)
-    if values:
-        output: Union[Tuple, map]
-        output = tuple(map(orjson.loads, values))
-        if all(isinstance(d, dict) for d in output):
-            return _merge_dicts(output)
-        return _dedupe(output)
-
-    # Target is within a node. Need to look up the tree
-    nested_keys: List[str] = []
-    data = _lookup_root_possibilities(
-        node, nested_keys=nested_keys, none_if_missing=True, casefold=False
-    )
-    if data is not None:
-        # Read possibile values as jsons
-        output = map(orjson.loads, data[1])
-        # Pull the item at the target path
-        output = map(lambda d: _at_path(d, nested_keys), output)
-        output = tuple(output)
-
-        # If they are all dicts, merge them
-        if all(isinstance(d, dict) for d in output):
-            return _merge_dicts(output)
-
-        # Return a deduped list
-        return _dedupe(output)
-
-    # Search down the tree
-    data = _search_downward(node)
-    return _unflatten(
-        {
-            # Remove the current node path
-            key.removeprefix(f'{node}.'): [
-                # Parse each possible value via orjson
-                orjson.loads(d)
-                for d in (_lookup_possibilities(key, casefold=False) or [])
-            ]
-            for key in data
-        }
-    )
+__all__ = ('Generator', 'WindowBounds')
