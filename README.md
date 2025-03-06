@@ -27,7 +27,7 @@ https://github.com/user-attachments/assets/5c56691a-5804-4007-b179-0bae7069a111
 Install the package using pip:
 
 ```bash
-pip install https://github.com/scrapfly/fingerprint-generator/archive/refs/heads/main.zip
+pip install fpgen
 ```
 
 <hr width=50>
@@ -202,6 +202,9 @@ Passing a nested target:
 >>> fpgen.query('navigator.maxTouchPoints') # Dot seperated path
 [0, 1, 2, 5, 6, 9, 10, 17, 20, 40, 256]
 ```
+
+> [!NOTE]
+> Since fpgen is trained on live data, queries may occasionally return invalid or anomalous values. These values will typically only appear in about 1 out of every 20,000 generations.
 
 <hr width=50>
 
