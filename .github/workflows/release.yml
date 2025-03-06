@@ -1,6 +1,7 @@
 name: Release to PyPi
 
 on:
+  workflow_dispatch:
   push:
     tags:        
       - '*'
