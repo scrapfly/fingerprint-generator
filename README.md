@@ -9,9 +9,9 @@
 ## Features
 
 - Uses a Bayesian generative network to mimic real-world web traffic patterns
-- Comprehensive data coverage for **nearly all known** browser data points
+- Extensive data coverage for **nearly all known** browser data points
 - Creates complete fingerprints in a few milliseconds ⚡
-- Easily specify custom criteria for any data point (e.g. "only Windows + Chrome with Intel GPUs")
+- Easily specify custom criteria for any data point (e.g. "only Windows + Chrome, with Intel GPUs")
 - Simple for humans to use 🚀
 
 ## Demo Video
@@ -22,7 +22,7 @@ https://github.com/user-attachments/assets/5c56691a-5804-4007-b179-0bae7069a111
 
 ---
 
-## Installation
+# Installation
 
 Install the package using pip:
 
@@ -32,7 +32,7 @@ pip install fpgen
 
 <hr width=50>
 
-#### Downloading the model
+### Downloading the model
 
 Fetch the latest model:
 
@@ -71,7 +71,7 @@ Commands:
 
 ---
 
-## Usage
+# Usage
 
 ### Generate a fingerprint
 
@@ -85,21 +85,21 @@ Use the `Generator` object:
 
 [See example output.](https://raw.githubusercontent.com/scrapfly/fingerprint-generator/refs/heads/main/assets/example-output.json)
 
-<hr width=50>
+---
 
-### Filtering the output
+## Filtering the output
 
-#### Setting fingerprint criteria
+### Setting fingerprint criteria
 
 You can narrow down generated fingerprints by specifying filters for **any** data field.
 
 ```python
 # Only generate fingerprints with Windows, Chrome, and Intel GPU:
-gen.generate(
-    os='Windows',
-    browser='Chrome',
-    gpu={'vendor': 'Google Inc. (Intel)'}
-)
+>>> gen.generate(
+...     os='Windows',
+...     browser='Chrome',
+...     gpu={'vendor': 'Google Inc. (Intel)'}
+... )
 ```
 
 <details>
@@ -108,16 +108,16 @@ This can also be passed as a dictionary.
 </summary>
 
 ```python
-gen.generate({
-    'os': 'Windows',
-    'browser': 'Chrome',
-    'gpu': {'vendor': 'Google Inc. (Intel)'},
-})
+>>> gen.generate({
+...     'os': 'Windows',
+...     'browser': 'Chrome',
+...     'gpu': {'vendor': 'Google Inc. (Intel)'},
+... })
 ```
 
 </details>
 
-#### Multiple constraints
+### Multiple constraints
 
 Pass in multiple constraints for the generator to select from.
 
@@ -128,10 +128,9 @@ gen.generate({
 })
 ```
 
-> [!NOTE]
-> If you are passing many nested constraints, run `fpgen decompress` to improve model performance.
+If you are passing many nested constraints, run `fpgen decompress` to improve model performance.
 
-#### Control the window size
+### Control the window size
 
 Constrain the minimum/maximum width and height of the window:
 
@@ -145,13 +144,13 @@ bounds = fpgen.WindowBounds(
 gen.generate(window_bounds=bounds)
 ```
 
-<hr width=50>
+---
 
-### Control what data is generated
+## Control what data is generated
 
 To generate specific data fields, use the `target` parameter with a string (or a list of strings).
 
-#### Usage Examples
+### Examples
 
 Only generate HTTP headers:
 
@@ -184,7 +183,7 @@ Generate a Firefox TLS fingerprint:
 
 You can provide multiple targets as a list.
 
-<hr width=50>
+---
 
 ## Query possible values
 
@@ -203,6 +202,8 @@ Passing a nested target:
 >>> fpgen.query('navigator.maxTouchPoints') # Dot seperated path
 [0, 1, 2, 5, 6, 9, 10, 17, 20, 40, 256]
 ```
+
+<hr width=50>
 
 ### Custom fingerprint filters
 
@@ -228,15 +229,14 @@ output = gen.generate(screen: {'width': values})
 Here is a rough list of the data fpgen can generate:
 
 - **Browser data:**
-
   - All navigator data
   - All mimetype data: Audio, video, media source, play types, PDF, etc
   - All window viewport data (position, inner/outer viewport sizes, toolbar & scrollbar sizes, etc)
+  - All screen data
   - Supported & unsupported DRM modules
   - Memory heap limit
 
-- **System data:**
-
+* **System data:**
   - GPU data (vendor, renderer, WebGL/WebGL2, extensions, context attributes, parameters, shader precision formats, etc)
   - Battery data (charging, charging time, discharging time, level)
   - Screen size, color depth, taskbar size, etc.
@@ -244,24 +244,21 @@ Here is a rough list of the data fpgen can generate:
   - Cast receiver data
 
 - **Network data:**
-
   - HTTP headers
   - TLS fingerprint data
   - HTTP/2 fingerprint & frames
   - RTC video & audio capabilities, codecs, clock rates, mimetypes, header extensions, etc
 
-- **Audio data:**
-
+* **Audio data:**
   - Audio signal
   - All Audio API constants (AnalyserNode, BiquadFilterNode, DynamicsCompressorNode, OscillatorNode, etc)
 
 - **Internationalization data:**
-
   - Regional internationalization (Locale, calendar, numbering system, timezone, date format, etc)
   - Voices
 
-- And much more!
+* **_And much more!_**
 
-[See full example output.](https://raw.githubusercontent.com/scrapfly/fingerprint-generator/refs/heads/main/assets/example-output.json)
+For a more complete list, see the [full example output](https://raw.githubusercontent.com/scrapfly/fingerprint-generator/refs/heads/main/assets/example-output.json).
 
 ---
