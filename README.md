@@ -27,7 +27,7 @@ https://github.com/user-attachments/assets/5c56691a-5804-4007-b179-0bae7069a111
 Install the package using pip:
 
 ```bash
-pip install fpgen
+pip install https://github.com/scrapfly/fingerprint-generator/archive/refs/heads/main.zip
 ```
 
 <hr width=50>
