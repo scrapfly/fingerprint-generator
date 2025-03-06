@@ -1,14 +1,22 @@
 <h1 align="center">Fingerprint Generator</h1>
 
-<p align="center">A fast & comprehensive browser fingerprint generator that mimics real world traffic & browser API data in the wild.</p>
+<p align="center">A fast browser data generator that mimics actual traffic patterns in the wild. With <i>extensive</i> data coverage.</p>
 
 <p align="center">Created by <a href="https://github.com/daijro">daijro</a>. Data provided by Scrapfly.</p>
 
 ---
 
+## Features
+
+- Uses a Bayesian generative network to mimic real-world web traffic patterns
+- Comprehensive data coverage for **nearly all known** browser data points
+- Creates complete fingerprints in a few milliseconds ⚡
+- Easily specify custom criteria for any data point (e.g. "only Windows + Chrome with Intel GPUs")
+- Simple for humans to use 🚀
+
 ## Demo Video
 
-Here is a demonstration of what fpgen generates & its ability to pin certain data points:
+Here is a demonstration of what fpgen generates & its ability to filter data points:
 
 https://github.com/user-attachments/assets/f0ce9160-24dd-4748-9b17-4a031134b310
 
@@ -22,13 +30,19 @@ Install the package using pip:
 pip install fpgen
 ```
 
-Then, fetch the latest model:
+<hr width=50>
+
+#### Downloading the model
+
+Fetch the latest model:
 
 ```bash
 fpgen fetch
 ```
 
-To decompress the model for faster generation, run:
+This will be ran automatically on the first import, or every 5 weeks.
+
+To decompress the model for faster generation (_up to 10-50x faster!_), run:
 
 ```bash
 fpgen decompress
@@ -61,72 +75,104 @@ Commands:
 
 ### Generate a fingerprint
 
-To generate a fingerprint, import the `Generator` object and use it like this:
+Use the `Generator` object:
 
 ```python
->>> from fpgen import Generator
->>> gen = Generator()
+>>> import fpgen
+>>> gen = fpgen.Generator()
 >>> gen.generate()
 ```
 
+[See example output.](https://raw.githubusercontent.com/scrapfly/fingerprint-generator/refs/heads/main/assets/example-output.json)
+
 <hr width=50>
 
-### Filters
+### Filtering the output
 
-In fpgen, you can filter the fingerprint based on certain data points. The generator can be constrained by any part of its output.
+#### Setting fingerprint criteria
 
-Multiple possibilities can be passed as a constraint using a tuple. They will be selected based on their respected probability. 
+You can narrow down generated fingerprints by specifying filters for **any** data field.
 
 ```python
+# Only generate fingerprints with Windows, Chrome, and Intel GPU:
 gen.generate(
     os='Windows',
-    browser=('Chrome', 'Firefox'),  # Allow Chrome and Firefox
-    gpu={'vendor': 'Google Inc. (Intel)'}  # Nested key search
+    browser='Chrome',
+    gpu={'vendor': 'Google Inc. (Intel)'}
 )
 ```
 
-Or, pass as a dictionary:
+<details>
+<summary>
+This can also be passed as a dictionary.
+</summary>
 
 ```python
 gen.generate({
     'os': 'Windows',
-    'browser': ('Chrome', 'Firefox'),
+    'browser': 'Chrome',
     'gpu': {'vendor': 'Google Inc. (Intel)'},
 })
 ```
 
-Constraint keys & values are case-insensitive.
+</details>
+
+#### Multiple constraints
+
+Pass in multiple constraints for the generator to select from.
+
+```python
+gen.generate({
+    'os': ('Windows', 'Mac OS X'),
+    'browser': ('Firefox', 'Chrome'),
+})
+```
 
 > [!NOTE]
-> If you are passing many nested constraints, you may want to run `fpgen decompress` to improve model performance.
+> If you are passing many nested constraints, run `fpgen decompress` to improve model performance.
+
+#### Control the window size
+
+Constrain the minimum/maximum width and height of the window:
+
+```python
+bounds = fpgen.WindowBounds(
+    min_width=100,
+    max_width=1280,
+    min_height=400,
+    max_height=720,
+)
+gen.generate(window_bounds=bounds)
+```
 
 <hr width=50>
 
-## Generate specific data points
+### Control what data is generated
 
-To generate only certain data points, pass a string or a list of strings to the target parameter. This allows you to request specific information instead of a full fingerprint.
+To generate specific data fields, use the `target` parameter with a string (or a list of strings).
 
-#### Examples
+#### Usage Examples
 
-Generate headers:
+Only generate HTTP headers:
 
 ```python
 >>> gen.generate(target='headers')
 {'accept-language': 'uk-UA,uk;q=0.9,en-US;q=0.8,en;q=0.7', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept': '*/*', 'priority': 'u=1, i', 'sec-ch-ua': '"Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"', 'sec-ch-ua-mobile': '?0', 'sec-ch-ua-platform': '"macOS"', 'sec-fetch-dest': 'empty', 'sec-fetch-mode': 'cors', 'sec-fetch-site': 'same-site', 'sec-gpc': None}
 ```
 
-User-Agent, given OS and browser:
+Generate a User-Agent for Windows & Chrome:
 
 ```python
 >>> gen.generate(
-...     os='Mac OS X',
+...     os='Windows',
 ...     browser='Chrome',
-...     target='gpu.vendor'
+...     # Nested targets must be seperated by dots:
+...     target='headers.user-agent'
 ... )
-'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.134 Safari/537.36'
+'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:134.0) Gecko/20100101 Firefox/134.0'
 ```
 
-TLS fingerprint:
+Generate a Firefox TLS fingerprint:
 
 ```python
 >>> gen.generate(
@@ -136,9 +182,7 @@ TLS fingerprint:
 {'version': '772', 'ch_ciphers': '4865-4867-4866-49195-49199-52393-52392-49196-49200-49162-49161-49171-49172-156-157-47-53', 'ch_extensions': '0-5-10-11-13-16-23-27-28-34-35-43-45-51-65037-65281', 'groups': '4588-29-23-24-25-256-257', 'points': '0', 'compression': '0', 'supported_versions': '772-771', 'supported_protocols': 'h2-http11', 'key_shares': '4588-29-23', 'psk': '1', 'signature_algs': '1027-1283-1539-2052-2053-2054-1025-1281-1537-515-513', 'early_data': '0'}
 ```
 
-Targets to nested data points must be a valid path seperated by dots.
-
-If multiple targets are provided as an array, the output will be a dictionary of each target to their generated value.
+You can provide multiple targets as a list.
 
 <hr width=50>
 
@@ -154,19 +198,39 @@ List all possible browsers:
 ```
 
 Passing a nested target:
+
 ```python
 >>> fpgen.query('navigator.maxTouchPoints') # Dot seperated path
 [0, 1, 2, 5, 6, 9, 10, 17, 20, 40, 256]
+```
+
+### Custom fingerprint filters
+
+You can manually omit possible values, then pass a new list into the generator:
+
+```python
+# Get possible values for screen.width
+values = fpgen.query('screen.width')
+
+# Only allow values above 1000
+def width_filter(width):
+    return width > 1000
+values = filter(width_filter, values)
+
+# Pass in the new list of possible widths:
+output = gen.generate(screen: {'width': values})
 ```
 
 ---
 
 ## Generated data
 
+Here is a rough list of the data fpgen can generate:
+
 - **Browser data:**
 
   - All navigator data
-  - All mimetype data: Audio, video, media source, playtypes, PDF, etc
+  - All mimetype data: Audio, video, media source, play types, PDF, etc
   - All window viewport data (position, inner/outer viewport sizes, toolbar & scrollbar sizes, etc)
   - Supported & unsupported DRM modules
   - Memory heap limit
@@ -197,5 +261,7 @@ Passing a nested target:
   - Voices
 
 - And much more!
+
+[See full example output.](https://raw.githubusercontent.com/scrapfly/fingerprint-generator/refs/heads/main/assets/example-output.json)
 
 ---
