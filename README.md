@@ -18,7 +18,7 @@
 
 Here is a demonstration of what fpgen generates & its ability to filter data points:
 
-https://github.com/user-attachments/assets/f0ce9160-24dd-4748-9b17-4a031134b310
+https://github.com/user-attachments/assets/5c56691a-5804-4007-b179-0bae7069a111
 
 ---
 
