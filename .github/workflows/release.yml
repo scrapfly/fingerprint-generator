@@ -3,8 +3,8 @@ name: Release to PyPi
 on:
   workflow_dispatch:
   push:
-    tags:        
-      - '*'
+    tags:
+      - 'v*'  # Only trigger on tags that start with 'v'
 
 permissions:
   contents: read
