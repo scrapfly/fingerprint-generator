@@ -46,8 +46,12 @@ def remove():
 @cli.command()
 def decompress():
     """
-    ecompress model files for speed efficiency (will take 100mb+)
+    Recompress model files for speed efficiency (will take 100mb+)
     """
+    # Check there's anything to decompress
+    if any(f.exists() for f in FILE_PAIRS.keys()):
+        click.echo(click.style("Model is already decompressed.", fg="yellow"))
+        return
     decompress_model()
 
 
@@ -56,6 +60,10 @@ def recompress():
     """
     Compress model files after running decompress
     """
+    # Check there's anything to compress
+    if any(f.exists() for f in FILE_PAIRS.values()):
+        click.echo(click.style("Model is already compressed.", fg="yellow"))
+        return
     recompress_model()
 
 
