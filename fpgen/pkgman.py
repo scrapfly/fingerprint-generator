@@ -85,8 +85,9 @@ class ModelPuller:
                     temp_file.write(chunk)
                 temp_file.flush()
             temp_file.close()
-
-            click.echo(f"Extracting to {DATA_DIR}...")
+            # Print extraction message if running as module
+            if __is_module__():
+                click.echo(f"Extracting to {DATA_DIR}...")
             with zipfile.ZipFile(temp_file.name) as z:
                 z.extractall(DATA_DIR, pwd=password)
 

@@ -14,7 +14,10 @@ def __check_module__() -> None:
     if len(stack) >= 2:
         prev, launch = stack[-2:]
         try:
-            if (launch.function, prev.function) == ('_run_module_as_main', '_get_module_details'):
+            if (launch.function, prev.function) in (
+                ('_run_module_as_main', '_get_module_details'),
+                ('<module>', '_find_and_load'),
+            ):
                 # Enable "partial execution mode" to prevent automatic downloads, starting network, etc.
                 os.environ['FPGEN_NO_INIT'] = '1'
         except AttributeError:
