@@ -6,6 +6,10 @@ class InvalidConstraints(NetworkError):
     """Raises when a constraint isn't possible"""
 
 
+class RestrictiveConstraints(InvalidConstraints):
+    """Raises when the passed constraints are too restrictive"""
+
+
 class InvalidNode(NetworkError):
     """Raises when a node doesn't exist"""
 

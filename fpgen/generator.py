@@ -4,7 +4,12 @@ from typing import Any, Dict, List, Optional, Tuple, Union, overload
 import orjson
 
 from .bayesian_network import StrContainer
-from .exceptions import InvalidConstraints, InvalidWindowBounds, NodePathError
+from .exceptions import (
+    InvalidConstraints,
+    InvalidWindowBounds,
+    NodePathError,
+    RestrictiveConstraints,
+)
 from .query import (
     NETWORK,
     _assert_network_exists,
@@ -159,7 +164,9 @@ class Generator:
                 break
             # Raise an error if the filtered_values are too strict
             if strict:
-                raise ValueError('Cannot generate fingerprint. Constraints are too restrictive.')
+                raise RestrictiveConstraints(
+                    'Cannot generate fingerprint. Constraints are too restrictive.'
+                )
             # If no fingerprint was generated, relax the filtered values until we find one
             filtered_values.pop(next(iter(filtered_values.keys())))
 
