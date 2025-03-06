@@ -1,0 +1,4916 @@
+{
+  "browser": "Chrome",
+  "navigator": {
+    "appName": "Netscape",
+    "product": "Gecko",
+    "productSub": "20030107",
+    "appCodeName": "Mozilla",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36",
+    "deviceMemory": 8,
+    "hardwareConcurrency": 8,
+    "language": "en-US",
+    "languages": [
+      "en-US",
+      "en"
+    ],
+    "platform": "MacIntel",
+    "appVersion": "5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36",
+    "doNotTrack": "1",
+    "maxTouchPoints": 0
+  },
+  "platformInfo": "Macintosh; Intel Mac OS X 10_15_7",
+  "os": "Mac OS X",
+  "gpu": {
+    "vendor": "Google Inc. (Apple)",
+    "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M3, Unspecified Version)"
+  },
+  "webgl": {
+    "supportedExtensions": [
+      "ANGLE_instanced_arrays",
+      "EXT_blend_minmax",
+      "EXT_clip_control",
+      "EXT_color_buffer_half_float",
+      "EXT_depth_clamp",
+      "EXT_disjoint_timer_query",
+      "EXT_float_blend",
+      "EXT_frag_depth",
+      "EXT_polygon_offset_clamp",
+      "EXT_shader_texture_lod",
+      "EXT_texture_compression_bptc",
+      "EXT_texture_compression_rgtc",
+      "EXT_texture_filter_anisotropic",
+      "EXT_texture_mirror_clamp_to_edge",
+      "EXT_sRGB",
+      "KHR_parallel_shader_compile",
+      "OES_element_index_uint",
+      "OES_fbo_render_mipmap",
+      "OES_standard_derivatives",
+      "OES_texture_float",
+      "OES_texture_float_linear",
+      "OES_texture_half_float",
+      "OES_texture_half_float_linear",
+      "OES_vertex_array_object",
+      "WEBGL_blend_func_extended",
+      "WEBGL_color_buffer_float",
+      "WEBGL_compressed_texture_astc",
+      "WEBGL_compressed_texture_etc",
+      "WEBGL_compressed_texture_etc1",
+      "WEBGL_compressed_texture_pvrtc",
+      "WEBGL_compressed_texture_s3tc",
+      "WEBGL_compressed_texture_s3tc_srgb",
+      "WEBGL_debug_renderer_info",
+      "WEBGL_debug_shaders",
+      "WEBGL_depth_texture",
+      "WEBGL_draw_buffers",
+      "WEBGL_lose_context",
+      "WEBGL_multi_draw",
+      "WEBGL_polygon_mode"
+    ],
+    "contextAttributes": {
+      "alpha": true,
+      "antialias": true,
+      "depth": true,
+      "desynchronized": false,
+      "failIfMajorPerformanceCaveat": false,
+      "powerPreference": "default",
+      "premultipliedAlpha": true,
+      "preserveDrawingBuffer": false,
+      "stencil": false,
+      "xrCompatible": false
+    },
+    "maxAnisotropy": 16,
+    "params": {
+      "2849": {
+        "type": "Number",
+        "value": 1
+      },
+      "2884": {
+        "type": "",
+        "value": false
+      },
+      "2885": {
+        "type": "Number",
+        "value": 1029
+      },
+      "2886": {
+        "type": "Number",
+        "value": 2305
+      },
+      "2928": {
+        "type": "Float32Array",
+        "value": [
+          0,
+          1
+        ]
+      },
+      "2929": {
+        "type": "",
+        "value": false
+      },
+      "2930": {
+        "type": "Boolean",
+        "value": true
+      },
+      "2931": {
+        "type": "Number",
+        "value": 1
+      },
+      "2932": {
+        "type": "Number",
+        "value": 513
+      },
+      "2960": {
+        "type": "",
+        "value": false
+      },
+      "2961": {
+        "type": "",
+        "value": 0
+      },
+      "2962": {
+        "type": "Number",
+        "value": 519
+      },
+      "2963": {
+        "type": "Number",
+        "value": 2147483647
+      },
+      "2964": {
+        "type": "Number",
+        "value": 7680
+      },
+      "2965": {
+        "type": "Number",
+        "value": 7680
+      },
+      "2966": {
+        "type": "Number",
+        "value": 7680
+      },
+      "2967": {
+        "type": "",
+        "value": 0
+      },
+      "2968": {
+        "type": "Number",
+        "value": 2147483647
+      },
+      "2978": {
+        "type": "Int32Array",
+        "value": [
+          0,
+          0,
+          300,
+          150
+        ]
+      },
+      "3024": {
+        "type": "Boolean",
+        "value": true
+      },
+      "3042": {
+        "type": "",
+        "value": false
+      },
+      "3074": {
+        "type": "",
+        "value": null
+      },
+      "3088": {
+        "type": "Int32Array",
+        "value": [
+          0,
+          0,
+          300,
+          150
+        ]
+      },
+      "3089": {
+        "type": "",
+        "value": false
+      },
+      "3106": {
+        "type": "Float32Array",
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "3107": {
+        "type": "Array",
+        "value": [
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      "3314": {
+        "type": "",
+        "value": null
+      },
+      "3315": {
+        "type": "",
+        "value": null
+      },
+      "3316": {
+        "type": "",
+        "value": null
+      },
+      "3317": {
+        "type": "Number",
+        "value": 4
+      },
+      "3330": {
+        "type": "",
+        "value": null
+      },
+      "3331": {
+        "type": "",
+        "value": null
+      },
+      "3332": {
+        "type": "",
+        "value": null
+      },
+      "3333": {
+        "type": "Number",
+        "value": 4
+      },
+      "3379": {
+        "type": "Number",
+        "value": 16384
+      },
+      "3386": {
+        "type": "Int32Array",
+        "value": [
+          16384,
+          16384
+        ]
+      },
+      "3408": {
+        "type": "Number",
+        "value": 4
+      },
+      "3410": {
+        "type": "Number",
+        "value": 8
+      },
+      "3411": {
+        "type": "Number",
+        "value": 8
+      },
+      "3412": {
+        "type": "Number",
+        "value": 8
+      },
+      "3413": {
+        "type": "Number",
+        "value": 8
+      },
+      "3414": {
+        "type": "Number",
+        "value": 24
+      },
+      "3415": {
+        "type": "",
+        "value": 0
+      },
+      "7936": {
+        "type": "String",
+        "value": "WebKit"
+      },
+      "7937": {
+        "type": "String",
+        "value": "WebKit WebGL"
+      },
+      "7938": {
+        "type": "String",
+        "value": "WebGL 1.0 (OpenGL ES 2.0 Chromium)"
+      },
+      "10752": {
+        "type": "",
+        "value": 0
+      },
+      "32773": {
+        "type": "Float32Array",
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "32777": {
+        "type": "Number",
+        "value": 32774
+      },
+      "32823": {
+        "type": "",
+        "value": false
+      },
+      "32824": {
+        "type": "",
+        "value": 0
+      },
+      "32873": {
+        "type": "",
+        "value": null
+      },
+      "32877": {
+        "type": "",
+        "value": null
+      },
+      "32878": {
+        "type": "",
+        "value": null
+      },
+      "32883": {
+        "type": "",
+        "value": null
+      },
+      "32926": {
+        "type": "",
+        "value": false
+      },
+      "32928": {
+        "type": "",
+        "value": false
+      },
+      "32936": {
+        "type": "Number",
+        "value": 1
+      },
+      "32937": {
+        "type": "Number",
+        "value": 4
+      },
+      "32938": {
+        "type": "Number",
+        "value": 1
+      },
+      "32939": {
+        "type": "",
+        "value": false
+      },
+      "32968": {
+        "type": "",
+        "value": 0
+      },
+      "32969": {
+        "type": "Number",
+        "value": 1
+      },
+      "32970": {
+        "type": "",
+        "value": 0
+      },
+      "32971": {
+        "type": "Number",
+        "value": 1
+      },
+      "33000": {
+        "type": "",
+        "value": null
+      },
+      "33001": {
+        "type": "",
+        "value": null
+      },
+      "33170": {
+        "type": "Number",
+        "value": 4352
+      },
+      "33901": {
+        "type": "Float32Array",
+        "value": [
+          1,
+          511
+        ]
+      },
+      "33902": {
+        "type": "Float32Array",
+        "value": [
+          1,
+          1
+        ]
+      },
+      "34016": {
+        "type": "Number",
+        "value": 33984
+      },
+      "34024": {
+        "type": "Number",
+        "value": 16384
+      },
+      "34045": {
+        "type": "",
+        "value": null
+      },
+      "34047": {
+        "type": "Number",
+        "value": 16
+      },
+      "34068": {
+        "type": "",
+        "value": null
+      },
+      "34076": {
+        "type": "Number",
+        "value": 16384
+      },
+      "34467": {
+        "type": "Uint32Array",
+        "value": []
+      },
+      "34816": {
+        "type": "Number",
+        "value": 519
+      },
+      "34817": {
+        "type": "Number",
+        "value": 7680
+      },
+      "34818": {
+        "type": "Number",
+        "value": 7680
+      },
+      "34819": {
+        "type": "Number",
+        "value": 7680
+      },
+      "34852": {
+        "type": "",
+        "value": null
+      },
+      "34853": {
+        "type": "",
+        "value": null
+      },
+      "34854": {
+        "type": "",
+        "value": null
+      },
+      "34855": {
+        "type": "",
+        "value": null
+      },
+      "34856": {
+        "type": "",
+        "value": null
+      },
+      "34857": {
+        "type": "",
+        "value": null
+      },
+      "34858": {
+        "type": "",
+        "value": null
+      },
+      "34859": {
+        "type": "",
+        "value": null
+      },
+      "34860": {
+        "type": "",
+        "value": null
+      },
+      "34877": {
+        "type": "Number",
+        "value": 32774
+      },
+      "34921": {
+        "type": "Number",
+        "value": 16
+      },
+      "34930": {
+        "type": "Number",
+        "value": 16
+      },
+      "34964": {
+        "type": "",
+        "value": null
+      },
+      "34965": {
+        "type": "",
+        "value": null
+      },
+      "35071": {
+        "type": "",
+        "value": null
+      },
+      "35076": {
+        "type": "",
+        "value": null
+      },
+      "35077": {
+        "type": "",
+        "value": null
+      },
+      "35371": {
+        "type": "",
+        "value": null
+      },
+      "35373": {
+        "type": "",
+        "value": null
+      },
+      "35374": {
+        "type": "",
+        "value": null
+      },
+      "35375": {
+        "type": "",
+        "value": null
+      },
+      "35376": {
+        "type": "",
+        "value": null
+      },
+      "35377": {
+        "type": "",
+        "value": null
+      },
+      "35379": {
+        "type": "",
+        "value": null
+      },
+      "35380": {
+        "type": "",
+        "value": null
+      },
+      "35657": {
+        "type": "",
+        "value": null
+      },
+      "35658": {
+        "type": "",
+        "value": null
+      },
+      "35659": {
+        "type": "",
+        "value": null
+      },
+      "35660": {
+        "type": "Number",
+        "value": 16
+      },
+      "35661": {
+        "type": "Number",
+        "value": 32
+      },
+      "35723": {
+        "type": "",
+        "value": null
+      },
+      "35724": {
+        "type": "String",
+        "value": "WebGL GLSL ES 1.0 (OpenGL ES GLSL ES 1.0 Chromium)"
+      },
+      "35725": {
+        "type": "",
+        "value": null
+      },
+      "35738": {
+        "type": "Number",
+        "value": 5121
+      },
+      "35739": {
+        "type": "Number",
+        "value": 6408
+      },
+      "35968": {
+        "type": "",
+        "value": null
+      },
+      "35977": {
+        "type": "",
+        "value": null
+      },
+      "35978": {
+        "type": "",
+        "value": null
+      },
+      "35979": {
+        "type": "",
+        "value": null
+      },
+      "36003": {
+        "type": "",
+        "value": 0
+      },
+      "36004": {
+        "type": "Number",
+        "value": 2147483647
+      },
+      "36005": {
+        "type": "Number",
+        "value": 2147483647
+      },
+      "36006": {
+        "type": "",
+        "value": null
+      },
+      "36007": {
+        "type": "",
+        "value": null
+      },
+      "36063": {
+        "type": "",
+        "value": null
+      },
+      "36183": {
+        "type": "",
+        "value": null
+      },
+      "36203": {
+        "type": "",
+        "value": null
+      },
+      "36345": {
+        "type": "",
+        "value": 0
+      },
+      "36347": {
+        "type": "Number",
+        "value": 1024
+      },
+      "36348": {
+        "type": "Number",
+        "value": 30
+      },
+      "36349": {
+        "type": "Number",
+        "value": 1024
+      },
+      "36387": {
+        "type": "",
+        "value": null
+      },
+      "36388": {
+        "type": "",
+        "value": null
+      },
+      "36392": {
+        "type": "",
+        "value": null
+      },
+      "36795": {
+        "type": "",
+        "value": null
+      },
+      "37137": {
+        "type": "",
+        "value": null
+      },
+      "37154": {
+        "type": "",
+        "value": null
+      },
+      "37157": {
+        "type": "",
+        "value": null
+      },
+      "37440": {
+        "type": "",
+        "value": false
+      },
+      "37441": {
+        "type": "",
+        "value": false
+      },
+      "37443": {
+        "type": "Number",
+        "value": 37444
+      },
+      "37444": {
+        "type": "",
+        "value": null
+      },
+      "37445": {
+        "type": "",
+        "value": null
+      },
+      "37446": {
+        "type": "",
+        "value": null
+      },
+      "37447": {
+        "type": "",
+        "value": null
+      },
+      "38449": {
+        "type": "",
+        "value": null
+      }
+    },
+    "shaderPrecisionFormats": [
+      {
+        "shaderType": 35633,
+        "precisionType": 36338,
+        "r": {
+          "rangeMin": 127,
+          "rangeMax": 127,
+          "precision": 23
+        }
+      },
+      {
+        "shaderType": 35633,
+        "precisionType": 36337,
+        "r": {
+          "rangeMin": 127,
+          "rangeMax": 127,
+          "precision": 23
+        }
+      },
+      {
+        "shaderType": 35633,
+        "precisionType": 36336,
+        "r": {
+          "rangeMin": 127,
+          "rangeMax": 127,
+          "precision": 23
+        }
+      },
+      {
+        "shaderType": 35633,
+        "precisionType": 36341,
+        "r": {
+          "rangeMin": 31,
+          "rangeMax": 30,
+          "precision": 0
+        }
+      },
+      {
+        "shaderType": 35633,
+        "precisionType": 36340,
+        "r": {
+          "rangeMin": 31,
+          "rangeMax": 30,
+          "precision": 0
+        }
+      },
+      {
+        "shaderType": 35633,
+        "precisionType": 36339,
+        "r": {
+          "rangeMin": 31,
+          "rangeMax": 30,
+          "precision": 0
+        }
+      },
+      {
+        "shaderType": 35632,
+        "precisionType": 36338,
+        "r": {
+          "rangeMin": 127,
+          "rangeMax": 127,
+          "precision": 23
+        }
+      },
+      {
+        "shaderType": 35632,
+        "precisionType": 36337,
+        "r": {
+          "rangeMin": 127,
+          "rangeMax": 127,
+          "precision": 23
+        }
+      },
+      {
+        "shaderType": 35632,
+        "precisionType": 36336,
+        "r": {
+          "rangeMin": 127,
+          "rangeMax": 127,
+          "precision": 23
+        }
+      },
+      {
+        "shaderType": 35632,
+        "precisionType": 36341,
+        "r": {
+          "rangeMin": 31,
+          "rangeMax": 30,
+          "precision": 0
+        }
+      },
+      {
+        "shaderType": 35632,
+        "precisionType": 36340,
+        "r": {
+          "rangeMin": 31,
+          "rangeMax": 30,
+          "precision": 0
+        }
+      },
+      {
+        "shaderType": 35632,
+        "precisionType": 36339,
+        "r": {
+          "rangeMin": 31,
+          "rangeMax": 30,
+          "precision": 0
+        }
+      }
+    ]
+  },
+  "webgl2": {
+    "supportedExtensions": [
+      "EXT_clip_control",
+      "EXT_color_buffer_float",
+      "EXT_color_buffer_half_float",
+      "EXT_conservative_depth",
+      "EXT_depth_clamp",
+      "EXT_disjoint_timer_query_webgl2",
+      "EXT_float_blend",
+      "EXT_polygon_offset_clamp",
+      "EXT_render_snorm",
+      "EXT_texture_compression_bptc",
+      "EXT_texture_compression_rgtc",
+      "EXT_texture_filter_anisotropic",
+      "EXT_texture_mirror_clamp_to_edge",
+      "EXT_texture_norm16",
+      "KHR_parallel_shader_compile",
+      "NV_shader_noperspective_interpolation",
+      "OES_draw_buffers_indexed",
+      "OES_sample_variables",
+      "OES_shader_multisample_interpolation",
+      "OES_texture_float_linear",
+      "WEBGL_blend_func_extended",
+      "WEBGL_clip_cull_distance",
+      "WEBGL_compressed_texture_astc",
+      "WEBGL_compressed_texture_etc",
+      "WEBGL_compressed_texture_etc1",
+      "WEBGL_compressed_texture_pvrtc",
+      "WEBGL_compressed_texture_s3tc",
+      "WEBGL_compressed_texture_s3tc_srgb",
+      "WEBGL_debug_renderer_info",
+      "WEBGL_debug_shaders",
+      "WEBGL_lose_context",
+      "WEBGL_multi_draw",
+      "WEBGL_polygon_mode",
+      "WEBGL_provoking_vertex",
+      "WEBGL_render_shared_exponent",
+      "WEBGL_stencil_texturing"
+    ],
+    "contextAttributes": {
+      "alpha": true,
+      "antialias": true,
+      "depth": true,
+      "desynchronized": false,
+      "failIfMajorPerformanceCaveat": false,
+      "powerPreference": "default",
+      "premultipliedAlpha": true,
+      "preserveDrawingBuffer": false,
+      "stencil": false,
+      "xrCompatible": false
+    },
+    "maxAnisotropy": 16,
+    "params": {
+      "2849": {
+        "type": "Number",
+        "value": 1
+      },
+      "2884": {
+        "type": "",
+        "value": false
+      },
+      "2885": {
+        "type": "Number",
+        "value": 1029
+      },
+      "2886": {
+        "type": "Number",
+        "value": 2305
+      },
+      "2928": {
+        "type": "Float32Array",
+        "value": [
+          0,
+          1
+        ]
+      },
+      "2929": {
+        "type": "",
+        "value": false
+      },
+      "2930": {
+        "type": "Boolean",
+        "value": true
+      },
+      "2931": {
+        "type": "Number",
+        "value": 1
+      },
+      "2932": {
+        "type": "Number",
+        "value": 513
+      },
+      "2960": {
+        "type": "",
+        "value": false
+      },
+      "2961": {
+        "type": "",
+        "value": 0
+      },
+      "2962": {
+        "type": "Number",
+        "value": 519
+      },
+      "2963": {
+        "type": "Number",
+        "value": 2147483647
+      },
+      "2964": {
+        "type": "Number",
+        "value": 7680
+      },
+      "2965": {
+        "type": "Number",
+        "value": 7680
+      },
+      "2966": {
+        "type": "Number",
+        "value": 7680
+      },
+      "2967": {
+        "type": "",
+        "value": 0
+      },
+      "2968": {
+        "type": "Number",
+        "value": 2147483647
+      },
+      "2978": {
+        "type": "Int32Array",
+        "value": [
+          0,
+          0,
+          300,
+          150
+        ]
+      },
+      "3024": {
+        "type": "Boolean",
+        "value": true
+      },
+      "3042": {
+        "type": "",
+        "value": false
+      },
+      "3074": {
+        "type": "Number",
+        "value": 1029
+      },
+      "3088": {
+        "type": "Int32Array",
+        "value": [
+          0,
+          0,
+          300,
+          150
+        ]
+      },
+      "3089": {
+        "type": "",
+        "value": false
+      },
+      "3106": {
+        "type": "Float32Array",
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "3107": {
+        "type": "Array",
+        "value": [
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      "3314": {
+        "type": "",
+        "value": 0
+      },
+      "3315": {
+        "type": "",
+        "value": 0
+      },
+      "3316": {
+        "type": "",
+        "value": 0
+      },
+      "3317": {
+        "type": "Number",
+        "value": 4
+      },
+      "3330": {
+        "type": "",
+        "value": 0
+      },
+      "3331": {
+        "type": "",
+        "value": 0
+      },
+      "3332": {
+        "type": "",
+        "value": 0
+      },
+      "3333": {
+        "type": "Number",
+        "value": 4
+      },
+      "3379": {
+        "type": "Number",
+        "value": 16384
+      },
+      "3386": {
+        "type": "Int32Array",
+        "value": [
+          16384,
+          16384
+        ]
+      },
+      "3408": {
+        "type": "Number",
+        "value": 4
+      },
+      "3410": {
+        "type": "Number",
+        "value": 8
+      },
+      "3411": {
+        "type": "Number",
+        "value": 8
+      },
+      "3412": {
+        "type": "Number",
+        "value": 8
+      },
+      "3413": {
+        "type": "Number",
+        "value": 8
+      },
+      "3414": {
+        "type": "Number",
+        "value": 24
+      },
+      "3415": {
+        "type": "",
+        "value": 0
+      },
+      "7936": {
+        "type": "String",
+        "value": "WebKit"
+      },
+      "7937": {
+        "type": "String",
+        "value": "WebKit WebGL"
+      },
+      "7938": {
+        "type": "String",
+        "value": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+      },
+      "10752": {
+        "type": "",
+        "value": 0
+      },
+      "32773": {
+        "type": "Float32Array",
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "32777": {
+        "type": "Number",
+        "value": 32774
+      },
+      "32823": {
+        "type": "",
+        "value": false
+      },
+      "32824": {
+        "type": "",
+        "value": 0
+      },
+      "32873": {
+        "type": "",
+        "value": null
+      },
+      "32877": {
+        "type": "",
+        "value": 0
+      },
+      "32878": {
+        "type": "",
+        "value": 0
+      },
+      "32883": {
+        "type": "Number",
+        "value": 2048
+      },
+      "32926": {
+        "type": "",
+        "value": false
+      },
+      "32928": {
+        "type": "",
+        "value": false
+      },
+      "32936": {
+        "type": "Number",
+        "value": 1
+      },
+      "32937": {
+        "type": "Number",
+        "value": 4
+      },
+      "32938": {
+        "type": "Number",
+        "value": 1
+      },
+      "32939": {
+        "type": "",
+        "value": false
+      },
+      "32968": {
+        "type": "",
+        "value": 0
+      },
+      "32969": {
+        "type": "Number",
+        "value": 1
+      },
+      "32970": {
+        "type": "",
+        "value": 0
+      },
+      "32971": {
+        "type": "Number",
+        "value": 1
+      },
+      "33000": {
+        "type": "Number",
+        "value": 2147483647
+      },
+      "33001": {
+        "type": "Number",
+        "value": 2147483647
+      },
+      "33170": {
+        "type": "Number",
+        "value": 4352
+      },
+      "33901": {
+        "type": "Float32Array",
+        "value": [
+          1,
+          511
+        ]
+      },
+      "33902": {
+        "type": "Float32Array",
+        "value": [
+          1,
+          1
+        ]
+      },
+      "34016": {
+        "type": "Number",
+        "value": 33984
+      },
+      "34024": {
+        "type": "Number",
+        "value": 16384
+      },
+      "34045": {
+        "type": "Number",
+        "value": 15
+      },
+      "34047": {
+        "type": "Number",
+        "value": 16
+      },
+      "34068": {
+        "type": "",
+        "value": null
+      },
+      "34076": {
+        "type": "Number",
+        "value": 16384
+      },
+      "34467": {
+        "type": "Uint32Array",
+        "value": []
+      },
+      "34816": {
+        "type": "Number",
+        "value": 519
+      },
+      "34817": {
+        "type": "Number",
+        "value": 7680
+      },
+      "34818": {
+        "type": "Number",
+        "value": 7680
+      },
+      "34819": {
+        "type": "Number",
+        "value": 7680
+      },
+      "34852": {
+        "type": "Number",
+        "value": 8
+      },
+      "34853": {
+        "type": "Number",
+        "value": 1029
+      },
+      "34854": {
+        "type": "Number",
+        "value": 1029
+      },
+      "34855": {
+        "type": "Number",
+        "value": 1029
+      },
+      "34856": {
+        "type": "Number",
+        "value": 1029
+      },
+      "34857": {
+        "type": "Number",
+        "value": 1029
+      },
+      "34858": {
+        "type": "Number",
+        "value": 1029
+      },
+      "34859": {
+        "type": "Number",
+        "value": 1029
+      },
+      "34860": {
+        "type": "Number",
+        "value": 1029
+      },
+      "34877": {
+        "type": "Number",
+        "value": 32774
+      },
+      "34921": {
+        "type": "Number",
+        "value": 16
+      },
+      "34930": {
+        "type": "Number",
+        "value": 16
+      },
+      "34964": {
+        "type": "",
+        "value": null
+      },
+      "34965": {
+        "type": "",
+        "value": null
+      },
+      "35071": {
+        "type": "Number",
+        "value": 2048
+      },
+      "35076": {
+        "type": "Number",
+        "value": -8
+      },
+      "35077": {
+        "type": "Number",
+        "value": 7
+      },
+      "35371": {
+        "type": "Number",
+        "value": 12
+      },
+      "35373": {
+        "type": "Number",
+        "value": 12
+      },
+      "35374": {
+        "type": "Number",
+        "value": 24
+      },
+      "35375": {
+        "type": "Number",
+        "value": 24
+      },
+      "35376": {
+        "type": "Number",
+        "value": 16384
+      },
+      "35377": {
+        "type": "Number",
+        "value": 53248
+      },
+      "35379": {
+        "type": "Number",
+        "value": 53248
+      },
+      "35380": {
+        "type": "Number",
+        "value": 16
+      },
+      "35657": {
+        "type": "Number",
+        "value": 4096
+      },
+      "35658": {
+        "type": "Number",
+        "value": 4096
+      },
+      "35659": {
+        "type": "Number",
+        "value": 120
+      },
+      "35660": {
+        "type": "Number",
+        "value": 16
+      },
+      "35661": {
+        "type": "Number",
+        "value": 32
+      },
+      "35723": {
+        "type": "Number",
+        "value": 4352
+      },
+      "35724": {
+        "type": "String",
+        "value": "WebGL GLSL ES 3.00 (OpenGL ES GLSL ES 3.0 Chromium)"
+      },
+      "35725": {
+        "type": "",
+        "value": null
+      },
+      "35738": {
+        "type": "Number",
+        "value": 5121
+      },
+      "35739": {
+        "type": "Number",
+        "value": 6408
+      },
+      "35968": {
+        "type": "Number",
+        "value": 4
+      },
+      "35977": {
+        "type": "",
+        "value": false
+      },
+      "35978": {
+        "type": "Number",
+        "value": 128
+      },
+      "35979": {
+        "type": "Number",
+        "value": 4
+      },
+      "36003": {
+        "type": "",
+        "value": 0
+      },
+      "36004": {
+        "type": "Number",
+        "value": 2147483647
+      },
+      "36005": {
+        "type": "Number",
+        "value": 2147483647
+      },
+      "36006": {
+        "type": "",
+        "value": null
+      },
+      "36007": {
+        "type": "",
+        "value": null
+      },
+      "36063": {
+        "type": "Number",
+        "value": 8
+      },
+      "36183": {
+        "type": "Number",
+        "value": 4
+      },
+      "36203": {
+        "type": "Number",
+        "value": 4294967294
+      },
+      "36345": {
+        "type": "",
+        "value": 0
+      },
+      "36347": {
+        "type": "Number",
+        "value": 1024
+      },
+      "36348": {
+        "type": "Number",
+        "value": 30
+      },
+      "36349": {
+        "type": "Number",
+        "value": 1024
+      },
+      "36387": {
+        "type": "",
+        "value": false
+      },
+      "36388": {
+        "type": "",
+        "value": false
+      },
+      "36392": {
+        "type": "",
+        "value": null
+      },
+      "36795": {
+        "type": "",
+        "value": null
+      },
+      "37137": {
+        "type": "",
+        "value": 0
+      },
+      "37154": {
+        "type": "Number",
+        "value": 120
+      },
+      "37157": {
+        "type": "Number",
+        "value": 120
+      },
+      "37440": {
+        "type": "",
+        "value": false
+      },
+      "37441": {
+        "type": "",
+        "value": false
+      },
+      "37443": {
+        "type": "Number",
+        "value": 37444
+      },
+      "37444": {
+        "type": "",
+        "value": null
+      },
+      "37445": {
+        "type": "",
+        "value": null
+      },
+      "37446": {
+        "type": "",
+        "value": null
+      },
+      "37447": {
+        "type": "",
+        "value": 0
+      },
+      "38449": {
+        "type": "",
+        "value": null
+      }
+    },
+    "shaderPrecisionFormats": [
+      {
+        "shaderType": 35633,
+        "precisionType": 36338,
+        "r": {
+          "rangeMin": 127,
+          "rangeMax": 127,
+          "precision": 23
+        }
+      },
+      {
+        "shaderType": 35633,
+        "precisionType": 36337,
+        "r": {
+          "rangeMin": 127,
+          "rangeMax": 127,
+          "precision": 23
+        }
+      },
+      {
+        "shaderType": 35633,
+        "precisionType": 36336,
+        "r": {
+          "rangeMin": 127,
+          "rangeMax": 127,
+          "precision": 23
+        }
+      },
+      {
+        "shaderType": 35633,
+        "precisionType": 36341,
+        "r": {
+          "rangeMin": 31,
+          "rangeMax": 30,
+          "precision": 0
+        }
+      },
+      {
+        "shaderType": 35633,
+        "precisionType": 36340,
+        "r": {
+          "rangeMin": 31,
+          "rangeMax": 30,
+          "precision": 0
+        }
+      },
+      {
+        "shaderType": 35633,
+        "precisionType": 36339,
+        "r": {
+          "rangeMin": 31,
+          "rangeMax": 30,
+          "precision": 0
+        }
+      },
+      {
+        "shaderType": 35632,
+        "precisionType": 36338,
+        "r": {
+          "rangeMin": 127,
+          "rangeMax": 127,
+          "precision": 23
+        }
+      },
+      {
+        "shaderType": 35632,
+        "precisionType": 36337,
+        "r": {
+          "rangeMin": 127,
+          "rangeMax": 127,
+          "precision": 23
+        }
+      },
+      {
+        "shaderType": 35632,
+        "precisionType": 36336,
+        "r": {
+          "rangeMin": 127,
+          "rangeMax": 127,
+          "precision": 23
+        }
+      },
+      {
+        "shaderType": 35632,
+        "precisionType": 36341,
+        "r": {
+          "rangeMin": 31,
+          "rangeMax": 30,
+          "precision": 0
+        }
+      },
+      {
+        "shaderType": 35632,
+        "precisionType": 36340,
+        "r": {
+          "rangeMin": 31,
+          "rangeMax": 30,
+          "precision": 0
+        }
+      },
+      {
+        "shaderType": 35632,
+        "precisionType": 36339,
+        "r": {
+          "rangeMin": 31,
+          "rangeMax": 30,
+          "precision": 0
+        }
+      }
+    ]
+  },
+  "gpuInfo": {
+    "adapterInfo": null
+  },
+  "battery": {
+    "charging": true,
+    "chargingTime": 0,
+    "dischargingTime": null,
+    "level": 1
+  },
+  "drm": {
+    "supported": [
+      "com.widevine.alpha",
+      "org.w3.clearkey"
+    ],
+    "unsupported": [
+      "com.adobe.access",
+      "com.adobe.primetime",
+      "com.apple.fairplay",
+      "com.apple.fps",
+      "com.apple.fps.1_0",
+      "com.apple.fps.2_0",
+      "com.apple.fps.3_0",
+      "com.chromecast.playready",
+      "com.microsoft.playready",
+      "com.microsoft.playready.recommendation",
+      "com.microsoft.playready.software",
+      "com.youtube.playready",
+      "webkit-org.w3.clearkey"
+    ]
+  },
+  "mimeTypes": [
+    {
+      "mimeType": "audio/aac",
+      "audioPlayType": "probably",
+      "videoPlayType": "probably",
+      "mediaSource": true
+    },
+    {
+      "mimeType": "audio/mpeg",
+      "audioPlayType": "probably",
+      "videoPlayType": "probably",
+      "mediaSource": true
+    },
+    {
+      "mimeType": "audio/ogg; codecs=\"vorbis\"",
+      "audioPlayType": "probably",
+      "videoPlayType": "probably"
+    },
+    {
+      "mimeType": "audio/wav; codecs=\"1\"",
+      "audioPlayType": "probably",
+      "videoPlayType": "probably"
+    },
+    {
+      "mimeType": "audio/x-m4a",
+      "audioPlayType": "maybe",
+      "videoPlayType": "maybe"
+    },
+    {
+      "mimeType": "video/mp4; codecs=\"avc1.42E01E\"",
+      "audioPlayType": "probably",
+      "videoPlayType": "probably",
+      "mediaSource": true,
+      "mediaRecorder": true
+    },
+    {
+      "mimeType": "video/webm; codecs=\"vp8\"",
+      "audioPlayType": "probably",
+      "videoPlayType": "probably",
+      "mediaSource": true,
+      "mediaRecorder": true
+    },
+    {
+      "mimeType": "video/webm; codecs=\"vp9\"",
+      "audioPlayType": "probably",
+      "videoPlayType": "probably",
+      "mediaSource": true,
+      "mediaRecorder": true
+    },
+    {
+      "mimeType": "video/x-matroska",
+      "mediaRecorder": true
+    }
+  ],
+  "permissions": {
+    "microphone": {
+      "state": "prompt"
+    },
+    "camera": {
+      "state": "denied"
+    },
+    "speaker": {
+      "exType": "TypeError",
+      "msg": "Failed to execute 'query' on 'Permissions': Failed to read the 'name' property from 'PermissionDescriptor': The provided value 'speaker' is not a valid enum value of type PermissionName."
+    },
+    "bluetooth": {
+      "exType": "TypeError",
+      "msg": "Failed to execute 'query' on 'Permissions': Failed to read the 'name' property from 'PermissionDescriptor': The provided value 'bluetooth' is not a valid enum value of type PermissionName."
+    },
+    "midi": {
+      "state": "prompt"
+    },
+    "accelerometer": {
+      "state": "granted"
+    },
+    "accessibility-events": {
+      "exType": "TypeError",
+      "msg": "Failed to execute 'query' on 'Permissions': Failed to read the 'name' property from 'PermissionDescriptor': The provided value 'accessibility-events' is not a valid enum value of type PermissionName."
+    },
+    "background-fetch": {
+      "state": "granted"
+    },
+    "background-sync": {
+      "state": "granted"
+    },
+    "periodic-background-sync": {
+      "state": "denied"
+    },
+    "clipboard": {
+      "exType": "TypeError",
+      "msg": "Failed to execute 'query' on 'Permissions': Failed to read the 'name' property from 'PermissionDescriptor': The provided value 'clipboard' is not a valid enum value of type PermissionName."
+    },
+    "clipboard-read": {
+      "state": "prompt"
+    },
+    "clipboard-write": {
+      "state": "granted"
+    },
+    "device-info": {
+      "exType": "TypeError",
+      "msg": "Failed to execute 'query' on 'Permissions': Failed to read the 'name' property from 'PermissionDescriptor': The provided value 'device-info' is not a valid enum value of type PermissionName."
+    },
+    "display-capture": {
+      "state": "prompt"
+    },
+    "font-access": {
+      "exType": "TypeError",
+      "msg": "Failed to execute 'query' on 'Permissions': Failed to read the 'name' property from 'PermissionDescriptor': The provided value 'font-access' is not a valid enum value of type PermissionName."
+    },
+    "geolocation": {
+      "state": "denied"
+    },
+    "gyroscope": {
+      "state": "granted"
+    },
+    "idle-detection": {
+      "state": "prompt"
+    },
+    "magnetometer": {
+      "state": "granted"
+    },
+    "nfc": {
+      "exType": "TypeError",
+      "msg": "Failed to execute 'query' on 'Permissions': Web NFC is not enabled."
+    },
+    "notifications": {
+      "state": "prompt"
+    },
+    "payment-handler": {
+      "state": "granted"
+    },
+    "persistent-storage": {
+      "state": "prompt"
+    },
+    "push": {
+      "exType": "DOMException",
+      "msg": "Failed to execute 'query' on 'Permissions': Push Permission without userVisibleOnly:true isn't supported yet."
+    },
+    "screen-wake-lock": {
+      "state": "granted"
+    },
+    "storage-access": {
+      "state": "granted"
+    },
+    "system-wake-lock": {
+      "exType": "TypeError",
+      "msg": "Failed to execute 'query' on 'Permissions': System Wake Lock is not enabled."
+    },
+    "window-placement": {
+      "exType": "TypeError",
+      "msg": "Failed to execute 'query' on 'Permissions': Failed to read the 'name' property from 'PermissionDescriptor': The provided value 'window-placement' is not a valid enum value of type PermissionName."
+    }
+  },
+  "devices": {
+    "audioinput": 1,
+    "videoinput": 1,
+    "audiooutput": 1
+  },
+  "plugins": {
+    "plugins": [
+      {
+        "name": "PDF Viewer",
+        "filename": "internal-pdf-viewer",
+        "description": "Portable Document Format",
+        "__mimeTypes": [
+          "application/pdf",
+          "text/pdf"
+        ]
+      },
+      {
+        "name": "Chrome PDF Viewer",
+        "filename": "internal-pdf-viewer",
+        "description": "Portable Document Format",
+        "__mimeTypes": [
+          "application/pdf",
+          "text/pdf"
+        ]
+      },
+      {
+        "name": "Chromium PDF Viewer",
+        "filename": "internal-pdf-viewer",
+        "description": "Portable Document Format",
+        "__mimeTypes": [
+          "application/pdf",
+          "text/pdf"
+        ]
+      },
+      {
+        "name": "Microsoft Edge PDF Viewer",
+        "filename": "internal-pdf-viewer",
+        "description": "Portable Document Format",
+        "__mimeTypes": [
+          "application/pdf",
+          "text/pdf"
+        ]
+      },
+      {
+        "name": "WebKit built-in PDF",
+        "filename": "internal-pdf-viewer",
+        "description": "Portable Document Format",
+        "__mimeTypes": [
+          "application/pdf",
+          "text/pdf"
+        ]
+      }
+    ],
+    "mimeTypes": [
+      {
+        "type": "application/pdf",
+        "suffixes": "pdf",
+        "description": "Portable Document Format",
+        "__pluginName": "PDF Viewer"
+      },
+      {
+        "type": "text/pdf",
+        "suffixes": "pdf",
+        "description": "Portable Document Format",
+        "__pluginName": "PDF Viewer"
+      }
+    ]
+  },
+  "rtcCapabilities": {
+    "video": {
+      "codecs": [
+        {
+          "clockRate": 90000,
+          "mimeType": "video/VP8"
+        },
+        {
+          "clockRate": 90000,
+          "mimeType": "video/rtx"
+        },
+        {
+          "clockRate": 90000,
+          "mimeType": "video/H264",
+          "sdpFmtpLine": "level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=42001f"
+        },
+        {
+          "clockRate": 90000,
+          "mimeType": "video/H264",
+          "sdpFmtpLine": "level-asymmetry-allowed=1;packetization-mode=0;profile-level-id=42001f"
+        },
+        {
+          "clockRate": 90000,
+          "mimeType": "video/H264",
+          "sdpFmtpLine": "level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=42e01f"
+        },
+        {
+          "clockRate": 90000,
+          "mimeType": "video/H264",
+          "sdpFmtpLine": "level-asymmetry-allowed=1;packetization-mode=0;profile-level-id=42e01f"
+        },
+        {
+          "clockRate": 90000,
+          "mimeType": "video/H264",
+          "sdpFmtpLine": "level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=4d001f"
+        },
+        {
+          "clockRate": 90000,
+          "mimeType": "video/H264",
+          "sdpFmtpLine": "level-asymmetry-allowed=1;packetization-mode=0;profile-level-id=4d001f"
+        },
+        {
+          "clockRate": 90000,
+          "mimeType": "video/AV1",
+          "sdpFmtpLine": "level-idx=5;profile=0;tier=0"
+        },
+        {
+          "clockRate": 90000,
+          "mimeType": "video/VP9",
+          "sdpFmtpLine": "profile-id=0"
+        },
+        {
+          "clockRate": 90000,
+          "mimeType": "video/VP9",
+          "sdpFmtpLine": "profile-id=2"
+        },
+        {
+          "clockRate": 90000,
+          "mimeType": "video/H264",
+          "sdpFmtpLine": "level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=640034"
+        },
+        {
+          "clockRate": 90000,
+          "mimeType": "video/red"
+        },
+        {
+          "clockRate": 90000,
+          "mimeType": "video/ulpfec"
+        }
+      ],
+      "headerExtensions": [
+        {
+          "direction": "sendrecv",
+          "uri": "urn:ietf:params:rtp-hdrext:toffset"
+        },
+        {
+          "direction": "sendrecv",
+          "uri": "http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time"
+        },
+        {
+          "direction": "sendrecv",
+          "uri": "urn:3gpp:video-orientation"
+        },
+        {
+          "direction": "sendrecv",
+          "uri": "http://www.ietf.org/id/draft-holmer-rmcat-transport-wide-cc-extensions-01"
+        },
+        {
+          "direction": "sendrecv",
+          "uri": "http://www.webrtc.org/experiments/rtp-hdrext/playout-delay"
+        },
+        {
+          "direction": "sendrecv",
+          "uri": "http://www.webrtc.org/experiments/rtp-hdrext/video-content-type"
+        },
+        {
+          "direction": "sendrecv",
+          "uri": "http://www.webrtc.org/experiments/rtp-hdrext/video-timing"
+        },
+        {
+          "direction": "sendrecv",
+          "uri": "http://www.webrtc.org/experiments/rtp-hdrext/color-space"
+        },
+        {
+          "direction": "sendrecv",
+          "uri": "urn:ietf:params:rtp-hdrext:sdes:mid"
+        },
+        {
+          "direction": "sendrecv",
+          "uri": "urn:ietf:params:rtp-hdrext:sdes:rtp-stream-id"
+        },
+        {
+          "direction": "sendrecv",
+          "uri": "urn:ietf:params:rtp-hdrext:sdes:repaired-rtp-stream-id"
+        }
+      ]
+    },
+    "audio": {
+      "codecs": [
+        {
+          "channels": 2,
+          "clockRate": 48000,
+          "mimeType": "audio/opus",
+          "sdpFmtpLine": "minptime=10;useinbandfec=1"
+        },
+        {
+          "channels": 2,
+          "clockRate": 48000,
+          "mimeType": "audio/red",
+          "sdpFmtpLine": "111/111"
+        },
+        {
+          "channels": 1,
+          "clockRate": 8000,
+          "mimeType": "audio/G722"
+        },
+        {
+          "channels": 1,
+          "clockRate": 8000,
+          "mimeType": "audio/PCMU"
+        },
+        {
+          "channels": 1,
+          "clockRate": 8000,
+          "mimeType": "audio/PCMA"
+        },
+        {
+          "channels": 1,
+          "clockRate": 8000,
+          "mimeType": "audio/CN"
+        },
+        {
+          "channels": 1,
+          "clockRate": 48000,
+          "mimeType": "audio/telephone-event"
+        },
+        {
+          "channels": 1,
+          "clockRate": 8000,
+          "mimeType": "audio/telephone-event"
+        }
+      ],
+      "headerExtensions": [
+        {
+          "direction": "sendrecv",
+          "uri": "urn:ietf:params:rtp-hdrext:ssrc-audio-level"
+        },
+        {
+          "direction": "sendrecv",
+          "uri": "http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time"
+        },
+        {
+          "direction": "sendrecv",
+          "uri": "http://www.ietf.org/id/draft-holmer-rmcat-transport-wide-cc-extensions-01"
+        },
+        {
+          "direction": "sendrecv",
+          "uri": "urn:ietf:params:rtp-hdrext:sdes:mid"
+        }
+      ]
+    }
+  },
+  "audio": {
+    "signals": [
+      0.0020733082201331854,
+      0.0011997818946838379,
+      -0.0017252647085115314,
+      -0.001702784444205463,
+      0.0012305064592510462,
+      0.0020619560964405537,
+      -0.0006309979944489896,
+      -0.0022469202522188425,
+      -2.2833013645140454e-05,
+      0.002241510897874832,
+      0.0006753275520168245,
+      -0.002046290086582303,
+      -0.0012715163175016642,
+      0.0016772318631410599,
+      0.0017604614840820432,
+      -0.0011657567229121923,
+      -0.002100917510688305,
+      0.0005547497421503067,
+      0.002263580681756139,
+      0.00010386566282249987,
+      -0.0022346838377416134,
+      -0.0007545195403508842,
+      0.00201629102230072,
+      0.0013419288443401456,
+      -0.0016267868923023343,
+      -0.0018162871710956097,
+      0.0010989750735461712,
+      0.002137288684025407,
+      -0.00047736612032167614,
+      -0.00227745552547276,
+      -0.00018534083210397512,
+      0.0022248453460633755,
+      0.0008331893477588892,
+      -0.0019835210405290127,
+      -0.0014110724441707134,
+      0.001573906745761633,
+      0.00187012180685997,
+      -0.001030336832627654,
+      -0.0021711112931370735,
+      0.00039890495827421546,
+      0.002288518473505974,
+      0.00026713270926848054,
+      -0.002212038729339838,
+      -0.0009112402913160622,
+      0.0019480333430692554,
+      0.0014788792468607426,
+      -0.0015186069067567587,
+      -0.0019218241795897484,
+      0.0009599742479622364,
+      0.0022023667115718126,
+      -0.00031938854954205453,
+      -0.0022966288961470127,
+      -0.0003490617673378438,
+      0.002196270041167736,
+      0.0009885963518172503,
+      -0.001909757382236421,
+      -0.0015451745130121708,
+      0.001460953033529222,
+      0.0019713090732693672,
+      -0.000887943257112056,
+      -0.0022309739142656326,
+      0.00023891263117548078,
+      0.002301740925759077,
+      0.0004309939977247268,
+      -0.0021776086650788784,
+      -0.0010652192868292332,
+      0.0018687003757804632,
+      0.0016098106279969215,
+      -0.0014011311577633023,
+      -0.0020186391193419695,
+      0.0008142357692122459,
+      0.0022568043787032366,
+      -0.00015770606114529073,
+      -0.002303999848663807,
+      -0.0005129551282152534,
+      0.0021559614688158035,
+      0.0011408806312829256,
+      -0.001825041719712317,
+      -0.0016728324117138982,
+      0.001339057693257928,
+      0.0020635826513171196,
+      -0.0007390720420517027,
+      -0.0022799132857471704,
+      7.57361194700934e-05,
+      0.002303209388628602,
+      0.000594703305978328,
+      -0.00213139271363616,
+      -0.0012155582662671804,
+      0.0017786701209843159,
+      0.001734001561999321,
+      -0.0012748988810926676,
+      -0.0021061566658318043,
+      0.0006624214584007859,
+      0.0023001276422291994,
+      6.7772411966871005e-06,
+      -0.002299479441717267,
+      -0.0006762492703273892,
+      0.002103843493387103,
+      0.0012890510261058807,
+      -0.0017297870945185423,
+      -0.0017933811759576201,
+      0.0012086250353604555,
+      0.0021462002769112587,
+      -0.0005845240666531026,
+      -0.0023175831884145737,
+      -8.986527973320335e-05,
+      0.002292691031470895,
+      0.000757347559556365,
+      -0.0020734926220029593,
+      -0.0013614051276817918,
+      0.0016782988095656037,
+      0.0018507367931306362,
+      -0.0011404376709833741,
+      -0.002183753764256835,
+      0.0005053402273915708,
+      0.0023320773616433144,
+      0.00017329941329080611,
+      -0.002282898873090744,
+      -0.0008379850769415498,
+      0.002040196442976594,
+      0.0014323784271255136,
+      -0.0016243307618424296,
+      -0.0019060486229136586,
+      0.00107031618244946,
+      0.0022186560090631247,
+      -0.00042504098382778466,
+      -0.002343642758205533,
+      -0.000257043051533401,
+      0.0022700519766658545,
+      0.0009179893531836569,
+      -0.002004100941121578,
+      -0.0015019752318039536,
+      0.0015678891213610768,
+      0.001959180226549506,
+      -0.0009984521893784404,
+      -0.0022509770933538675,
+      0.00034363949089311063,
+      0.0023521899711340666,
+      0.00034088161191903055,
+      -0.0022542928345501423,
+      -0.0009973811684176326,
+      0.0019651136826723814,
+      0.0015699596842750907,
+      -0.0015091716777533293,
+      -0.002010186668485403,
+      0.0009247639100067317,
+      0.002280469983816147,
+      -0.000261395878624171,
+      -0.0023578102700412273,
+      -0.00042486743768677115,
+      0.0022353956010192633,
+      0.001075862324796617,
+      -0.0019233907805755734,
+      -0.0016363615868613124,
+      0.0014480708632618189,
+      0.002058819867670536,
+      -0.0008494753274135292,
+      -0.002307207090780139,
+      0.00017828455020207912,
+      0.002360370010137558,
+      0.0005087803583592176,
+      -0.0022135102190077305,
+      -0.001153429038822651,
+      0.0018789342138916254,
+      0.0017010518349707127,
+      -0.0013847308000549674,
+      -0.002105077262967825,
+      0.0007726601324975491,
+      0.0023311509285122156,
+      -9.443292947253212e-05,
+      -0.002359891775995493,
+      -0.0005925163277424872,
+      0.002188668819144368,
+      0.0012299928348511457,
+      -0.0018317628419026732,
+      -0.0017639014404267073,
+      0.0013192452024668455,
+      0.0021489025093615055,
+      -0.0006943604676052928,
+      -0.0023521773982793093,
+      9.98756422632141e-06,
+      0.0023563511203974485,
+      0.0006759967072866857,
+      -0.002160788979381323,
+      -0.0013053743168711662,
+      0.001781943254172802,
+      0.001824841252528131,
+      -0.0012516265269368887,
+      -0.002190154744312167,
+      0.000614726624917239,
+      0.0023702981416136026,
+      7.500283390982077e-05,
+      -0.0023496977519243956,
+      -0.0007590540335513651,
+      0.002129992237314582,
+      0.0013795489212498069,
+      -0.0017294983845204115,
+      -0.0018837533425539732,
+      0.001182033447548747,
+      0.0022288651671260595,
+      -0.0005338004557415843,
+      -0.002385444473475218,
+      -0.0001603590790182352,
+      0.0023400213103741407,
+      0.0008416532073169947,
+      -0.0020962401758879423,
+      -0.0014523499412462115,
+      0.0016745328903198242,
+      0.0019405860221013427,
+      -0.0011104877339676023,
+      -0.0022648940794169903,
+      0.00045171804958954453,
+      0.0023975754156708717,
+      0.0002460078976582736,
+      -0.0023272186517715454,
+      -0.00092362827854231,
+      0.0020595507230609655,
+      0.0015236760955303907,
+      -0.0016170612070709467,
+      -0.0019952179864048958,
+      0.00103707704693079,
+      0.002298180013895035,
+      -0.00036857055965811014,
+      -0.002406658139079809,
+      -0.0003318270610179752,
+      0.0023113421630114317,
+      0.0010048962431028485,
+      -0.0020199748687446117,
+      -0.0015934263356029987,
+      0.0015572031261399388,
+      0.0020476290956139565,
+      -0.0009618712938390672,
+      -0.002328659640625119,
+      0.0002845213166438043,
+      0.002412759233266115,
+      0.00041777646401897073,
+      -0.0022923348005861044,
+      -0.0010852644918486476,
+      0.0019776446279138327,
+      0.0016616052016615868,
+      -0.0014948922907933593,
+      -0.002097588963806629,
+      0.0008850882295519114,
+      0.0023563941940665245,
+      -0.00019950985733885318,
+      -0.002415633061900735,
+      -0.0005035574431531131,
+      0.0022703357972204685,
+      0.001164791639894247,
+      -0.001932370476424694,
+      -0.0017278834711760283,
+      0.0014304002979770303,
+      0.0021452256478369236,
+      -0.0008065893198363483,
+      -0.002381096128374338,
+      0.00011387745325919241,
+      0.0024155143182724714,
+      0.0005892949993722141,
+      -0.0022451619151979685,
+      -0.0012431503273546696,
+      0.001884464523755014,
+      0.001792429480701685,
+      -0.0013635841896757483,
+      -0.0021902581211179495,
+      0.0007267229957506061,
+      0.002402994316071272,
+      -2.75004258583067e-05,
+      -0.002412180881947279,
+      -0.0006746470462530851,
+      0.0022170692682266235,
+      0.001320464420132339,
+      -0.0018337401561439037,
+      -0.0018549105152487755,
+      0.0012947353534400463,
+      0.0022328137420117855,
+      -0.0006453546811826527,
+      -0.0024217842146754265,
+      -5.9297661209711805e-05,
+      0.0024057775735855103,
+      0.0007597021176479757,
+      -0.0021858203690499067,
+      -0.0013963904930278659,
+      0.0017804353265091777,
+      0.0019154153997078538,
+      -0.0012237289920449257,
+      -0.002272623125463724,
+      0.0005627652280963957,
+      0.0024376073852181435,
+      0.00014657214342150837,
+      -0.0023961663246154785,
+      -0.0008441897807642817,
+      0.0021516389679163694,
+      0.0014710016548633575,
+      -0.0017244827467948198,
+      -0.0019737419206649065,
+      0.0011508016614243388,
+      0.002309783361852169,
+      -0.00047894520685076714,
+      -0.002450342522934079,
+      -0.00023409764980897307,
+      0.0023834719322621822,
+      0.0009281164966523647,
+      -0.002114436123520136,
+      -0.0015440704300999641,
+      0.0016660509863868356,
+      0.0020299027673900127,
+      -0.0010759086580947042,
+      -0.0023440811783075333,
+      0.0003941076865885407,
+      0.0024600287433713675,
+      0.0003218803904019296,
+      -0.0023675167467445135,
+      -0.0010112187592312694,
+      0.002074348507449031,
+      0.001615609391592443,
+      -0.0016050504054874182,
+      -0.0020836584735661745,
+      0.000999275129288435,
+      0.0023755927104502916,
+      -0.0003082254552282393,
+      -0.0024665261153131723,
+      -0.0004096804768778384,
+      0.0023484621196985245,
+      0.0010935094906017184,
+      -0.002031344920396805,
+      -0.001685450435616076,
+      0.0015416532987728715,
+      0.0021350295282900333,
+      -0.0009209468844346702,
+      -0.002404247410595417,
+      0.00022144873219076544,
+      0.0024698590859770775,
+      0.0004973919712938368,
+      -0.0023263341281563044,
+      -0.0011749048717319965,
+      0.0019854146521538496,
+      0.0017534213839098811,
+      -0.0014759930782020092,
+      -0.0021839977707713842,
+      0.0008409092552028596,
+      0.002429846441373229,
+      -0.0001339941081823781,
+      -0.0024700721260160208,
+      -0.0005850231973454356,
+      0.0023009623400866985,
+      0.0012551264371722937,
+      -0.0019367323257029057,
+      -0.001819563563913107,
+      0.0014079749817028642,
+      0.002230317099019885,
+      -0.0007594181806780398,
+      -0.002452508080750704,
+      4.582045949064195e-05,
+      0.0024670292623341084,
+      0.0006723083788529038,
+      -0.00227255467325449,
+      -0.001334233209490776,
+      0.001885229372419417,
+      0.001883661956526339,
+      -0.0013378418516367674,
+      -0.002274088328704238,
+      0.0006764444406144321,
+      0.0024720774963498116,
+      4.281965448171832e-05,
+      -0.0024608734529465437,
+      -0.0007592774927616119,
+      0.00224098633043468,
+      0.0014119665138423443,
+      -0.001831093686632812,
+      -0.0019457517191767693,
+      0.0012655139435082674,
+      0.0023150616325438023,
+      -0.0005922301788814366,
+      -0.002488620113581419,
+      -0.00013196823420003057,
+      0.0024513916578143835,
+      0.0008456437499262393,
+      -0.002206408418715,
+      -0.0014883539406582713,
+      0.0017742181662470102,
+      0.0020055866334587336,
+      -0.0011912062764167786,
+      -0.0023532952181994915,
+      0.0005067593301646411,
+      0.0025020057801157236,
+      0.0002214060368714854,
+      -0.002438704716041684,
+      -0.000931378046516329,
+      0.002168820006772876,
+      0.0015632598660886288,
+      -0.0017147233011201024,
+      -0.0020631211809813976,
+      0.001115025021135807,
+      0.00238877534866333,
+      -0.0004201135307084769,
+      -0.002512178383767605,
+      -0.0003109552781097591,
+      0.002422901103273034,
+      0.0010164611740037799,
+      -0.0021281426306813955,
+      -0.001636457396671176,
+      0.0016527801053598523,
+      0.0021183728240430355,
+      -0.0010369146475568414,
+      -0.0024212682619690895,
+      0.00033252552384510636,
+      0.0025191849563270807,
+      0.0004006234521511942,
+      -0.0024038164410740137,
+      -0.0011006416752934456,
+      0.002084498992189765,
+      0.0017079184763133526,
+      -0.0015883712330833077,
+      -0.0021711892914026976,
+      0.0009570108377374709,
+      0.0024507513735443354,
+      -0.00024410047626588494,
+      -0.0025230443570762873,
+      -0.0004903208464384079,
+      0.0023814558517187834,
+      0.0011837639613077044,
+      -0.0020380367059260607,
+      -0.0017776604508981109,
+      0.0015214781742542982,
+      0.0022213871125131845,
+      -0.000875572906807065,
+      -0.0024773613549768925,
+      0.00015478399291168898,
+      0.002523572649806738,
+      0.0005797508638352156,
+      -0.0023560170084238052,
+      -0.001265899045392871,
+      0.0019885993096977472,
+      0.0018453727243468165,
+      -0.0014523601857945323,
+      -0.002269062679260969,
+      0.0007924770470708609,
+      0.0025007936637848616,
+      -6.488911458291113e-05,
+      -0.0025209051091223955,
+      -0.0006689840229228139,
+      0.0023272871039807796,
+      0.001346723292954266,
+      -0.0019364129984751344,
+      -0.0019111372530460358,
+      0.001380896894261241,
+      0.0023139393888413906,
+      -0.0007080301293171942,
+      -0.002521229675039649,
+      -2.567463343439158e-05,
+      0.002514850115403533,
+      0.0007576880743727088,
+      -0.002295549726113677,
+      -0.0014263761695474386,
+      0.0018813256174325943,
+      0.001974646234884858,
+      -0.001307433471083641,
+      -0.0023562225978821516,
+      0.0006221004296094179,
+      0.002538403496146202,
+      0.00011654209811240435,
+      -0.0025056623853743076,
+      -0.0008460019016638398,
+      0.002260572509840131,
+      0.0015044908504933119,
+      -0.0018236235482618213,
+      -0.002036016434431076,
+      0.0012318274239078164,
+      0.002395612420514226,
+      -0.0005349604180082679,
+      -0.0025523907970637083,
+      -0.00020774189033545554,
+      0.0024931663647294044,
+      0.0009336788207292557,
+      -0.00222246116027236,
+      -0.0015810249606147408,
+      0.0017632999224588275,
+      0.0020951139740645885,
+      -0.001154174329712987,
+      -0.00243203598074615,
+      0.00044675928074866533,
+      0.0025632409378886223,
+      0.0002992245426867157,
+      -0.0024773129262030125,
+      -0.0010205203434452415,
+      0.002181379124522209,
+      0.0016559980576857924,
+      -0.0017003308748826385,
+      -0.002151758410036564,
+      0.0010747067863121629,
+      0.0024655822198837996,
+      -0.00035748849040828645,
+      -0.0025708184111863375,
+      -0.00039076004759408534,
+      0.0024582133628427982,
+      0.0011065055150538683,
+      -0.002137264469638467,
+      -0.0017292109550908208,
+      0.0016348396893590689,
+      0.0022058964241296053
+    ],
+    "values": {
+      "AnalyserNode.channelCount": 2,
+      "AnalyserNode.channelCountMode": "max",
+      "AnalyserNode.channelInterpretation": "speakers",
+      "AnalyserNode.context.sampleRate": 44100,
+      "AnalyserNode.fftSize": 2048,
+      "AnalyserNode.frequencyBinCount": 1024,
+      "AnalyserNode.maxDecibels": -30,
+      "AnalyserNode.minDecibels": -100,
+      "AnalyserNode.numberOfInputs": 1,
+      "AnalyserNode.numberOfOutputs": 1,
+      "AnalyserNode.smoothingTimeConstant": 0.8,
+      "AnalyserNode.context.listener.forwardX.maxValue": 3.4028234663852886e+38,
+      "BiquadFilterNode.gain.maxValue": 1541.273681640625,
+      "BiquadFilterNode.frequency.defaultValue": 350,
+      "BiquadFilterNode.frequency.maxValue": 22050,
+      "DynamicsCompressorNode.attack.defaultValue": 0.003000000026077032,
+      "DynamicsCompressorNode.knee.defaultValue": 30,
+      "DynamicsCompressorNode.knee.maxValue": 40,
+      "DynamicsCompressorNode.ratio.defaultValue": 12,
+      "DynamicsCompressorNode.ratio.maxValue": 20,
+      "DynamicsCompressorNode.release.defaultValue": 0.25,
+      "DynamicsCompressorNode.release.maxValue": 1,
+      "DynamicsCompressorNode.threshold.defaultValue": -24,
+      "DynamicsCompressorNode.threshold.minValue": -100,
+      "OscillatorNode.detune.maxValue": 153600,
+      "OscillatorNode.detune.minValue": -153600,
+      "OscillatorNode.frequency.defaultValue": 440,
+      "OscillatorNode.frequency.maxValue": 22050,
+      "OscillatorNode.frequency.minValue": -22050
+    }
+  },
+  "location": {
+    "country": "US",
+    "region": "Maryland"
+  },
+  "intl": {
+    "locale": "en-US",
+    "calendar": "gregory",
+    "numberingSystem": "latn",
+    "timeZone": "America/New_York",
+    "year": "numeric",
+    "month": "numeric",
+    "day": "numeric"
+  },
+  "languages": [
+    "en-US",
+    "en"
+  ],
+  "headers": {
+    "accept-language": "en-US,en;q=0.9",
+    "accept-encoding": "gzip, deflate, br, zstd",
+    "accept": "*/*",
+    "priority": "u=1, i",
+    "sec-ch-ua": "\"Not A(Brand\";v=\"8\", \"Chromium\";v=\"132\", \"Google Chrome\";v=\"132\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"macOS\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "same-site",
+    "sec-gpc": null,
+    "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36"
+  },
+  "voices": [
+    {
+      "default": true,
+      "lang": "en-US",
+      "localService": true,
+      "name": "Samantha",
+      "voiceURI": "Samantha"
+    },
+    {
+      "default": false,
+      "lang": "en-US",
+      "localService": true,
+      "name": "Aaron",
+      "voiceURI": "Aaron"
+    },
+    {
+      "default": false,
+      "lang": "en-US",
+      "localService": true,
+      "name": "Albert",
+      "voiceURI": "Albert"
+    },
+    {
+      "default": false,
+      "lang": "it-IT",
+      "localService": true,
+      "name": "Alice",
+      "voiceURI": "Alice"
+    },
+    {
+      "default": false,
+      "lang": "sv-SE",
+      "localService": true,
+      "name": "Alva",
+      "voiceURI": "Alva"
+    },
+    {
+      "default": false,
+      "lang": "fr-CA",
+      "localService": true,
+      "name": "Am\u00e9lie",
+      "voiceURI": "Am\u00e9lie"
+    },
+    {
+      "default": false,
+      "lang": "ms-MY",
+      "localService": true,
+      "name": "Amira",
+      "voiceURI": "Amira"
+    },
+    {
+      "default": false,
+      "lang": "de-DE",
+      "localService": true,
+      "name": "Anna",
+      "voiceURI": "Anna"
+    },
+    {
+      "default": false,
+      "lang": "en-GB",
+      "localService": true,
+      "name": "Arthur",
+      "voiceURI": "Arthur"
+    },
+    {
+      "default": false,
+      "lang": "en-US",
+      "localService": true,
+      "name": "Bad News",
+      "voiceURI": "Bad News"
+    },
+    {
+      "default": false,
+      "lang": "en-US",
+      "localService": true,
+      "name": "Bahh",
+      "voiceURI": "Bahh"
+    },
+    {
+      "default": false,
+      "lang": "en-US",
+      "localService": true,
+      "name": "Bells",
+      "voiceURI": "Bells"
+    },
+    {
+      "default": false,
+      "lang": "en-US",
+      "localService": true,
+      "name": "Boing",
+      "voiceURI": "Boing"
+    },
+    {
+      "default": false,
+      "lang": "en-US",
+      "localService": true,
+      "name": "Bubbles",
+      "voiceURI": "Bubbles"
+    },
+    {
+      "default": false,
+      "lang": "he-IL",
+      "localService": true,
+      "name": "Carmit",
+      "voiceURI": "Carmit"
+    },
+    {
+      "default": false,
+      "lang": "en-AU",
+      "localService": true,
+      "name": "Catherine",
+      "voiceURI": "Catherine"
+    },
+    {
+      "default": false,
+      "lang": "en-US",
+      "localService": true,
+      "name": "Cellos",
+      "voiceURI": "Cellos"
+    },
+    {
+      "default": false,
+      "lang": "id-ID",
+      "localService": true,
+      "name": "Damayanti",
+      "voiceURI": "Damayanti"
+    },
+    {
+      "default": false,
+      "lang": "en-GB",
+      "localService": true,
+      "name": "Daniel (English (United Kingdom))",
+      "voiceURI": "Daniel (English (United Kingdom))"
+    },
+    {
+      "default": false,
+      "lang": "fr-FR",
+      "localService": true,
+      "name": "Daniel (French (France))",
+      "voiceURI": "Daniel (French (France))"
+    },
+    {
+      "default": false,
+      "lang": "bg-BG",
+      "localService": true,
+      "name": "Daria",
+      "voiceURI": "Daria"
+    },
+    {
+      "default": false,
+      "lang": "de-DE",
+      "localService": true,
+      "name": "Eddy (German (Germany))",
+      "voiceURI": "Eddy (German (Germany))"
+    },
+    {
+      "default": false,
+      "lang": "en-GB",
+      "localService": true,
+      "name": "Eddy (English (United Kingdom))",
+      "voiceURI": "Eddy (English (United Kingdom))"
+    },
+    {
+      "default": false,
+      "lang": "en-US",
+      "localService": true,
+      "name": "Eddy (English (United States))",
+      "voiceURI": "Eddy (English (United States))"
+    },
+    {
+      "default": false,
+      "lang": "es-ES",
+      "localService": true,
+      "name": "Eddy (Spanish (Spain))",
+      "voiceURI": "Eddy (Spanish (Spain))"
+    },
+    {
+      "default": false,
+      "lang": "es-MX",
+      "localService": true,
+      "name": "Eddy (Spanish (Mexico))",
+      "voiceURI": "Eddy (Spanish (Mexico))"
+    },
+    {
+      "default": false,
+      "lang": "fi-FI",
+      "localService": true,
+      "name": "Eddy (Finnish (Finland))",
+      "voiceURI": "Eddy (Finnish (Finland))"
+    },
+    {
+      "default": false,
+      "lang": "fr-CA",
+      "localService": true,
+      "name": "Eddy (French (Canada))",
+      "voiceURI": "Eddy (French (Canada))"
+    },
+    {
+      "default": false,
+      "lang": "fr-FR",
+      "localService": true,
+      "name": "Eddy (French (France))",
+      "voiceURI": "Eddy (French (France))"
+    },
+    {
+      "default": false,
+      "lang": "it-IT",
+      "localService": true,
+      "name": "Eddy (Italian (Italy))",
+      "voiceURI": "Eddy (Italian (Italy))"
+    },
+    {
+      "default": false,
+      "lang": "ja-JP",
+      "localService": true,
+      "name": "Eddy (Japanese (Japan))",
+      "voiceURI": "Eddy (Japanese (Japan))"
+    },
+    {
+      "default": false,
+      "lang": "ko-KR",
+      "localService": true,
+      "name": "Eddy (Korean (South Korea))",
+      "voiceURI": "Eddy (Korean (South Korea))"
+    },
+    {
+      "default": false,
+      "lang": "pt-BR",
+      "localService": true,
+      "name": "Eddy (Portuguese (Brazil))",
+      "voiceURI": "Eddy (Portuguese (Brazil))"
+    },
+    {
+      "default": false,
+      "lang": "zh-CN",
+      "localService": true,
+      "name": "Eddy (Chinese (China mainland))",
+      "voiceURI": "Eddy (Chinese (China mainland))"
+    },
+    {
+      "default": false,
+      "lang": "zh-TW",
+      "localService": true,
+      "name": "Eddy (Chinese (Taiwan))",
+      "voiceURI": "Eddy (Chinese (Taiwan))"
+    },
+    {
+      "default": false,
+      "lang": "nl-BE",
+      "localService": true,
+      "name": "Ellen",
+      "voiceURI": "Ellen"
+    },
+    {
+      "default": false,
+      "lang": "de-DE",
+      "localService": true,
+      "name": "Flo (German (Germany))",
+      "voiceURI": "Flo (German (Germany))"
+    },
+    {
+      "default": false,
+      "lang": "en-GB",
+      "localService": true,
+      "name": "Flo (English (United Kingdom))",
+      "voiceURI": "Flo (English (United Kingdom))"
+    },
+    {
+      "default": false,
+      "lang": "en-US",
+      "localService": true,
+      "name": "Flo (English (United States))",
+      "voiceURI": "Flo (English (United States))"
+    },
+    {
+      "default": false,
+      "lang": "es-ES",
+      "localService": true,
+      "name": "Flo (Spanish (Spain))",
+      "voiceURI": "Flo (Spanish (Spain))"
+    },
+    {
+      "default": false,
+      "lang": "es-MX",
+      "localService": true,
+      "name": "Flo (Spanish (Mexico))",
+      "voiceURI": "Flo (Spanish (Mexico))"
+    },
+    {
+      "default": false,
+      "lang": "fi-FI",
+      "localService": true,
+      "name": "Flo (Finnish (Finland))",
+      "voiceURI": "Flo (Finnish (Finland))"
+    },
+    {
+      "default": false,
+      "lang": "fr-CA",
+      "localService": true,
+      "name": "Flo (French (Canada))",
+      "voiceURI": "Flo (French (Canada))"
+    },
+    {
+      "default": false,
+      "lang": "fr-FR",
+      "localService": true,
+      "name": "Flo (French (France))",
+      "voiceURI": "Flo (French (France))"
+    },
+    {
+      "default": false,
+      "lang": "it-IT",
+      "localService": true,
+      "name": "Flo (Italian (Italy))",
+      "voiceURI": "Flo (Italian (Italy))"
+    },
+    {
+      "default": false,
+      "lang": "ja-JP",
+      "localService": true,
+      "name": "Flo (Japanese (Japan))",
+      "voiceURI": "Flo (Japanese (Japan))"
+    },
+    {
+      "default": false,
+      "lang": "ko-KR",
+      "localService": true,
+      "name": "Flo (Korean (South Korea))",
+      "voiceURI": "Flo (Korean (South Korea))"
+    },
+    {
+      "default": false,
+      "lang": "pt-BR",
+      "localService": true,
+      "name": "Flo (Portuguese (Brazil))",
+      "voiceURI": "Flo (Portuguese (Brazil))"
+    },
+    {
+      "default": false,
+      "lang": "zh-CN",
+      "localService": true,
+      "name": "Flo (Chinese (China mainland))",
+      "voiceURI": "Flo (Chinese (China mainland))"
+    },
+    {
+      "default": false,
+      "lang": "zh-TW",
+      "localService": true,
+      "name": "Flo (Chinese (Taiwan))",
+      "voiceURI": "Flo (Chinese (Taiwan))"
+    },
+    {
+      "default": false,
+      "lang": "en-US",
+      "localService": true,
+      "name": "Fred",
+      "voiceURI": "Fred"
+    },
+    {
+      "default": false,
+      "lang": "en-US",
+      "localService": true,
+      "name": "Good News",
+      "voiceURI": "Good News"
+    },
+    {
+      "default": false,
+      "lang": "en-AU",
+      "localService": true,
+      "name": "Gordon",
+      "voiceURI": "Gordon"
+    },
+    {
+      "default": false,
+      "lang": "de-DE",
+      "localService": true,
+      "name": "Grandma (German (Germany))",
+      "voiceURI": "Grandma (German (Germany))"
+    },
+    {
+      "default": false,
+      "lang": "en-GB",
+      "localService": true,
+      "name": "Grandma (English (United Kingdom))",
+      "voiceURI": "Grandma (English (United Kingdom))"
+    },
+    {
+      "default": false,
+      "lang": "en-US",
+      "localService": true,
+      "name": "Grandma (English (United States))",
+      "voiceURI": "Grandma (English (United States))"
+    },
+    {
+      "default": false,
+      "lang": "es-ES",
+      "localService": true,
+      "name": "Grandma (Spanish (Spain))",
+      "voiceURI": "Grandma (Spanish (Spain))"
+    },
+    {
+      "default": false,
+      "lang": "es-MX",
+      "localService": true,
+      "name": "Grandma (Spanish (Mexico))",
+      "voiceURI": "Grandma (Spanish (Mexico))"
+    },
+    {
+      "default": false,
+      "lang": "fi-FI",
+      "localService": true,
+      "name": "Grandma (Finnish (Finland))",
+      "voiceURI": "Grandma (Finnish (Finland))"
+    },
+    {
+      "default": false,
+      "lang": "fr-CA",
+      "localService": true,
+      "name": "Grandma (French (Canada))",
+      "voiceURI": "Grandma (French (Canada))"
+    },
+    {
+      "default": false,
+      "lang": "fr-FR",
+      "localService": true,
+      "name": "Grandma (French (France))",
+      "voiceURI": "Grandma (French (France))"
+    },
+    {
+      "default": false,
+      "lang": "it-IT",
+      "localService": true,
+      "name": "Grandma (Italian (Italy))",
+      "voiceURI": "Grandma (Italian (Italy))"
+    },
+    {
+      "default": false,
+      "lang": "ja-JP",
+      "localService": true,
+      "name": "Grandma (Japanese (Japan))",
+      "voiceURI": "Grandma (Japanese (Japan))"
+    },
+    {
+      "default": false,
+      "lang": "ko-KR",
+      "localService": true,
+      "name": "Grandma (Korean (South Korea))",
+      "voiceURI": "Grandma (Korean (South Korea))"
+    },
+    {
+      "default": false,
+      "lang": "pt-BR",
+      "localService": true,
+      "name": "Grandma (Portuguese (Brazil))",
+      "voiceURI": "Grandma (Portuguese (Brazil))"
+    },
+    {
+      "default": false,
+      "lang": "zh-CN",
+      "localService": true,
+      "name": "Grandma (Chinese (China mainland))",
+      "voiceURI": "Grandma (Chinese (China mainland))"
+    },
+    {
+      "default": false,
+      "lang": "zh-TW",
+      "localService": true,
+      "name": "Grandma (Chinese (Taiwan))",
+      "voiceURI": "Grandma (Chinese (Taiwan))"
+    },
+    {
+      "default": false,
+      "lang": "de-DE",
+      "localService": true,
+      "name": "Grandpa (German (Germany))",
+      "voiceURI": "Grandpa (German (Germany))"
+    },
+    {
+      "default": false,
+      "lang": "en-GB",
+      "localService": true,
+      "name": "Grandpa (English (United Kingdom))",
+      "voiceURI": "Grandpa (English (United Kingdom))"
+    },
+    {
+      "default": false,
+      "lang": "en-US",
+      "localService": true,
+      "name": "Grandpa (English (United States))",
+      "voiceURI": "Grandpa (English (United States))"
+    },
+    {
+      "default": false,
+      "lang": "es-ES",
+      "localService": true,
+      "name": "Grandpa (Spanish (Spain))",
+      "voiceURI": "Grandpa (Spanish (Spain))"
+    },
+    {
+      "default": false,
+      "lang": "es-MX",
+      "localService": true,
+      "name": "Grandpa (Spanish (Mexico))",
+      "voiceURI": "Grandpa (Spanish (Mexico))"
+    },
+    {
+      "default": false,
+      "lang": "fi-FI",
+      "localService": true,
+      "name": "Grandpa (Finnish (Finland))",
+      "voiceURI": "Grandpa (Finnish (Finland))"
+    },
+    {
+      "default": false,
+      "lang": "fr-CA",
+      "localService": true,
+      "name": "Grandpa (French (Canada))",
+      "voiceURI": "Grandpa (French (Canada))"
+    },
+    {
+      "default": false,
+      "lang": "fr-FR",
+      "localService": true,
+      "name": "Grandpa (French (France))",
+      "voiceURI": "Grandpa (French (France))"
+    },
+    {
+      "default": false,
+      "lang": "it-IT",
+      "localService": true,
+      "name": "Grandpa (Italian (Italy))",
+      "voiceURI": "Grandpa (Italian (Italy))"
+    },
+    {
+      "default": false,
+      "lang": "ja-JP",
+      "localService": true,
+      "name": "Grandpa (Japanese (Japan))",
+      "voiceURI": "Grandpa (Japanese (Japan))"
+    },
+    {
+      "default": false,
+      "lang": "ko-KR",
+      "localService": true,
+      "name": "Grandpa (Korean (South Korea))",
+      "voiceURI": "Grandpa (Korean (South Korea))"
+    },
+    {
+      "default": false,
+      "lang": "pt-BR",
+      "localService": true,
+      "name": "Grandpa (Portuguese (Brazil))",
+      "voiceURI": "Grandpa (Portuguese (Brazil))"
+    },
+    {
+      "default": false,
+      "lang": "zh-CN",
+      "localService": true,
+      "name": "Grandpa (Chinese (China mainland))",
+      "voiceURI": "Grandpa (Chinese (China mainland))"
+    },
+    {
+      "default": false,
+      "lang": "zh-TW",
+      "localService": true,
+      "name": "Grandpa (Chinese (Taiwan))",
+      "voiceURI": "Grandpa (Chinese (Taiwan))"
+    },
+    {
+      "default": false,
+      "lang": "ja-JP",
+      "localService": true,
+      "name": "Hattori",
+      "voiceURI": "Hattori"
+    },
+    {
+      "default": false,
+      "lang": "de-DE",
+      "localService": true,
+      "name": "Helena",
+      "voiceURI": "Helena"
+    },
+    {
+      "default": false,
+      "lang": "ro-RO",
+      "localService": true,
+      "name": "Ioana",
+      "voiceURI": "Ioana"
+    },
+    {
+      "default": false,
+      "lang": "fr-FR",
+      "localService": true,
+      "name": "Jacques",
+      "voiceURI": "Jacques"
+    },
+    {
+      "default": false,
+      "lang": "en-US",
+      "localService": true,
+      "name": "Jester",
+      "voiceURI": "Jester"
+    },
+    {
+      "default": false,
+      "lang": "pt-PT",
+      "localService": true,
+      "name": "Joana",
+      "voiceURI": "Joana"
+    },
+    {
+      "default": false,
+      "lang": "en-US",
+      "localService": true,
+      "name": "Junior",
+      "voiceURI": "Junior"
+    },
+    {
+      "default": false,
+      "lang": "th-TH",
+      "localService": true,
+      "name": "Kanya",
+      "voiceURI": "Kanya"
+    },
+    {
+      "default": false,
+      "lang": "en-AU",
+      "localService": true,
+      "name": "Karen",
+      "voiceURI": "Karen"
+    },
+    {
+      "default": false,
+      "lang": "en-US",
+      "localService": true,
+      "name": "Kathy",
+      "voiceURI": "Kathy"
+    },
+    {
+      "default": false,
+      "lang": "ja-JP",
+      "localService": true,
+      "name": "Kyoko",
+      "voiceURI": "Kyoko"
+    },
+    {
+      "default": false,
+      "lang": "hr-HR",
+      "localService": true,
+      "name": "Lana",
+      "voiceURI": "Lana"
+    },
+    {
+      "default": false,
+      "lang": "sk-SK",
+      "localService": true,
+      "name": "Laura",
+      "voiceURI": "Laura"
+    },
+    {
+      "default": false,
+      "lang": "hi-IN",
+      "localService": true,
+      "name": "Lekha",
+      "voiceURI": "Lekha"
+    },
+    {
+      "default": false,
+      "lang": "uk-UA",
+      "localService": true,
+      "name": "Lesya",
+      "voiceURI": "Lesya"
+    },
+    {
+      "default": false,
+      "lang": "zh-CN",
+      "localService": true,
+      "name": "Li-Mu",
+      "voiceURI": "Li-Mu"
+    },
+    {
+      "default": false,
+      "lang": "vi-VN",
+      "localService": true,
+      "name": "Linh",
+      "voiceURI": "Linh"
+    },
+    {
+      "default": false,
+      "lang": "pt-BR",
+      "localService": true,
+      "name": "Luciana",
+      "voiceURI": "Luciana"
+    },
+    {
+      "default": false,
+      "lang": "ar-001",
+      "localService": true,
+      "name": "Majed",
+      "voiceURI": "Majed"
+    },
+    {
+      "default": false,
+      "lang": "fr-FR",
+      "localService": true,
+      "name": "Marie",
+      "voiceURI": "Marie"
+    },
+    {
+      "default": false,
+      "lang": "en-GB",
+      "localService": true,
+      "name": "Martha",
+      "voiceURI": "Martha"
+    },
+    {
+      "default": false,
+      "lang": "de-DE",
+      "localService": true,
+      "name": "Martin",
+      "voiceURI": "Martin"
+    },
+    {
+      "default": false,
+      "lang": "zh-TW",
+      "localService": true,
+      "name": "Meijia",
+      "voiceURI": "Meijia"
+    },
+    {
+      "default": false,
+      "lang": "el-GR",
+      "localService": true,
+      "name": "Melina",
+      "voiceURI": "Melina"
+    },
+    {
+      "default": false,
+      "lang": "ru-RU",
+      "localService": true,
+      "name": "Milena",
+      "voiceURI": "Milena"
+    },
+    {
+      "default": false,
+      "lang": "en-IE",
+      "localService": true,
+      "name": "Moira",
+      "voiceURI": "Moira"
+    },
+    {
+      "default": false,
+      "lang": "ca-ES",
+      "localService": true,
+      "name": "Montse",
+      "voiceURI": "Montse"
+    },
+    {
+      "default": false,
+      "lang": "es-ES",
+      "localService": true,
+      "name": "M\u00f3nica",
+      "voiceURI": "M\u00f3nica"
+    },
+    {
+      "default": false,
+      "lang": "en-US",
+      "localService": true,
+      "name": "Nicky",
+      "voiceURI": "Nicky"
+    },
+    {
+      "default": false,
+      "lang": "nb-NO",
+      "localService": true,
+      "name": "Nora",
+      "voiceURI": "Nora"
+    },
+    {
+      "default": false,
+      "lang": "ja-JP",
+      "localService": true,
+      "name": "O-Ren",
+      "voiceURI": "O-Ren"
+    },
+    {
+      "default": false,
+      "lang": "en-US",
+      "localService": true,
+      "name": "Organ",
+      "voiceURI": "Organ"
+    },
+    {
+      "default": false,
+      "lang": "es-MX",
+      "localService": true,
+      "name": "Paulina",
+      "voiceURI": "Paulina"
+    },
+    {
+      "default": false,
+      "lang": "en-US",
+      "localService": true,
+      "name": "Ralph",
+      "voiceURI": "Ralph"
+    },
+    {
+      "default": false,
+      "lang": "de-DE",
+      "localService": true,
+      "name": "Reed (German (Germany))",
+      "voiceURI": "Reed (German (Germany))"
+    },
+    {
+      "default": false,
+      "lang": "en-GB",
+      "localService": true,
+      "name": "Reed (English (United Kingdom))",
+      "voiceURI": "Reed (English (United Kingdom))"
+    },
+    {
+      "default": false,
+      "lang": "en-US",
+      "localService": true,
+      "name": "Reed (English (United States))",
+      "voiceURI": "Reed (English (United States))"
+    },
+    {
+      "default": false,
+      "lang": "es-ES",
+      "localService": true,
+      "name": "Reed (Spanish (Spain))",
+      "voiceURI": "Reed (Spanish (Spain))"
+    },
+    {
+      "default": false,
+      "lang": "es-MX",
+      "localService": true,
+      "name": "Reed (Spanish (Mexico))",
+      "voiceURI": "Reed (Spanish (Mexico))"
+    },
+    {
+      "default": false,
+      "lang": "fi-FI",
+      "localService": true,
+      "name": "Reed (Finnish (Finland))",
+      "voiceURI": "Reed (Finnish (Finland))"
+    },
+    {
+      "default": false,
+      "lang": "fr-CA",
+      "localService": true,
+      "name": "Reed (French (Canada))",
+      "voiceURI": "Reed (French (Canada))"
+    },
+    {
+      "default": false,
+      "lang": "it-IT",
+      "localService": true,
+      "name": "Reed (Italian (Italy))",
+      "voiceURI": "Reed (Italian (Italy))"
+    },
+    {
+      "default": false,
+      "lang": "ja-JP",
+      "localService": true,
+      "name": "Reed (Japanese (Japan))",
+      "voiceURI": "Reed (Japanese (Japan))"
+    },
+    {
+      "default": false,
+      "lang": "ko-KR",
+      "localService": true,
+      "name": "Reed (Korean (South Korea))",
+      "voiceURI": "Reed (Korean (South Korea))"
+    },
+    {
+      "default": false,
+      "lang": "pt-BR",
+      "localService": true,
+      "name": "Reed (Portuguese (Brazil))",
+      "voiceURI": "Reed (Portuguese (Brazil))"
+    },
+    {
+      "default": false,
+      "lang": "zh-CN",
+      "localService": true,
+      "name": "Reed (Chinese (China mainland))",
+      "voiceURI": "Reed (Chinese (China mainland))"
+    },
+    {
+      "default": false,
+      "lang": "zh-TW",
+      "localService": true,
+      "name": "Reed (Chinese (Taiwan))",
+      "voiceURI": "Reed (Chinese (Taiwan))"
+    },
+    {
+      "default": false,
+      "lang": "en-IN",
+      "localService": true,
+      "name": "Rishi",
+      "voiceURI": "Rishi"
+    },
+    {
+      "default": false,
+      "lang": "de-DE",
+      "localService": true,
+      "name": "Rocko (German (Germany))",
+      "voiceURI": "Rocko (German (Germany))"
+    },
+    {
+      "default": false,
+      "lang": "en-GB",
+      "localService": true,
+      "name": "Rocko (English (United Kingdom))",
+      "voiceURI": "Rocko (English (United Kingdom))"
+    },
+    {
+      "default": false,
+      "lang": "en-US",
+      "localService": true,
+      "name": "Rocko (English (United States))",
+      "voiceURI": "Rocko (English (United States))"
+    },
+    {
+      "default": false,
+      "lang": "es-ES",
+      "localService": true,
+      "name": "Rocko (Spanish (Spain))",
+      "voiceURI": "Rocko (Spanish (Spain))"
+    },
+    {
+      "default": false,
+      "lang": "es-MX",
+      "localService": true,
+      "name": "Rocko (Spanish (Mexico))",
+      "voiceURI": "Rocko (Spanish (Mexico))"
+    },
+    {
+      "default": false,
+      "lang": "fi-FI",
+      "localService": true,
+      "name": "Rocko (Finnish (Finland))",
+      "voiceURI": "Rocko (Finnish (Finland))"
+    },
+    {
+      "default": false,
+      "lang": "fr-CA",
+      "localService": true,
+      "name": "Rocko (French (Canada))",
+      "voiceURI": "Rocko (French (Canada))"
+    },
+    {
+      "default": false,
+      "lang": "fr-FR",
+      "localService": true,
+      "name": "Rocko (French (France))",
+      "voiceURI": "Rocko (French (France))"
+    },
+    {
+      "default": false,
+      "lang": "it-IT",
+      "localService": true,
+      "name": "Rocko (Italian (Italy))",
+      "voiceURI": "Rocko (Italian (Italy))"
+    },
+    {
+      "default": false,
+      "lang": "ja-JP",
+      "localService": true,
+      "name": "Rocko (Japanese (Japan))",
+      "voiceURI": "Rocko (Japanese (Japan))"
+    },
+    {
+      "default": false,
+      "lang": "ko-KR",
+      "localService": true,
+      "name": "Rocko (Korean (South Korea))",
+      "voiceURI": "Rocko (Korean (South Korea))"
+    },
+    {
+      "default": false,
+      "lang": "pt-BR",
+      "localService": true,
+      "name": "Rocko (Portuguese (Brazil))",
+      "voiceURI": "Rocko (Portuguese (Brazil))"
+    },
+    {
+      "default": false,
+      "lang": "zh-CN",
+      "localService": true,
+      "name": "Rocko (Chinese (China mainland))",
+      "voiceURI": "Rocko (Chinese (China mainland))"
+    },
+    {
+      "default": false,
+      "lang": "zh-TW",
+      "localService": true,
+      "name": "Rocko (Chinese (Taiwan))",
+      "voiceURI": "Rocko (Chinese (Taiwan))"
+    },
+    {
+      "default": false,
+      "lang": "de-DE",
+      "localService": true,
+      "name": "Sandy (German (Germany))",
+      "voiceURI": "Sandy (German (Germany))"
+    },
+    {
+      "default": false,
+      "lang": "en-GB",
+      "localService": true,
+      "name": "Sandy (English (United Kingdom))",
+      "voiceURI": "Sandy (English (United Kingdom))"
+    },
+    {
+      "default": false,
+      "lang": "en-US",
+      "localService": true,
+      "name": "Sandy (English (United States))",
+      "voiceURI": "Sandy (English (United States))"
+    },
+    {
+      "default": false,
+      "lang": "es-ES",
+      "localService": true,
+      "name": "Sandy (Spanish (Spain))",
+      "voiceURI": "Sandy (Spanish (Spain))"
+    },
+    {
+      "default": false,
+      "lang": "es-MX",
+      "localService": true,
+      "name": "Sandy (Spanish (Mexico))",
+      "voiceURI": "Sandy (Spanish (Mexico))"
+    },
+    {
+      "default": false,
+      "lang": "fi-FI",
+      "localService": true,
+      "name": "Sandy (Finnish (Finland))",
+      "voiceURI": "Sandy (Finnish (Finland))"
+    },
+    {
+      "default": false,
+      "lang": "fr-CA",
+      "localService": true,
+      "name": "Sandy (French (Canada))",
+      "voiceURI": "Sandy (French (Canada))"
+    },
+    {
+      "default": false,
+      "lang": "fr-FR",
+      "localService": true,
+      "name": "Sandy (French (France))",
+      "voiceURI": "Sandy (French (France))"
+    },
+    {
+      "default": false,
+      "lang": "it-IT",
+      "localService": true,
+      "name": "Sandy (Italian (Italy))",
+      "voiceURI": "Sandy (Italian (Italy))"
+    },
+    {
+      "default": false,
+      "lang": "ja-JP",
+      "localService": true,
+      "name": "Sandy (Japanese (Japan))",
+      "voiceURI": "Sandy (Japanese (Japan))"
+    },
+    {
+      "default": false,
+      "lang": "ko-KR",
+      "localService": true,
+      "name": "Sandy (Korean (South Korea))",
+      "voiceURI": "Sandy (Korean (South Korea))"
+    },
+    {
+      "default": false,
+      "lang": "pt-BR",
+      "localService": true,
+      "name": "Sandy (Portuguese (Brazil))",
+      "voiceURI": "Sandy (Portuguese (Brazil))"
+    },
+    {
+      "default": false,
+      "lang": "zh-CN",
+      "localService": true,
+      "name": "Sandy (Chinese (China mainland))",
+      "voiceURI": "Sandy (Chinese (China mainland))"
+    },
+    {
+      "default": false,
+      "lang": "zh-TW",
+      "localService": true,
+      "name": "Sandy (Chinese (Taiwan))",
+      "voiceURI": "Sandy (Chinese (Taiwan))"
+    },
+    {
+      "default": false,
+      "lang": "da-DK",
+      "localService": true,
+      "name": "Sara",
+      "voiceURI": "Sara"
+    },
+    {
+      "default": false,
+      "lang": "fi-FI",
+      "localService": true,
+      "name": "Satu",
+      "voiceURI": "Satu"
+    },
+    {
+      "default": false,
+      "lang": "de-DE",
+      "localService": true,
+      "name": "Shelley (German (Germany))",
+      "voiceURI": "Shelley (German (Germany))"
+    },
+    {
+      "default": false,
+      "lang": "en-GB",
+      "localService": true,
+      "name": "Shelley (English (United Kingdom))",
+      "voiceURI": "Shelley (English (United Kingdom))"
+    },
+    {
+      "default": false,
+      "lang": "en-US",
+      "localService": true,
+      "name": "Shelley (English (United States))",
+      "voiceURI": "Shelley (English (United States))"
+    },
+    {
+      "default": false,
+      "lang": "es-ES",
+      "localService": true,
+      "name": "Shelley (Spanish (Spain))",
+      "voiceURI": "Shelley (Spanish (Spain))"
+    },
+    {
+      "default": false,
+      "lang": "es-MX",
+      "localService": true,
+      "name": "Shelley (Spanish (Mexico))",
+      "voiceURI": "Shelley (Spanish (Mexico))"
+    },
+    {
+      "default": false,
+      "lang": "fi-FI",
+      "localService": true,
+      "name": "Shelley (Finnish (Finland))",
+      "voiceURI": "Shelley (Finnish (Finland))"
+    },
+    {
+      "default": false,
+      "lang": "fr-CA",
+      "localService": true,
+      "name": "Shelley (French (Canada))",
+      "voiceURI": "Shelley (French (Canada))"
+    },
+    {
+      "default": false,
+      "lang": "fr-FR",
+      "localService": true,
+      "name": "Shelley (French (France))",
+      "voiceURI": "Shelley (French (France))"
+    },
+    {
+      "default": false,
+      "lang": "it-IT",
+      "localService": true,
+      "name": "Shelley (Italian (Italy))",
+      "voiceURI": "Shelley (Italian (Italy))"
+    },
+    {
+      "default": false,
+      "lang": "ja-JP",
+      "localService": true,
+      "name": "Shelley (Japanese (Japan))",
+      "voiceURI": "Shelley (Japanese (Japan))"
+    },
+    {
+      "default": false,
+      "lang": "ko-KR",
+      "localService": true,
+      "name": "Shelley (Korean (South Korea))",
+      "voiceURI": "Shelley (Korean (South Korea))"
+    },
+    {
+      "default": false,
+      "lang": "pt-BR",
+      "localService": true,
+      "name": "Shelley (Portuguese (Brazil))",
+      "voiceURI": "Shelley (Portuguese (Brazil))"
+    },
+    {
+      "default": false,
+      "lang": "zh-CN",
+      "localService": true,
+      "name": "Shelley (Chinese (China mainland))",
+      "voiceURI": "Shelley (Chinese (China mainland))"
+    },
+    {
+      "default": false,
+      "lang": "zh-TW",
+      "localService": true,
+      "name": "Shelley (Chinese (Taiwan))",
+      "voiceURI": "Shelley (Chinese (Taiwan))"
+    },
+    {
+      "default": false,
+      "lang": "zh-HK",
+      "localService": true,
+      "name": "Sinji",
+      "voiceURI": "Sinji"
+    },
+    {
+      "default": false,
+      "lang": "en-US",
+      "localService": true,
+      "name": "Superstar",
+      "voiceURI": "Superstar"
+    },
+    {
+      "default": false,
+      "lang": "en-ZA",
+      "localService": true,
+      "name": "Tessa",
+      "voiceURI": "Tessa"
+    },
+    {
+      "default": false,
+      "lang": "fr-FR",
+      "localService": true,
+      "name": "Thomas",
+      "voiceURI": "Thomas"
+    },
+    {
+      "default": false,
+      "lang": "sl-SI",
+      "localService": true,
+      "name": "Tina",
+      "voiceURI": "Tina"
+    },
+    {
+      "default": false,
+      "lang": "zh-CN",
+      "localService": true,
+      "name": "Tingting",
+      "voiceURI": "Tingting"
+    },
+    {
+      "default": false,
+      "lang": "en-US",
+      "localService": true,
+      "name": "Trinoids",
+      "voiceURI": "Trinoids"
+    },
+    {
+      "default": false,
+      "lang": "hu-HU",
+      "localService": true,
+      "name": "T\u00fcnde",
+      "voiceURI": "T\u00fcnde"
+    },
+    {
+      "default": false,
+      "lang": "en-US",
+      "localService": true,
+      "name": "Whisper",
+      "voiceURI": "Whisper"
+    },
+    {
+      "default": false,
+      "lang": "en-US",
+      "localService": true,
+      "name": "Wobble",
+      "voiceURI": "Wobble"
+    },
+    {
+      "default": false,
+      "lang": "nl-NL",
+      "localService": true,
+      "name": "Xander",
+      "voiceURI": "Xander"
+    },
+    {
+      "default": false,
+      "lang": "tr-TR",
+      "localService": true,
+      "name": "Yelda",
+      "voiceURI": "Yelda"
+    },
+    {
+      "default": false,
+      "lang": "zh-CN",
+      "localService": true,
+      "name": "Yu-shu",
+      "voiceURI": "Yu-shu"
+    },
+    {
+      "default": false,
+      "lang": "ko-KR",
+      "localService": true,
+      "name": "Yuna",
+      "voiceURI": "Yuna"
+    },
+    {
+      "default": false,
+      "lang": "en-US",
+      "localService": true,
+      "name": "Zarvox",
+      "voiceURI": "Zarvox"
+    },
+    {
+      "default": false,
+      "lang": "pl-PL",
+      "localService": true,
+      "name": "Zosia",
+      "voiceURI": "Zosia"
+    },
+    {
+      "default": false,
+      "lang": "cs-CZ",
+      "localService": true,
+      "name": "Zuzana",
+      "voiceURI": "Zuzana"
+    },
+    {
+      "default": false,
+      "lang": "de-DE",
+      "localService": false,
+      "name": "Google Deutsch",
+      "voiceURI": "Google Deutsch"
+    },
+    {
+      "default": false,
+      "lang": "en-US",
+      "localService": false,
+      "name": "Google US English",
+      "voiceURI": "Google US English"
+    },
+    {
+      "default": false,
+      "lang": "en-GB",
+      "localService": false,
+      "name": "Google UK English Female",
+      "voiceURI": "Google UK English Female"
+    },
+    {
+      "default": false,
+      "lang": "en-GB",
+      "localService": false,
+      "name": "Google UK English Male",
+      "voiceURI": "Google UK English Male"
+    },
+    {
+      "default": false,
+      "lang": "es-ES",
+      "localService": false,
+      "name": "Google espa\u00f1ol",
+      "voiceURI": "Google espa\u00f1ol"
+    },
+    {
+      "default": false,
+      "lang": "es-US",
+      "localService": false,
+      "name": "Google espa\u00f1ol de Estados Unidos",
+      "voiceURI": "Google espa\u00f1ol de Estados Unidos"
+    },
+    {
+      "default": false,
+      "lang": "fr-FR",
+      "localService": false,
+      "name": "Google fran\u00e7ais",
+      "voiceURI": "Google fran\u00e7ais"
+    },
+    {
+      "default": false,
+      "lang": "hi-IN",
+      "localService": false,
+      "name": "Google \u0939\u093f\u0928\u094d\u0926\u0940",
+      "voiceURI": "Google \u0939\u093f\u0928\u094d\u0926\u0940"
+    },
+    {
+      "default": false,
+      "lang": "id-ID",
+      "localService": false,
+      "name": "Google Bahasa Indonesia",
+      "voiceURI": "Google Bahasa Indonesia"
+    },
+    {
+      "default": false,
+      "lang": "it-IT",
+      "localService": false,
+      "name": "Google italiano",
+      "voiceURI": "Google italiano"
+    },
+    {
+      "default": false,
+      "lang": "ja-JP",
+      "localService": false,
+      "name": "Google \u65e5\u672c\u8a9e",
+      "voiceURI": "Google \u65e5\u672c\u8a9e"
+    },
+    {
+      "default": false,
+      "lang": "ko-KR",
+      "localService": false,
+      "name": "Google \ud55c\uad6d\uc758",
+      "voiceURI": "Google \ud55c\uad6d\uc758"
+    },
+    {
+      "default": false,
+      "lang": "nl-NL",
+      "localService": false,
+      "name": "Google Nederlands",
+      "voiceURI": "Google Nederlands"
+    },
+    {
+      "default": false,
+      "lang": "pl-PL",
+      "localService": false,
+      "name": "Google polski",
+      "voiceURI": "Google polski"
+    },
+    {
+      "default": false,
+      "lang": "pt-BR",
+      "localService": false,
+      "name": "Google portugu\u00eas do Brasil",
+      "voiceURI": "Google portugu\u00eas do Brasil"
+    },
+    {
+      "default": false,
+      "lang": "ru-RU",
+      "localService": false,
+      "name": "Google \u0440\u0443\u0441\u0441\u043a\u0438\u0439",
+      "voiceURI": "Google \u0440\u0443\u0441\u0441\u043a\u0438\u0439"
+    },
+    {
+      "default": false,
+      "lang": "zh-CN",
+      "localService": false,
+      "name": "Google\u00a0\u666e\u901a\u8bdd\uff08\u4e2d\u56fd\u5927\u9646\uff09",
+      "voiceURI": "Google\u00a0\u666e\u901a\u8bdd\uff08\u4e2d\u56fd\u5927\u9646\uff09"
+    },
+    {
+      "default": false,
+      "lang": "zh-HK",
+      "localService": false,
+      "name": "Google\u00a0\u7ca4\u8a9e\uff08\u9999\u6e2f\uff09",
+      "voiceURI": "Google\u00a0\u7ca4\u8a9e\uff08\u9999\u6e2f\uff09"
+    },
+    {
+      "default": false,
+      "lang": "zh-TW",
+      "localService": false,
+      "name": "Google \u570b\u8a9e\uff08\u81fa\u7063\uff09",
+      "voiceURI": "Google \u570b\u8a9e\uff08\u81fa\u7063\uff09"
+    }
+  ],
+  "matchMedia": {
+    "mediaCss": {
+      "pointer": "fine",
+      "any-pointer": "fine",
+      "hover": "hover",
+      "any-hover": "hover",
+      "device-aspect-ratio": "756/491",
+      "device-screen": "1512 x 982",
+      "orientation": "landscape",
+      "color-gamut": "p3",
+      "display-mode": "browser",
+      "forced-colors": "none",
+      "inverted-colors": null,
+      "monochrome": "non-monochrome",
+      "prefers-color-scheme": "light",
+      "prefers-reduced-motion": "no-preference"
+    },
+    "screenQuery": {
+      "width": 1512,
+      "height": 982
+    }
+  },
+  "screen": {
+    "availWidth": 1512,
+    "availHeight": 881,
+    "availLeft": 0,
+    "availTop": 38,
+    "width": 1512,
+    "height": 982,
+    "colorDepth": 30,
+    "pixelDepth": 30
+  },
+  "window": {
+    "innerWidth": 1512,
+    "innerHeight": 794,
+    "outerWidth": 1512,
+    "outerHeight": 881,
+    "screenX": 0,
+    "screenY": 38,
+    "pageYOffset": 0,
+    "devicePixelRatio": 2
+  },
+  "windowComponents": {
+    "toolbar": 87,
+    "scrollbar": 0
+  },
+  "systemStyles": {
+    "fonts": [
+      {
+        "caption": "16px Arial"
+      },
+      {
+        "icon": "16px Arial"
+      },
+      {
+        "menu": "16px Arial"
+      },
+      {
+        "message-box": "16px Arial"
+      },
+      {
+        "small-caption": "16px Arial"
+      },
+      {
+        "status-bar": "16px Arial"
+      }
+    ]
+  },
+  "allFonts": [
+    "Al Bayan Bold",
+    "Al Bayan Plain",
+    "Al Nile",
+    "Al Nile Bold",
+    "Al Tarikh Regular",
+    "American Typewriter",
+    "American Typewriter Bold",
+    "American Typewriter Condensed",
+    "American Typewriter Condensed Bold",
+    "American Typewriter Condensed Light",
+    "American Typewriter Light",
+    "American Typewriter Semibold",
+    "Andale Mono",
+    "Apple Braille",
+    "Apple Braille Outline 6 Dot",
+    "Apple Braille Outline 8 Dot",
+    "Apple Braille Pinpoint 6 Dot",
+    "Apple Braille Pinpoint 8 Dot",
+    "Apple Chancery",
+    "Apple Color Emoji",
+    "Apple LiGothic Medium",
+    "Apple LiSung Light",
+    "Apple SD Gothic Neo Bold",
+    "Apple SD Gothic Neo Heavy",
+    "Apple SD Gothic Neo Light",
+    "Apple SD Gothic Neo Medium",
+    "Apple SD Gothic Neo Regular",
+    "Apple SD Gothic Neo SemiBold",
+    "Apple SD Gothic Neo Thin",
+    "Apple SD Gothic Neo UltraLight",
+    "Apple Symbols",
+    "AppleGothic",
+    "AppleGothic Regular",
+    "AppleMyungjo",
+    "AppleMyungjo Regular",
+    "Arial",
+    "Arial Black",
+    "Arial Bold",
+    "Arial Bold Italic",
+    "Arial Hebrew",
+    "Arial Hebrew Bold",
+    "Arial Hebrew Light",
+    "Arial Hebrew Scholar",
+    "Arial Hebrew Scholar Bold",
+    "Arial Hebrew Scholar Light",
+    "Arial Italic",
+    "Arial Narrow",
+    "Arial Narrow Bold",
+    "Arial Narrow Bold Italic",
+    "Arial Narrow Italic",
+    "Arial Rounded MT Bold",
+    "Arial Unicode MS",
+    "Arima Madurai",
+    "Athelas Bold",
+    "Athelas Bold Italic",
+    "Athelas Italic",
+    "Athelas Regular",
+    "Avenir Black",
+    "Avenir Black Oblique",
+    "Avenir Book",
+    "Avenir Book Oblique",
+    "Avenir Heavy",
+    "Avenir Heavy Oblique",
+    "Avenir Light",
+    "Avenir Light Oblique",
+    "Avenir Medium",
+    "Avenir Medium Oblique",
+    "Avenir Next Bold",
+    "Avenir Next Bold Italic",
+    "Avenir Next Condensed Bold",
+    "Avenir Next Condensed Bold Italic",
+    "Avenir Next Condensed Demi Bold",
+    "Avenir Next Condensed Demi Bold Italic",
+    "Avenir Next Condensed Heavy",
+    "Avenir Next Condensed Heavy Italic",
+    "Avenir Next Condensed Italic",
+    "Avenir Next Condensed Medium",
+    "Avenir Next Condensed Medium Italic",
+    "Avenir Next Condensed Regular",
+    "Avenir Next Condensed Ultra Light",
+    "Avenir Next Condensed Ultra Light Italic",
+    "Avenir Next Demi Bold",
+    "Avenir Next Demi Bold Italic",
+    "Avenir Next Heavy",
+    "Avenir Next Heavy Italic",
+    "Avenir Next Italic",
+    "Avenir Next Medium",
+    "Avenir Next Medium Italic",
+    "Avenir Next Regular",
+    "Avenir Next Ultra Light",
+    "Avenir Next Ultra Light Italic",
+    "Avenir Oblique",
+    "Avenir Roman",
+    "Ayuthaya",
+    "Baghdad",
+    "Baghdad Regular",
+    "Bangla MN",
+    "Bangla MN Bold",
+    "Bangla Sangam MN",
+    "Bangla Sangam MN Bold",
+    "Baoli SC Regular",
+    "Baoli TC Regular",
+    "Baskerville",
+    "Baskerville Bold",
+    "Baskerville Bold Italic",
+    "Baskerville Italic",
+    "Baskerville SemiBold",
+    "Baskerville SemiBold Italic",
+    "Beirut",
+    "Beirut Regular",
+    "Big Caslon Medium",
+    "Bodoni 72 Bold",
+    "Bodoni 72 Book",
+    "Bodoni 72 Book Italic",
+    "Bodoni 72 Oldstyle Bold",
+    "Bodoni 72 Oldstyle Book",
+    "Bodoni 72 Oldstyle Book Italic",
+    "Bodoni 72 Smallcaps Book",
+    "Bodoni Ornaments",
+    "Bradley Hand Bold",
+    "Brush Script MT Italic",
+    "Chalkboard",
+    "Chalkboard Bold",
+    "Chalkboard SE Bold",
+    "Chalkboard SE Light",
+    "Chalkboard SE Regular",
+    "Chalkduster",
+    "Charter Black",
+    "Charter Black Italic",
+    "Charter Bold",
+    "Charter Bold Italic",
+    "Charter Italic",
+    "Charter Roman",
+    "Cochin",
+    "Cochin Bold",
+    "Cochin Bold Italic",
+    "Cochin Italic",
+    "Comic Sans MS",
+    "Comic Sans MS Bold",
+    "Copperplate",
+    "Copperplate Bold",
+    "Copperplate Light",
+    "Corsiva Hebrew",
+    "Corsiva Hebrew Bold",
+    "Courier",
+    "Courier Bold",
+    "Courier Bold Oblique",
+    "Courier New",
+    "Courier New Bold",
+    "Courier New Bold Italic",
+    "Courier New Italic",
+    "Courier Oblique",
+    "DIN Alternate Bold",
+    "DIN Condensed Bold",
+    "Damascus",
+    "Damascus Bold",
+    "Damascus Light",
+    "Damascus Medium",
+    "Damascus Regular",
+    "Damascus Semi Bold",
+    "DecoType Naskh Regular",
+    "Devanagari MT",
+    "Devanagari MT Bold",
+    "Devanagari Sangam MN",
+    "Devanagari Sangam MN Bold",
+    "Didot",
+    "Didot Bold",
+    "Didot Italic",
+    "Diwan Kufi Regular",
+    "Diwan Thuluth Regular",
+    "Euphemia UCAS",
+    "Euphemia UCAS Bold",
+    "Euphemia UCAS Italic",
+    "Farah",
+    "Farah Regular",
+    "Farisi",
+    "Farisi Regular",
+    "Futura Bold",
+    "Futura Condensed ExtraBold",
+    "Futura Condensed Medium",
+    "Futura Medium",
+    "Futura Medium Italic",
+    "GB18030 Bitmap",
+    "Geeza Pro Bold",
+    "Geeza Pro Regular",
+    "Geneva",
+    "Georgia",
+    "Georgia Bold",
+    "Georgia Bold Italic",
+    "Georgia Italic",
+    "Gill Sans",
+    "Gill Sans Bold",
+    "Gill Sans Bold Italic",
+    "Gill Sans Italic",
+    "Gill Sans Light",
+    "Gill Sans Light Italic",
+    "Gill Sans SemiBold",
+    "Gill Sans SemiBold Italic",
+    "Gill Sans UltraBold",
+    "Gujarati MT",
+    "Gujarati MT Bold",
+    "Gujarati Sangam MN",
+    "Gujarati Sangam MN Bold",
+    "GungSeo Regular",
+    "Gurmukhi MN",
+    "Gurmukhi MN Bold",
+    "Gurmukhi MT",
+    "Gurmukhi Sangam MN",
+    "Gurmukhi Sangam MN Bold",
+    "Hannotate SC Bold",
+    "Hannotate SC Regular",
+    "Hannotate TC Bold",
+    "Hannotate TC Regular",
+    "HanziPen SC Bold",
+    "HanziPen SC Regular",
+    "HanziPen TC Bold",
+    "HanziPen TC Regular",
+    "HeadLineA Regular",
+    "Hei Regular",
+    "Heiti SC Light",
+    "Heiti SC Medium",
+    "Heiti TC Light",
+    "Heiti TC Medium",
+    "Helvetica",
+    "Helvetica Bold",
+    "Helvetica Bold Oblique",
+    "Helvetica Light",
+    "Helvetica Light Oblique",
+    "Helvetica Neue",
+    "Helvetica Neue Bold",
+    "Helvetica Neue Bold Italic",
+    "Helvetica Neue Condensed Black",
+    "Helvetica Neue Condensed Bold",
+    "Helvetica Neue Italic",
+    "Helvetica Neue Light",
+    "Helvetica Neue Light Italic",
+    "Helvetica Neue Medium",
+    "Helvetica Neue Medium Italic",
+    "Helvetica Neue Thin",
+    "Helvetica Neue Thin Italic",
+    "Helvetica Neue UltraLight",
+    "Helvetica Neue UltraLight Italic",
+    "Helvetica Oblique",
+    "Herculanum",
+    "Hiragino Kaku Gothic Pro W3",
+    "Hiragino Kaku Gothic Pro W6",
+    "Hiragino Kaku Gothic ProN W3",
+    "Hiragino Kaku Gothic ProN W6",
+    "Hiragino Kaku Gothic Std W8",
+    "Hiragino Kaku Gothic StdN W8",
+    "Hiragino Maru Gothic Pro W4",
+    "Hiragino Maru Gothic ProN W4",
+    "Hiragino Mincho Pro W3",
+    "Hiragino Mincho Pro W6",
+    "Hiragino Mincho ProN W3",
+    "Hiragino Mincho ProN W6",
+    "Hiragino Sans CNS W3",
+    "Hiragino Sans CNS W6",
+    "Hiragino Sans GB W3",
+    "Hiragino Sans GB W6",
+    "Hiragino Sans W0",
+    "Hiragino Sans W1",
+    "Hiragino Sans W2",
+    "Hiragino Sans W3",
+    "Hiragino Sans W4",
+    "Hiragino Sans W5",
+    "Hiragino Sans W6",
+    "Hiragino Sans W7",
+    "Hiragino Sans W8",
+    "Hiragino Sans W9",
+    "Hoefler Text",
+    "Hoefler Text Black",
+    "Hoefler Text Black Italic",
+    "Hoefler Text Italic",
+    "Hoefler Text Ornaments",
+    "ITF Devanagari Bold",
+    "ITF Devanagari Book",
+    "ITF Devanagari Demi",
+    "ITF Devanagari Light",
+    "ITF Devanagari Marathi Bold",
+    "ITF Devanagari Marathi Book",
+    "ITF Devanagari Marathi Demi",
+    "ITF Devanagari Marathi Light",
+    "ITF Devanagari Marathi Medium",
+    "ITF Devanagari Medium",
+    "Impact",
+    "InaiMathi",
+    "InaiMathi Bold",
+    "Iowan Old Style Black",
+    "Iowan Old Style Black Italic",
+    "Iowan Old Style Bold",
+    "Iowan Old Style Bold Italic",
+    "Iowan Old Style Italic",
+    "Iowan Old Style Roman",
+    "Iowan Old Style Titling",
+    "Kai Regular",
+    "Kailasa",
+    "Kailasa Bold",
+    "Kailasa Regular",
+    "Kaiti SC Black",
+    "Kaiti SC Bold",
+    "Kaiti SC Regular",
+    "Kaiti TC Black",
+    "Kaiti TC Bold",
+    "Kaiti TC Regular",
+    "Kannada MN",
+    "Kannada MN Bold",
+    "Kannada Sangam MN",
+    "Kannada Sangam MN Bold",
+    "Kavivanar",
+    "Kefa Bold",
+    "Kefa Regular",
+    "Khmer MN",
+    "Khmer MN Bold",
+    "Khmer Sangam MN",
+    "Klee Demibold",
+    "Klee Medium",
+    "Kohinoor Bangla",
+    "Kohinoor Bangla Bold",
+    "Kohinoor Bangla Light",
+    "Kohinoor Bangla Medium",
+    "Kohinoor Bangla Semibold",
+    "Kohinoor Devanagari Bold",
+    "Kohinoor Devanagari Light",
+    "Kohinoor Devanagari Medium",
+    "Kohinoor Devanagari Regular",
+    "Kohinoor Devanagari Semibold",
+    "Kohinoor Telugu",
+    "Kohinoor Telugu Bold",
+    "Kohinoor Telugu Light",
+    "Kohinoor Telugu Medium",
+    "Kohinoor Telugu Semibold",
+    "Kokonor",
+    "Kokonor Regular",
+    "Krungthep",
+    "KufiStandardGK",
+    "KufiStandardGK Regular",
+    "LUCIDA GRANDE",
+    "Lantinghei SC Demibold",
+    "Lantinghei SC Extralight",
+    "Lantinghei SC Heavy",
+    "Lantinghei TC Demibold",
+    "Lantinghei TC Extralight",
+    "Lantinghei TC Heavy",
+    "Lao MN",
+    "Lao MN Bold",
+    "Lao Sangam MN",
+    "LastResort",
+    "LiHei Pro",
+    "LiSong Pro",
+    "Libian SC Regular",
+    "Libian TC Regular",
+    "LingWai SC Medium",
+    "LingWai TC Medium",
+    "Lucida Grande",
+    "Lucida Grande Bold",
+    "Luminari",
+    "Malayalam MN",
+    "Malayalam MN Bold",
+    "Malayalam Sangam MN",
+    "Malayalam Sangam MN Bold",
+    "Marion Bold",
+    "Marion Italic",
+    "Marion Regular",
+    "Marker Felt Thin",
+    "Marker Felt Wide",
+    "Menlo Bold",
+    "Menlo Bold Italic",
+    "Menlo Italic",
+    "Menlo Regular",
+    "Microsoft Sans Serif",
+    "Mishafi Gold Regular",
+    "Mishafi Regular",
+    "Modak",
+    "Monaco",
+    "Mshtakan",
+    "Mshtakan Bold",
+    "Mshtakan BoldOblique",
+    "Mshtakan Oblique",
+    "Muna",
+    "Muna Black",
+    "Muna Bold",
+    "Muna Regular",
+    "Myanmar MN",
+    "Myanmar MN Bold",
+    "Myanmar Sangam MN",
+    "Myanmar Sangam MN Bold",
+    "Nadeem",
+    "Nadeem Regular",
+    "Nanum Brush Script",
+    "Nanum Pen Script",
+    "NanumGothic",
+    "NanumGothic Bold",
+    "NanumGothic ExtraBold",
+    "NanumMyeongjo",
+    "NanumMyeongjo Bold",
+    "NanumMyeongjo ExtraBold",
+    "New Peninim MT",
+    "New Peninim MT Bold",
+    "New Peninim MT Bold Inclined",
+    "New Peninim MT Inclined",
+    "Noteworthy Bold",
+    "Noteworthy Light",
+    "Noto Nastaliq Urdu",
+    "Noto Sans Mongolian",
+    "Noto Sans Oriya",
+    "Noto Sans Tai Tham",
+    "OSAKA",
+    "Optima Bold",
+    "Optima Bold Italic",
+    "Optima ExtraBlack",
+    "Optima Italic",
+    "Optima Regular",
+    "Oriya MN",
+    "Oriya MN Bold",
+    "Oriya Sangam MN",
+    "Oriya Sangam MN Bold",
+    "Osaka",
+    "Osaka-Mono",
+    "PCMyungjo Regular",
+    "PT Mono",
+    "PT Mono Bold",
+    "PT Sans",
+    "PT Sans Bold",
+    "PT Sans Bold Italic",
+    "PT Sans Caption",
+    "PT Sans Caption Bold",
+    "PT Sans Italic",
+    "PT Sans Narrow",
+    "PT Sans Narrow Bold",
+    "PT Serif",
+    "PT Serif Bold",
+    "PT Serif Bold Italic",
+    "PT Serif Caption",
+    "PT Serif Caption Italic",
+    "PT Serif Italic",
+    "Palatino",
+    "Palatino Bold",
+    "Palatino Bold Italic",
+    "Palatino Italic",
+    "Papyrus",
+    "Papyrus Condensed",
+    "Phosphate Inline",
+    "Phosphate Solid",
+    "PilGi Regular",
+    "PingFang HK Light",
+    "PingFang HK Medium",
+    "PingFang HK Regular",
+    "PingFang HK Semibold",
+    "PingFang HK Thin",
+    "PingFang HK Ultralight",
+    "PingFang SC Light",
+    "PingFang SC Medium",
+    "PingFang SC Regular",
+    "PingFang SC Semibold",
+    "PingFang SC Thin",
+    "PingFang SC Ultralight",
+    "PingFang TC Light",
+    "PingFang TC Medium",
+    "PingFang TC Regular",
+    "PingFang TC Semibold",
+    "PingFang TC Thin",
+    "PingFang TC Ultralight",
+    "Plantagenet Cherokee",
+    "Raanana",
+    "Raanana Bold",
+    "Rockwell",
+    "Rockwell Bold",
+    "Rockwell Bold Italic",
+    "Rockwell Italic",
+    "STFangsong",
+    "STHeiti",
+    "STIX Two Text Bold",
+    "STIXGeneral-Bold",
+    "STIXGeneral-BoldItalic",
+    "STIXGeneral-Italic",
+    "STIXGeneral-Regular",
+    "STIXIntegralsD-Bold",
+    "STIXIntegralsD-Regular",
+    "STIXIntegralsSm-Bold",
+    "STIXIntegralsSm-Regular",
+    "STIXIntegralsUp-Bold",
+    "STIXIntegralsUp-Regular",
+    "STIXIntegralsUpD-Bold",
+    "STIXIntegralsUpD-Regular",
+    "STIXIntegralsUpSm-Bold",
+    "STIXIntegralsUpSm-Regular",
+    "STIXNonUnicode-Bold",
+    "STIXNonUnicode-BoldItalic",
+    "STIXNonUnicode-Italic",
+    "STIXNonUnicode-Regular",
+    "STIXSizeFiveSym-Regular",
+    "STIXSizeFourSym-Bold",
+    "STIXSizeFourSym-Regular",
+    "STIXSizeOneSym-Bold",
+    "STIXSizeOneSym-Regular",
+    "STIXSizeThreeSym-Bold",
+    "STIXSizeThreeSym-Regular",
+    "STIXSizeTwoSym-Bold",
+    "STIXSizeTwoSym-Regular",
+    "STIXVariants-Bold",
+    "STIXVariants-Regular",
+    "STKaiti",
+    "STSong",
+    "STXihei",
+    "Sana",
+    "Sana Regular",
+    "Sathu",
+    "Savoye LET Plain CC.:1.0",
+    "Savoye LET Plain:1.0",
+    "Seravek",
+    "Seravek Bold",
+    "Seravek Bold Italic",
+    "Seravek ExtraLight",
+    "Seravek ExtraLight Italic",
+    "Seravek Italic",
+    "Seravek Light",
+    "Seravek Light Italic",
+    "Seravek Medium",
+    "Seravek Medium Italic",
+    "Shree Devanagari 714",
+    "Shree Devanagari 714 Bold",
+    "Shree Devanagari 714 Bold Italic",
+    "Shree Devanagari 714 Italic",
+    "SignPainter-HouseScript",
+    "SignPainter-HouseScript Semibold",
+    "Silom",
+    "Sinhala MN",
+    "Sinhala MN Bold",
+    "Sinhala Sangam MN",
+    "Sinhala Sangam MN Bold",
+    "Skia Black",
+    "Skia Black Condensed",
+    "Skia Black Extended",
+    "Skia Bold",
+    "Skia Condensed",
+    "Skia Extended",
+    "Skia Light",
+    "Skia Light Condensed",
+    "Skia Light Extended",
+    "Skia Regular",
+    "Snell Roundhand",
+    "Snell Roundhand Black",
+    "Snell Roundhand Bold",
+    "Songti SC Black",
+    "Songti SC Bold",
+    "Songti SC Light",
+    "Songti SC Regular",
+    "Songti TC Bold",
+    "Songti TC Light",
+    "Songti TC Regular",
+    "Sukhumvit Set Bold",
+    "Sukhumvit Set Light",
+    "Sukhumvit Set Medium",
+    "Sukhumvit Set Semi Bold",
+    "Sukhumvit Set Text",
+    "Sukhumvit Set Thin",
+    "Superclarendon Black",
+    "Superclarendon Black Italic",
+    "Superclarendon Bold",
+    "Superclarendon Bold Italic",
+    "Superclarendon Italic",
+    "Superclarendon Light",
+    "Superclarendon Light Italic",
+    "Superclarendon Regular",
+    "Symbol",
+    "System Font Bold",
+    "System Font Regular",
+    "Tahoma",
+    "Tahoma Bold",
+    "Tamil MN",
+    "Tamil MN Bold",
+    "Tamil Sangam MN",
+    "Tamil Sangam MN Bold",
+    "Telugu MN",
+    "Telugu MN Bold",
+    "Telugu Sangam MN",
+    "Telugu Sangam MN Bold",
+    "Thonburi",
+    "Thonburi Bold",
+    "Thonburi Light",
+    "Times Bold",
+    "Times Bold Italic",
+    "Times Italic",
+    "Times New Roman",
+    "Times New Roman Bold",
+    "Times New Roman Bold Italic",
+    "Times New Roman Italic",
+    "Times Roman",
+    "Toppan Bunkyu Gothic Demibold",
+    "Toppan Bunkyu Gothic Regular",
+    "Toppan Bunkyu Midashi Gothic Extrabold",
+    "Toppan Bunkyu Midashi Mincho Extrabold",
+    "Toppan Bunkyu Mincho Regular",
+    "Trattatello",
+    "Trebuchet MS",
+    "Trebuchet MS Bold",
+    "Trebuchet MS Bold Italic",
+    "Trebuchet MS Italic",
+    "Tsukushi A Round Gothic Bold",
+    "Tsukushi A Round Gothic Regular",
+    "Tsukushi B Round Gothic Bold",
+    "Tsukushi B Round Gothic Regular",
+    "Verdana",
+    "Verdana Bold",
+    "Verdana Bold Italic",
+    "Verdana Italic",
+    "Waseem",
+    "Waseem Light",
+    "Waseem Regular",
+    "Wawati SC Regular",
+    "Wawati TC Regular",
+    "Webdings",
+    "Wingdings",
+    "Wingdings 2",
+    "Wingdings 3",
+    "Xingkai SC Bold",
+    "Xingkai SC Light",
+    "Xingkai TC Bold",
+    "Xingkai TC Light",
+    "YuGothic Bold",
+    "YuGothic Medium",
+    "YuKyokasho Bold",
+    "YuKyokasho Medium",
+    "YuKyokasho Yoko Bold",
+    "YuKyokasho Yoko Medium",
+    "YuMincho +36p Kana Demibold",
+    "YuMincho +36p Kana Extrabold",
+    "YuMincho +36p Kana Medium",
+    "YuMincho Demibold",
+    "YuMincho Extrabold",
+    "YuMincho Medium",
+    "Yuanti SC Bold",
+    "Yuanti SC Light",
+    "Yuanti SC Regular",
+    "Yuanti TC Bold",
+    "Yuanti TC Light",
+    "Yuanti TC Regular",
+    "Yuppy SC Regular",
+    "Yuppy TC Regular",
+    "Zapf Dingbats",
+    "Zapfino"
+  ],
+  "document": {
+    "characterSet": "UTF-8",
+    "compatMode": "CSS1Compat",
+    "documentMode": "undefined",
+    "layers": "undefined",
+    "images": ""
+  },
+  "documentPolicyFeatures": null,
+  "cast": [
+    [
+      "",
+      false
+    ],
+    [
+      "cast:CC1AD845",
+      false
+    ],
+    [
+      "cast:EF1A139F",
+      false
+    ],
+    [
+      "cast-dial:YouTube",
+      false
+    ]
+  ],
+  "client": {
+    "browser": {
+      "name": "Chrome",
+      "version": "132.0.0.0",
+      "major": "132"
+    },
+    "engine": {
+      "name": "Blink",
+      "version": "132.0.0.0"
+    },
+    "os": {
+      "name": "Mac OS",
+      "version": "10.15.7"
+    },
+    "device": [],
+    "cpu": []
+  },
+  "memory": {
+    "jsHeapSizeLimit": 4294705152
+  },
+  "system_styles": {
+    "colors": null
+  },
+  "network": {
+    "headers_fp": [
+      "Accept",
+      "Accept-Encoding",
+      "Accept-Language",
+      "Referer",
+      "Sec-Ch-Ua",
+      "Sec-Ch-Ua-Mobile",
+      "Sec-Ch-Ua-Platform",
+      "Sec-Fetch-Dest",
+      "Sec-Fetch-Mode",
+      "Sec-Fetch-Site",
+      "User-Agent"
+    ],
+    "tls": {
+      "scrapfly_fp": {
+        "version": "772",
+        "ch_ciphers": "GREASE-4865-4866-4867-49195-49199-49196-49200-52393-52392-49171-49172-156-157-47-53",
+        "ch_extensions": "GREASE-0-5-10-11-13-16-18-23-27-35-43-45-51-17513-65037-65281-GREASE",
+        "groups": "GREASE-4588-29-23-24",
+        "points": "0",
+        "compression": "0",
+        "supported_versions": "GREASE-772-771",
+        "supported_protocols": "h2-http11",
+        "key_shares": "GREASE-4588-29",
+        "psk": "1",
+        "signature_algs": "1027-2052-1025-1283-2053-1281-2054-1537",
+        "early_data": "0"
+      }
+    },
+    "http2": {
+      "fingerprint": "1:65536;2:0;4:6291456;6:262144|15663105|0|m,a,s,p",
+      "http2_frames": [
+        {
+          "type": 4,
+          "name": "SETTINGS",
+          "settings_map": {
+            "1": 65536,
+            "2": 0,
+            "4": 6291456,
+            "6": 262144
+          },
+          "settings_order": [
+            1,
+            2,
+            4,
+            6
+          ]
+        },
+        {
+          "type": 8,
+          "name": "WINDOW_UPDATE",
+          "increment": 15663105
+        },
+        {
+          "type": 1,
+          "stream": 1,
+          "name": "HEADERS",
+          "ordered_headers_key": [
+            ":method",
+            ":authority",
+            ":scheme",
+            ":path",
+            "sec-ch-ua-platform",
+            "user-agent",
+            "sec-ch-ua",
+            "sec-ch-ua-mobile",
+            "accept",
+            "origin",
+            "sec-fetch-site",
+            "sec-fetch-mode",
+            "sec-fetch-dest",
+            "referer",
+            "accept-encoding",
+            "accept-language",
+            "priority"
+          ]
+        }
+      ]
+    }
+  }
+}

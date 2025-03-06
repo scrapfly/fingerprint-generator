@@ -4,7 +4,7 @@ _old_*/
 *.old
 
 # Model files
-*.json
+fpgen/**.json
 *.zst
 *.ndjson
 *.dat
