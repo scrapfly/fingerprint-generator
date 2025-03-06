@@ -28,7 +28,7 @@ jobs:
 
     - name: Install Python dependencies
       run: |
-        python3 -m pip install twine build
+        python3 -m pip install twine build vermin
     
     - name: Release
       run: |
