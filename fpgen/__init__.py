@@ -9,15 +9,18 @@ def __check_module__() -> None:
     '''
     import inspect
     import os
+    import sys
+
+    # Detect if we're running as poetry script
+    if sys.argv and os.path.basename(sys.argv[0]) == 'fpgen':
+        os.environ['FPGEN_NO_INIT'] = '1'
+        return
 
     stack: list = inspect.stack(2)
     if len(stack) >= 2:
         prev, launch = stack[-2:]
         try:
-            if (launch.function, prev.function) in (
-                ('_run_module_as_main', '_get_module_details'),
-                ('<module>', '_find_and_load'),
-            ):
+            if (launch.function, prev.function) == ('_run_module_as_main', '_get_module_details'):
                 # Enable "partial execution mode" to prevent automatic downloads, starting network, etc.
                 os.environ['FPGEN_NO_INIT'] = '1'
         except AttributeError:
@@ -25,6 +28,7 @@ def __check_module__() -> None:
 
 
 __check_module__()
+del __check_module__  # Remove from namespace
 
 
 from .generator import Generator, WindowBounds

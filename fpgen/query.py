@@ -1,18 +1,13 @@
 from collections.abc import MutableMapping
-from pathlib import Path
 from typing import Any, Dict, Iterator, List, Mapping, Optional, Tuple, Union
 
 import orjson
 
 from .bayesian_network import BayesianNetwork, StrContainer
 from .exceptions import InvalidNode, NetworkError, NodePathError
-from .pkgman import __is_module__, assert_downloaded
+from .pkgman import NETWORK_FILE, __is_module__
 from .structs import CaseInsensitiveDict
 from .unpacker import lookup_value_list
-
-NETWORK_FILE = Path(__file__).parent / 'data' / "fingerprint-network.json"
-assert_downloaded(NETWORK_FILE)
-
 
 # Load the network. (unless we're running as a module)
 NETWORK: BayesianNetwork
@@ -79,9 +74,9 @@ def query(target: str) -> Union[Dict[str, Any], List[Any]]:
     )
 
 
-# ***********************
-# Functions to help lookup nodes up/down the network
-# ***********************
+"""
+Helper functions for searching for nodes up/down the network
+"""
 
 
 def _at_path(data: Mapping, path: StrContainer, *, casefold=False) -> Any:
@@ -210,9 +205,9 @@ def _reassemble_targets(targets: StrContainer, fingerprint: Dict[str, Any]):
     return result
 
 
-# ***********************
-# Miscellaneous python list/dict helpers
-# ***********************
+"""
+Miscellaneous python list/dict helpers
+"""
 
 
 def _dedupe(lst):

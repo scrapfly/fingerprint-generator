@@ -1,6 +1,5 @@
 import base64
 from collections.abc import MutableMapping
-from pathlib import Path
 from typing import List, Tuple
 
 import numpy as np
@@ -8,14 +7,7 @@ import orjson
 from indexed_zstd import IndexedZstdFile
 
 from .bayesian_network import extract_json
-from .pkgman import __is_module__, assert_downloaded
-
-DATA_DIR = Path(__file__).parent / 'data'
-
-VALUES_JSON = DATA_DIR / 'values.json'
-VALUES_DATA = DATA_DIR / 'values.dat'
-
-assert_downloaded(VALUES_JSON, VALUES_DATA)
+from .pkgman import VALUES_DATA, VALUES_JSON, __is_module__
 
 
 def load_values_json() -> List[Tuple[str, List[str]]]:
