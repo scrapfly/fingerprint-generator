@@ -10,21 +10,32 @@ from .exceptions import (
     NodePathError,
     RestrictiveConstraints,
 )
-from .query import (
+from .utils import (
     NETWORK,
     _assert_network_exists,
     _at_path,
     _find_roots,
+    _flatten_constraints,
     _lookup_possibilities,
     _lookup_root_possibilities,
+    _make_output_dict,
+    _maybe_flatten,
     _reassemble_targets,
 )
-from .unpacker import flatten, make_output_dict
 
 
 @dataclass
 class WindowBounds:
-    """Constrains the window size of the generated fingerprint"""
+    """
+    Constrains the window size of the generated fingerprint.
+    At least one parameter must be passed.
+
+    Parameters:
+        min_width (int, optional): Lower bound width
+        max_width (int, optional): Upper bound width
+        min_height (int, optional): Lower bound height
+        max_height (int, optional): Upper bound height
+    """
 
     min_width: Optional[int] = None
     max_width: Optional[int] = None
@@ -58,21 +69,25 @@ class Generator:
         *,
         window_bounds: Optional[WindowBounds] = None,
         strict: bool = True,
+        flatten: bool = False,
         **constraints: Any,
     ):
         """
-        Initializes the FingerprintGenerator with the given options.
+        Initializes the Generator with the given options.
 
         Parameters:
-            window (WindowBounds, optional): WindowBounds size constraints for the generated fingerprint.
+            constraints_dict (dict, optional): Constraints for the network, passed as a dictionary.
+            window (WindowBounds, optional): Constrain the output window size.
             strict (bool, optional): Whether to raise an exception if the constraints are too strict. Default is False.
-            **constraints: Constrains for the network
+            flatten (bool, optional): Whether to flatten output dictionaries.
+            **constraints: Constraints for the network.
         """
         _assert_dict_xor_kwargs(constraints_dict, constraints)
 
         # Set default options
         self.window_bounds: Optional[WindowBounds] = window_bounds
         self.strict: bool = strict
+        self.flatten: bool = flatten
         self.filtered_values: Dict[str, List[str]] = {}
 
         if constraints_dict:
@@ -88,6 +103,7 @@ class Generator:
         *,
         window_bounds: Optional[WindowBounds] = None,
         strict: Optional[bool] = None,
+        flatten: Optional[bool] = None,
         target: str,
         **constraints: Any,
     ) -> Any: ...
@@ -99,6 +115,7 @@ class Generator:
         *,
         window_bounds: Optional[WindowBounds] = None,
         strict: Optional[bool] = None,
+        flatten: Optional[bool] = None,
         target: Optional[StrContainer] = None,
         **constraints: Any,
     ) -> Dict[str, Any]: ...
@@ -109,18 +126,20 @@ class Generator:
         *,
         window_bounds: Optional[WindowBounds] = None,
         strict: Optional[bool] = None,
+        flatten: Optional[bool] = None,
         target: Optional[Union[str, StrContainer]] = None,
         **constraints: Any,
     ) -> Dict[str, Any]:
         """
-        Generates a fingerprint and a matching set of ordered headers using a combination of the default options
-        specified in the constructor and their possible overrides provided here.
+        Generates a fingerprint.
 
         Parameters:
+            constraints_dict (dict, optional): Constraints for the network, passed as a dictionary.
             window_bounds (WindowBounds, optional): Constrain the output window size.
             strict (bool, optional): Whether to raise an exception if the constraints are too strict.
-            constraints: Constrains for the network
+            flatten (bool, optional): Whether to flatten the output dictionary
             target (Optional[Union[str, StrContainer]]): Only generate specific value(s)
+            **constraints: Constraints for the network.
         """
         _assert_dict_xor_kwargs(constraints_dict, constraints)
         _assert_network_exists()
@@ -137,6 +156,7 @@ class Generator:
         # Merge new options with old
         window_bounds = _first(window_bounds, self.window_bounds)
         strict = _first(strict, self.strict)
+        flatten = _first(flatten, self.flatten)
 
         # Handle window constraints
         if isinstance(window_bounds, WindowBounds):
@@ -171,12 +191,14 @@ class Generator:
             filtered_values.pop(next(iter(filtered_values.keys())))
 
         # If we arent searching for certain targets, we can return right away
-        output = make_output_dict(fingerprint)
         if target:
+            output = _make_output_dict(fingerprint, flatten=False)  # Don't flatten yet
             output = _reassemble_targets(_tupilize(target), output)
             if isinstance(target, str):
-                return output[target]
-        return output
+                output = output[target]
+            return _maybe_flatten(flatten, output)
+
+        return _make_output_dict(fingerprint, flatten=flatten)
 
     @staticmethod
     def _build_constraints(
@@ -186,7 +208,7 @@ class Generator:
         Builds a map of filtered values based on given constraints
         """
         # flatten to match the format of the fingerprint network
-        constraints = flatten(constraints, casefold=True)
+        constraints = _flatten_constraints(constraints, casefold=True)
 
         for key, value in constraints.items():
             possible_values = _lookup_possibilities(key)
@@ -291,7 +313,9 @@ def _assert_dict_xor_kwargs(
     """
     if passed_dict:
         if passed_kwargs:
-            raise ValueError("Cannot pass values as dict & as parameters")
+            raise ValueError(
+                f"Cannot pass values as dict & as parameters: {passed_dict} and {passed_kwargs}"
+            )
         if not isinstance(passed_dict, dict):
             raise ValueError(
                 "Invalid argument. Constraints must be passed as kwargs or as a dictionary."

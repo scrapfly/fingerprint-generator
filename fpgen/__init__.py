@@ -32,6 +32,9 @@ del __check_module__  # Remove from namespace
 
 
 from .generator import Generator, WindowBounds
-from .query import query
 
-__all__ = ['Generator', 'WindowBounds', 'query']
+# Expose the bayesian network interface for tests
+from .utils import NETWORK as __network__
+from .utils import query
+
+__all__ = ['Generator', 'WindowBounds', 'query', '__network__']

@@ -64,7 +64,6 @@ Commands:
   fetch       Fetch the latest model from GitHub
   recompress  Compress model files after running decompress
   remove      Remove all downloaded and/or extracted model files
-
 ```
 
 </details>
@@ -82,6 +81,25 @@ Use the `Generator` object:
 >>> gen = fpgen.Generator()
 >>> gen.generate()
 ```
+
+<details>
+<summary>
+Parameters list
+</summary>
+
+```
+Initializes the Generator with the given options.
+Values passed to the Generator object will be inherited when calling Generator.generate()
+
+Parameters:
+    constraints_dict (dict, optional): Constraints for the network, passed as a dictionary.
+    window_bounds (WindowBounds, optional): Constrain the output window size.
+    strict (bool, optional): Whether to raise an exception if the constraints are too strict.
+    flatten (bool, optional): Whether to flatten the output dictionary
+    target (Optional[Union[str, StrContainer]]): Only generate specific value(s)
+    **constraints: Constraints for the network.
+```
+</details>
 
 [See example output.](https://raw.githubusercontent.com/scrapfly/fingerprint-generator/refs/heads/main/assets/example-output.json)
 
@@ -144,6 +162,23 @@ bounds = fpgen.WindowBounds(
 gen.generate(window_bounds=bounds)
 ```
 
+<details>
+<summary>
+Parameters for WindowBounds
+</summary>
+
+```
+Constrains the window size of the generated fingerprint.
+At least one parameter must be passed.
+
+Parameters:
+    min_width (int, optional): Lower bound width
+    max_width (int, optional): Upper bound width
+    min_height (int, optional): Lower bound height
+    max_height (int, optional): Upper bound height
+```
+</details>
+
 ---
 
 ## Control what data is generated
@@ -202,6 +237,22 @@ Passing a nested target:
 >>> fpgen.query('navigator.maxTouchPoints') # Dot seperated path
 [0, 1, 2, 5, 6, 9, 10, 17, 20, 40, 256]
 ```
+
+<details>
+<summary>
+Parameters for query
+</summary>
+
+```
+Query a list of possibilities given a target.
+
+Parameters:
+    target (str): Target node to query possible values for
+    flatten (bool, optional): Whether to flatten the output array
+    sort (bool, optional): Whether to sort the output arrays
+```
+</details>
+
 
 > [!NOTE]
 > Since fpgen is trained on live data, queries may occasionally return invalid or anomalous values. These values will typically only appear in about 1 out of every 20,000 generations.

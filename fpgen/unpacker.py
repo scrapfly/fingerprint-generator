@@ -1,9 +1,7 @@
 import base64
-from collections.abc import MutableMapping
 from typing import List, Tuple
 
 import numpy as np
-import orjson
 from indexed_zstd import IndexedZstdFile
 
 from .bayesian_network import extract_json
@@ -69,41 +67,3 @@ def lookup_value_list(index_list):
 
     file.close()
     return value_map
-
-
-def flatten(dictionary, parent_key='', casefold=False):
-    # Original flattening logic from here:
-    # https://stackoverflow.com/questions/6027558/flatten-nested-dictionaries-compressing-keys
-
-    items = []
-    for key, value in dictionary.items():
-        new_key = parent_key + '.' + key if parent_key else key
-        if isinstance(value, MutableMapping):
-            items.extend(flatten(value, new_key).items())
-        else:
-            # If we have a tuple or set, treat it as an array of possible values
-            if isinstance(value, (set, tuple)):
-                value = tuple(orjson.dumps(v).decode() for v in value)
-            else:
-                value = orjson.dumps(value).decode()
-            if casefold:
-                new_key = new_key.casefold()
-            items.append((new_key, value))
-    return dict(items)
-
-
-def make_output_dict(data):
-    # Original unflattening logic from here:
-    # https://stackoverflow.com/questions/6037503/python-unflatten-dict
-
-    result_dict = dict()
-    for key, value in zip(data.keys(), lookup_value_list(data.values())):
-        parts = key.split(".")
-        d = result_dict
-        for part in parts[:-1]:
-            if part not in d:
-                d[part] = dict()
-            d = d[part]
-        d[parts[-1]] = orjson.loads(value)
-
-    return result_dict
