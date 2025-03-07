@@ -44,7 +44,7 @@ def query(
 
     Parameters:
         target (str): Target node to query possible values for
-        flatten (bool, optional): Whether to flatten the output array
+        flatten (bool, optional): Whether to flatten the output dictionary
         sort (bool, optional): Whether to sort the output arrays
     """
     _assert_network_exists()
