@@ -74,12 +74,19 @@ Commands:
 
 ### Generate a fingerprint
 
-Use the `Generator` object:
+
+Simple usage:
 
 ```python
 >>> import fpgen
->>> gen = fpgen.Generator()
->>> gen.generate()
+>>> fpgen.generate(browser='Chrome', os='Windows')
+```
+
+Or use the Generator object to pass filters downward:
+
+```python
+>>> gen = fpgen.Generator(browser='Chrome')  # Filter by Chrome
+>>> gen.generate(os='Windows')  # Generate Windows & Chrome fingerprints
 ```
 
 <details>
@@ -113,7 +120,7 @@ You can narrow down generated fingerprints by specifying filters for **any** dat
 
 ```python
 # Only generate fingerprints with Windows, Chrome, and Intel GPU:
->>> gen.generate(
+>>> fpgen.generate(
 ...     os='Windows',
 ...     browser='Chrome',
 ...     gpu={'vendor': 'Google Inc. (Intel)'}
@@ -126,7 +133,7 @@ This can also be passed as a dictionary.
 </summary>
 
 ```python
->>> gen.generate({
+>>> fpgen.generate({
 ...     'os': 'Windows',
 ...     'browser': 'Chrome',
 ...     'gpu': {'vendor': 'Google Inc. (Intel)'},
@@ -140,7 +147,7 @@ This can also be passed as a dictionary.
 Pass in multiple constraints for the generator to select from.
 
 ```python
-gen.generate({
+fpgen.generate({
     'os': ('Windows', 'Mac OS X'),
     'browser': ('Firefox', 'Chrome'),
 })
@@ -159,7 +166,7 @@ bounds = fpgen.WindowBounds(
     min_height=400,
     max_height=720,
 )
-gen.generate(window_bounds=bounds)
+fpgen.generate(window_bounds=bounds)
 ```
 
 <details>
@@ -190,14 +197,14 @@ To generate specific data fields, use the `target` parameter with a string (or a
 Only generate HTTP headers:
 
 ```python
->>> gen.generate(target='headers')
+>>> fpgen.generate(target='headers')
 {'accept-language': 'uk-UA,uk;q=0.9,en-US;q=0.8,en;q=0.7', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept': '*/*', 'priority': 'u=1, i', 'sec-ch-ua': '"Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"', 'sec-ch-ua-mobile': '?0', 'sec-ch-ua-platform': '"macOS"', 'sec-fetch-dest': 'empty', 'sec-fetch-mode': 'cors', 'sec-fetch-site': 'same-site', 'sec-gpc': None}
 ```
 
 Generate a User-Agent for Windows & Chrome:
 
 ```python
->>> gen.generate(
+>>> fpgen.generate(
 ...     os='Windows',
 ...     browser='Chrome',
 ...     # Nested targets must be seperated by dots:
@@ -209,7 +216,7 @@ Generate a User-Agent for Windows & Chrome:
 Generate a Firefox TLS fingerprint:
 
 ```python
->>> gen.generate(
+>>> fpgen.generate(
 ...     browser='Firefox',
 ...     target='network.tls.scrapfly_fp'
 ... )
@@ -273,7 +280,7 @@ def width_filter(width):
 values = filter(width_filter, values)
 
 # Pass in the new list of possible widths:
-output = gen.generate(screen: {'width': values})
+output = fpgen.generate(screen: {'width': values})
 ```
 
 ---

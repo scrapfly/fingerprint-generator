@@ -30,11 +30,12 @@ def __check_module__() -> None:
 __check_module__()
 del __check_module__  # Remove from namespace
 
+# ruff: noqa: E402
 
-from .generator import Generator, WindowBounds
+from .generator import Generator, WindowBounds, generate
 
 # Expose the bayesian network interface for tests
 from .utils import NETWORK as __network__
 from .utils import query
 
-__all__ = ['Generator', 'WindowBounds', 'query', '__network__']
+__all__ = ['Generator', 'WindowBounds', 'generate', 'query', '__network__']

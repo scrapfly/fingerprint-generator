@@ -147,11 +147,10 @@ class Generator:
         if constraints_dict:
             constraints = constraints_dict
 
+        # Inherit the constraints from the class instance
+        filtered_values = self.filtered_values
         if constraints:
-            filtered_values: Dict[str, List[str]] = {}
             self._build_constraints(constraints, filtered_values)
-        else:
-            filtered_values = self.filtered_values
 
         # Merge new options with old
         window_bounds = _first(window_bounds, self.window_bounds)
@@ -322,4 +321,19 @@ def _assert_dict_xor_kwargs(
             )
 
 
-__all__ = ('Generator', 'WindowBounds')
+"""
+A global `generate` function for those calling
+fpgen.generate() directly without creating a Generator object
+"""
+
+GLOBAL_GENERATOR: Optional[Generator] = None
+
+
+def generate(*args, **kwargs) -> Dict[str, Any]:
+    global GLOBAL_GENERATOR
+    if GLOBAL_GENERATOR is None:
+        GLOBAL_GENERATOR = Generator()
+    return GLOBAL_GENERATOR.generate(*args, **kwargs)
+
+
+__all__ = ('Generator', 'WindowBounds', 'generate')

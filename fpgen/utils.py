@@ -5,11 +5,13 @@ from typing import (
     Iterable,
     Iterator,
     List,
+    Literal,
     Mapping,
     Optional,
     Set,
     Tuple,
     Union,
+    overload,
 )
 
 import orjson
@@ -115,6 +117,24 @@ def _at_path(data: Mapping, path: StrContainer, *, casefold=False) -> Any:
             raise NodePathError(key)
         data = data[key]
     return data
+
+
+@overload
+def _lookup_root_possibilities(
+    key: str,
+    nested_keys: Optional[List[str]] = None,
+    casefold: bool = True,
+    none_if_missing: Literal[False] = False,
+) -> Tuple[str, Dict[str, Any]]: ...
+
+
+@overload
+def _lookup_root_possibilities(
+    key: str,
+    nested_keys: Optional[List[str]] = None,
+    casefold: bool = True,
+    none_if_missing: Literal[True] = True,
+) -> Optional[Tuple[str, Dict[str, Any]]]: ...
 
 
 def _lookup_root_possibilities(
