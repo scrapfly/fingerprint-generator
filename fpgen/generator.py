@@ -148,7 +148,7 @@ class Generator:
             constraints = constraints_dict
 
         # Inherit the constraints from the class instance
-        filtered_values = self.filtered_values
+        filtered_values = self.filtered_values.copy()
         if constraints:
             self._build_constraints(constraints, filtered_values)
 

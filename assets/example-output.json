@@ -20,7 +20,7 @@
     "maxTouchPoints": 0
   },
   "platformInfo": "Macintosh; Intel Mac OS X 10_15_7",
-  "os": "Mac OS X",
+  "os": "MacOS",
   "gpu": {
     "vendor": "Google Inc. (Intel)",
     "renderer": "ANGLE (Intel, ANGLE Metal Renderer: Intel(R) Iris(TM) Plus Graphics, Unspecified Version)"

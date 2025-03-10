@@ -148,7 +148,7 @@ Pass in multiple constraints for the generator to select from.
 
 ```python
 fpgen.generate({
-    'os': ('Windows', 'Mac OS X'),
+    'os': ('Windows', 'MacOS'),
     'browser': ('Firefox', 'Chrome'),
 })
 ```
