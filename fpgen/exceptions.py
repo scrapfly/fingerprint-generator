@@ -24,3 +24,7 @@ class NodePathError(InvalidNode):
 
 class MissingRelease(Exception):
     """Raised when a required GitHub release asset is missing."""
+
+
+class CannotTraceLargeConfigSpace(ValueError):
+    """Raises when the configuration space of a node is too large to trace with exact inference"""

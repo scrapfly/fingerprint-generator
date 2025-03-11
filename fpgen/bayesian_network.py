@@ -108,7 +108,7 @@ class BayesianNetwork:
         target_nodes: Set[str],
     ) -> Optional[Dict[str, Any]]:
         # Recursively find all possible parents
-        parents = self._filtered_sample_helper(value_possibilities)
+        parents = self.get_shared_possibilities(value_possibilities)
         # Handle impossible constraints
         if parents is None:
             return None
@@ -140,7 +140,7 @@ class BayesianNetwork:
         value_possibilities: Mapping[str, StrContainer],
     ) -> Optional[Dict[str, Any]]:
         # Recursively find all possible parents
-        parents = self._filtered_sample_helper(value_possibilities)
+        parents = self.get_shared_possibilities(value_possibilities)
         # Handle impossible constraints
         if parents is None:
             return None
@@ -153,12 +153,12 @@ class BayesianNetwork:
         """
         depth_set.update(self.nodes_by_name[name].index for name in node_names)
 
-    def _filtered_sample_helper(
+    def get_shared_possibilities(
         self,
         value_possibilities: Mapping[str, StrContainer],
         orig_parents: Optional[Tuple[str, ...]] = None,
         seen_nodes: Optional[Set[Tuple[str, int]]] = None,
-    ) -> Optional[Mapping[str, Any]]:
+    ) -> Optional[Mapping[str, StrContainer]]:
         """
         Helper to search for all possible parents' values of the given constraints
         This works by tracing nodes up the tree and adding each parents possible values

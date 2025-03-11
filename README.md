@@ -74,7 +74,6 @@ Commands:
 
 ### Generate a fingerprint
 
-
 Simple usage:
 
 ```python
@@ -106,6 +105,7 @@ Parameters:
     target (Optional[Union[str, StrContainer]]): Only generate specific value(s)
     **constraints: Constraints for the network.
 ```
+
 </details>
 
 [See example output.](https://raw.githubusercontent.com/scrapfly/fingerprint-generator/refs/heads/main/assets/example-output.json)
@@ -148,7 +148,7 @@ Pass in multiple constraints for the generator to select from.
 
 ```python
 fpgen.generate({
-    'os': ('Windows', 'Mac OS X'),
+    'os': ('Windows', 'MacOS'),
     'browser': ('Firefox', 'Chrome'),
 })
 ```
@@ -184,6 +184,7 @@ Parameters:
     min_height (int, optional): Lower bound height
     max_height (int, optional): Upper bound height
 ```
+
 </details>
 
 ---
@@ -258,8 +259,8 @@ Parameters:
     flatten (bool, optional): Whether to flatten the output dictionary
     sort (bool, optional): Whether to sort the output arrays
 ```
-</details>
 
+</details>
 
 > [!NOTE]
 > Since fpgen is trained on live data, queries may occasionally return invalid or anomalous values. These values will typically only appear in about 1 out of every 20,000 generations.
@@ -281,6 +282,74 @@ values = filter(width_filter, values)
 
 # Pass in the new list of possible widths:
 output = fpgen.generate(screen: {'width': values})
+```
+
+---
+
+## Get the probabilities of a target
+
+Calculate the probability distribution of a target given any filter:
+
+```python
+>>> fpgen.trace(target='browser', os='Windows')
+[<Chrome: 74.94798%>, <Firefox: 14.37555%>, <Edge: 8.41541%>, <Opera: 1.47501%>, <Yandex Browser: 0.75831%>, <Whale: 0.02774%>]
+```
+
+Multiple targets can be passed as a list/tuple.
+Here is an example of tracking the probability of browser & OS given a GPU vendor:
+
+```python
+>>> fpgen.trace(
+...   target=('browser', 'os'),
+...   gpu={'vendor': 'Google Inc. (Intel)'}
+... )
+{
+  'browser': [<Chrome: 74.94798%>, <Firefox: 14.37555%>, <Edge: 8.41541%>, <Opera: 1.47501%>, <Yandex Browser: 0.75831%>, <Whale: 0.02774%>],
+  'os': [<Windows: 64.47559%>, <MacOS: 29.20664%>, <Linux: 6.09444%>, <ChromeOS: 0.22333%>]
+}
+```
+
+This also works in the Generator object:
+
+```python
+>>> gen = fpgen.Generator(os='ChromeOS')
+>>> gen.trace(target='browser')
+[<Chrome: 100.00000%>]
+```
+
+<details>
+<summary>
+Parameters for trace
+</summary>
+
+```
+Compute the probability distribution(s) of a target variable given constraints.
+
+Parameters:
+    target (str): The target variable name.
+    constraints_dict (Dict[str, Any], optional): A dictionary mapping variable names to their observed value.
+    exact (bool, optional): If True, perform full exact inference.
+            Otherwise, perform approximate beam search inference (much faster).
+    flatten (bool, optional): If True, return a flattened dictionary.
+    **constraints: Additional constraints to apply to the target variable.
+Returns:
+    A dictionary mapping probabilities to the target's possible values.
+```
+
+</details>
+
+<hr width=50>
+
+### Reading TraceResult
+
+To read the output `TraceResult` object:
+
+```python
+>>> chrome = fpgen.trace(target='browser', os='ChromeOS')[0]
+>>> chrome.probability
+1.0
+>>> chrome.value
+'Chrome'
 ```
 
 ---

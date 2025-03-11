@@ -1,26 +1,22 @@
 from dataclasses import dataclass
-from typing import Any, Dict, List, Optional, Tuple, Union, overload
+from typing import Any, Dict, List, Optional, Union, overload
 
 import orjson
 
 from .bayesian_network import StrContainer
-from .exceptions import (
-    InvalidConstraints,
-    InvalidWindowBounds,
-    NodePathError,
-    RestrictiveConstraints,
-)
+from .exceptions import InvalidWindowBounds, RestrictiveConstraints
+from .trace import TraceResult, TraceResultDict, trace
 from .utils import (
     NETWORK,
+    _assert_dict_xor_kwargs,
     _assert_network_exists,
-    _at_path,
+    _build_constraints,
     _find_roots,
-    _flatten_constraints,
     _lookup_possibilities,
-    _lookup_root_possibilities,
     _make_output_dict,
     _maybe_flatten,
     _reassemble_targets,
+    _tupilize,
 )
 
 
@@ -94,7 +90,7 @@ class Generator:
             constraints = constraints_dict
 
         if constraints:
-            self._build_constraints(constraints, self.filtered_values)
+            _build_constraints(constraints, self.filtered_values)
 
     @overload
     def generate(
@@ -148,9 +144,9 @@ class Generator:
             constraints = constraints_dict
 
         # Inherit the constraints from the class instance
-        filtered_values = self.filtered_values
+        filtered_values = self.filtered_values.copy()
         if constraints:
-            self._build_constraints(constraints, filtered_values)
+            _build_constraints(constraints, filtered_values)
 
         # Merge new options with old
         window_bounds = _first(window_bounds, self.window_bounds)
@@ -199,58 +195,68 @@ class Generator:
 
         return _make_output_dict(fingerprint, flatten=flatten)
 
-    @staticmethod
-    def _build_constraints(
-        constraints: Dict[str, Any], filtered_values: Dict[str, List[str]]
-    ) -> None:
+    @overload
+    def trace(
+        self,
+        target: str,
+        constraints_dict: Optional[Dict[str, Any]] = None,
+        *,
+        exact: bool = False,
+        flatten: bool = False,
+        **constraints,
+    ) -> List[TraceResult]: ...
+
+    @overload
+    def trace(
+        self,
+        target: StrContainer,
+        constraints_dict: Optional[Dict[str, Any]] = None,
+        *,
+        exact: bool = False,
+        flatten: bool = False,
+        **constraints,
+    ) -> TraceResultDict: ...
+
+    def trace(
+        self,
+        target: Union[str, StrContainer],
+        constraints_dict: Optional[Dict[str, Any]] = None,
+        *,
+        exact: bool = False,
+        flatten: bool = False,
+        **constraints,
+    ) -> Union[List[TraceResult], TraceResultDict]:
         """
-        Builds a map of filtered values based on given constraints
+        Compute the probability distribution(s) of a target variable given constraints.
+
+        Parameters:
+            target (str): The target variable name.
+            constraints_dict (Dict[str, Any], optional): A dictionary mapping variable names to their observed value.
+            exact (bool, optional): If True, perform full exact inference.
+                    Otherwise, perform approximate beam search inference (much faster).
+            flatten (bool, optional): If True, return a flattened dictionary.
+            **constraints: Additional constraints to apply to the target variable.
+        Returns:
+            A dictionary mapping probabilities to the target's possible values.
         """
-        # flatten to match the format of the fingerprint network
-        constraints = _flatten_constraints(constraints, casefold=True)
+        if constraints_dict:
+            constraints = constraints_dict
 
-        for key, value in constraints.items():
-            possible_values = _lookup_possibilities(key)
+        # Inherit the constraints from the class instance
+        filtered_values = self.filtered_values.copy()
+        if constraints:
+            # Add the new constraints to the filtered values
+            _build_constraints(constraints, filtered_values)
+        # Get the common possibilities
+        if shared_possibilities := NETWORK.get_shared_possibilities(filtered_values):
+            filtered_values = shared_possibilities
 
-            # handle nested keys
-            nested_keys: List[str] = []
-            if possible_values is None:
-                key, possible_values = _lookup_root_possibilities(key, nested_keys)
-
-            filtered_values[key] = []
-
-            for value_con in _tupilize(value):
-                val = orjson.loads(value_con.casefold())
-
-                # handle nested keys by filtering out possible values that dont
-                # match the value at the target
-                if nested_keys:
-                    nested_keys = list(map(lambda s: s.casefold(), nested_keys))
-                    for poss_value, lookup_index in possible_values.items():
-                        # parse the dictionary
-                        outputted_possible = orjson.loads(poss_value)
-
-                        # check if the value is a possible value at the nested path
-                        try:
-                            target_value = _at_path(outputted_possible, nested_keys)
-                        except NodePathError:
-                            continue  # Path didn't exist, bad data
-                        if target_value == val:
-                            filtered_values[key].append(lookup_index)
-                    # if nothing was found, raise an error
-                    if not filtered_values[key]:
-                        raise InvalidConstraints(
-                            f'{value_con} is not a possible value for "{key}" '
-                            f'at "{".".join(nested_keys)}"'
-                        )
-                    continue
-
-                # non nested values can be handled by directly checking possible_values
-                lookup_index = possible_values.get(value_con.casefold())
-                # value is not possible
-                if lookup_index is None:
-                    raise InvalidConstraints(f'{value_con} is not a possible value for "{key}"')
-                filtered_values[key].append(lookup_index)
+        return trace(
+            target=target,
+            exact=exact,
+            flatten=flatten,
+            __filtered_evidence=filtered_values,
+        )
 
     def _filter_by_window(
         self, strict: Optional[bool], window: WindowBounds, filtered_values: Dict
@@ -295,30 +301,6 @@ def _first(*values):
     Simple function that returns the first non-None value passed
     """
     return next((v for v in values if v is not None), None)
-
-
-def _tupilize(value) -> Union[List[str], Tuple[str, ...]]:
-    """
-    If a value is not a tuple or list, wrap it in a tuple
-    """
-    return value if isinstance(value, (tuple, list)) else (value,)
-
-
-def _assert_dict_xor_kwargs(
-    passed_dict: Optional[Dict[str, Any]], passed_kwargs: Optional[Dict[str, Any]]
-) -> None:
-    """
-    Confirms a dict is either passed as an argument, xor kwargs are passed.
-    """
-    if passed_dict:
-        if passed_kwargs:
-            raise ValueError(
-                f"Cannot pass values as dict & as parameters: {passed_dict} and {passed_kwargs}"
-            )
-        if not isinstance(passed_dict, dict):
-            raise ValueError(
-                "Invalid argument. Constraints must be passed as kwargs or as a dictionary."
-            )
 
 
 """
