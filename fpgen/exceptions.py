@@ -14,10 +14,6 @@ class InvalidNode(NetworkError):
     """Raises when a node doesn't exist"""
 
 
-class InvalidWindowBounds(InvalidConstraints):
-    """Raises when window bounds are too restrictive"""
-
-
 class NodePathError(InvalidNode):
     """Raises when a key path doesn't exist"""
 

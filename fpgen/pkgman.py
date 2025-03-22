@@ -7,6 +7,8 @@ from typing import Any, Dict
 
 import click
 import httpx
+import orjson
+import zstandard
 
 from .exceptions import MissingRelease
 
@@ -107,6 +109,29 @@ class ModelPuller:
                 z.extractall(DATA_DIR, pwd=password)
 
             os.unlink(temp_file.name)
+
+
+"""
+File helper
+"""
+
+
+def extract_json(path: Path) -> dict:
+    """
+    Reads JSON from a file (or from a zst if needed).
+    """
+    # Check for uncompressed json
+    if path.exists():
+        with open(path, 'rb') as f:
+            return orjson.loads(f.read())
+
+    # Check for zst json
+    elif (zst_path := path.with_suffix('.json.zst')).exists():
+        with open(zst_path, 'rb') as f:
+            decomp = zstandard.ZstdDecompressor()
+            return orjson.loads(decomp.decompress(f.read()))
+
+    raise FileNotFoundError(f'Missing required data file for: {path}')
 
 
 """

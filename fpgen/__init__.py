@@ -32,11 +32,11 @@ del __check_module__  # Remove from namespace
 
 # ruff: noqa: E402
 
-from .generator import Generator, WindowBounds, generate
+from .generator import Generator, generate
 from .trace import TraceResult, trace
 
 # Expose the bayesian network interface for tests
 from .utils import NETWORK as __network__
 from .utils import query
 
-__all__ = ['Generator', 'WindowBounds', 'TraceResult', 'generate', 'query', 'trace', '__network__']
+__all__ = ['Generator', 'TraceResult', 'generate', 'query', 'trace', '__network__']

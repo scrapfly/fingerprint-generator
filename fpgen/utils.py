@@ -17,7 +17,13 @@ from typing import (
 import orjson
 
 from .bayesian_network import BayesianNetwork, StrContainer
-from .exceptions import InvalidConstraints, InvalidNode, NetworkError, NodePathError
+from .exceptions import (
+    InvalidConstraints,
+    InvalidNode,
+    NetworkError,
+    NodePathError,
+    RestrictiveConstraints,
+)
 from .pkgman import NETWORK_FILE, __is_module__
 from .structs import CaseInsensitiveDict
 from .unpacker import lookup_value_list
@@ -370,11 +376,11 @@ Parse user input
 """
 
 
-def _flatten_constraints(
+def _flatten_conditions(
     dictionary: Mapping[str, Any], parent_key: str = '', casefold: bool = False
 ) -> Dict[str, Any]:
     """
-    Flattens the passed list of constraints
+    Flattens the passed list of conditions
     """
     # Original flattening logic from here:
     # https://stackoverflow.com/questions/6027558/flatten-nested-dictionaries-compressing-keys
@@ -382,12 +388,13 @@ def _flatten_constraints(
     for key, value in dictionary.items():
         new_key = parent_key + '.' + key if parent_key else key
         if isinstance(value, MutableMapping):
-            items.extend(_flatten_constraints(value, new_key).items())
+            items.extend(_flatten_conditions(value, new_key).items())
         else:
             # If we have a tuple or set, treat it as an array of possible values
             if isinstance(value, (set, tuple)):
                 value = tuple(orjson.dumps(v).decode() for v in value)
-            else:
+            # If we have a function, don't flatten it
+            elif not callable(value):
                 value = orjson.dumps(value).decode()
             if casefold:
                 new_key = new_key.casefold()
@@ -395,55 +402,102 @@ def _flatten_constraints(
     return dict(items)
 
 
-def _build_constraints(constraints: Dict[str, Any], filtered_values: Dict[str, List[str]]) -> None:
+def build_evidence(
+    conditions: Dict[str, Any], evidence: Dict[str, Set[str]], strict: Optional[bool] = None
+) -> None:
     """
-    Builds a map of filtered values based on given constraints
+    Builds evidence based on the user's inputted conditions
     """
-    # flatten to match the format of the fingerprint network
-    constraints = _flatten_constraints(constraints, casefold=True)
+    if strict is None:
+        strict = True
 
-    for key, value in constraints.items():
+    # Flatten to match the format of the fingerprint network
+    conditions = _flatten_conditions(conditions, casefold=True)
+
+    for key, value in conditions.items():
         possible_values = _lookup_possibilities(key)
 
-        # handle nested keys
+        # Handle nested keys
         nested_keys: List[str] = []
         if possible_values is None:
             key, possible_values = _lookup_root_possibilities(key, nested_keys)
+        # Get the real name for the key
+        key = NETWORK.nodes_by_name[key].name
 
-        filtered_values[key] = []
+        evidence[key] = set()
 
         for value_con in _tupilize(value):
-            val = orjson.loads(value_con.casefold())
+            # Read the passed value
+            if callable(value_con):
+                val = value_con  # Callable
+            else:
+                val = orjson.loads(value_con.casefold())  # Dict/list/str data
 
-            # handle nested keys by filtering out possible values that dont
+            # Handle nested keys by filtering out possible values that dont
             # match the value at the target
             if nested_keys:
                 nested_keys = list(map(lambda s: s.casefold(), nested_keys))
                 for poss_value, lookup_index in possible_values.items():
-                    # parse the dictionary
+                    # Parse the dictionary
                     outputted_possible = orjson.loads(poss_value)
 
-                    # check if the value is a possible value at the nested path
+                    # Check if the value is a possible value at the nested path
                     try:
                         target_value = _at_path(outputted_possible, nested_keys)
                     except NodePathError:
                         continue  # Path didn't exist, bad data
-                    if target_value == val:
-                        filtered_values[key].append(lookup_index)
-                # if nothing was found, raise an error
-                if not filtered_values[key]:
+                    if callable(val) and val(target_value):
+                        evidence[key].add(lookup_index)
+                    elif target_value == val:
+                        evidence[key].add(lookup_index)
+
+                # If nothing was found, raise an error
+                if not evidence[key]:
+                    if callable(val):
+                        # Callable didnt work
+                        raise InvalidConstraints(
+                            f'The passed function ({val}) yielded no possible values for "{key}" '
+                            f'at "{".".join(nested_keys)}"'
+                        )
                     raise InvalidConstraints(
                         f'{value_con} is not a possible value for "{key}" '
                         f'at "{".".join(nested_keys)}"'
                     )
                 continue
 
-            # non nested values can be handled by directly checking possible_values
+            # ===== NON NESTED VALUE HANDLING =====
+
+            # If callable, get all possible values then check for matches
+            if callable(val):
+                # Filter by val(x)
+                found = False
+                for possible_val, lookup_index in possible_values.items():
+                    if val(orjson.loads(possible_val)):
+                        evidence[key].add(lookup_index)
+                        found = True
+                if not found:
+                    raise InvalidConstraints(
+                        f'The passed function ({val}) yielded no possible values for "{key}"'
+                    )
+                continue
+
+            # Non nested values can be handled by directly checking possible_values
             lookup_index = possible_values.get(value_con.casefold())
-            # value is not possible
+            # Value is not possible
             if lookup_index is None:
                 raise InvalidConstraints(f'{value_con} is not a possible value for "{key}"')
-            filtered_values[key].append(lookup_index)
+            evidence[key].add(lookup_index)
+
+    # Validate the evidence is possible (or try to relax the evidence if strict is False)
+    while True:
+        try:
+            NETWORK.validate_evidence(evidence)
+        except RestrictiveConstraints as e:
+            if strict:
+                raise e
+            # Remove the last added key
+            evidence.pop(next(iter(evidence.keys())))
+        break
 
 
 def _assert_dict_xor_kwargs(
@@ -452,15 +506,19 @@ def _assert_dict_xor_kwargs(
     """
     Confirms a dict is either passed as an argument, xor kwargs are passed.
     """
-    if passed_dict:
-        if passed_kwargs:
-            raise ValueError(
-                f"Cannot pass values as dict & as parameters: {passed_dict} and {passed_kwargs}"
-            )
-        if not isinstance(passed_dict, dict):
-            raise ValueError(
-                "Invalid argument. Constraints must be passed as kwargs or as a dictionary."
-            )
+    # Exit if neither is passed
+    if passed_dict is None and passed_kwargs is None:
+        return
+    # Exit if both are passed
+    if passed_dict and passed_kwargs:
+        raise ValueError(
+            f"Cannot pass values as dict & as parameters: {passed_dict} and {passed_kwargs}"
+        )
+    # Raise if incorrect type
+    if not isinstance(passed_dict or passed_kwargs, dict):
+        raise ValueError(
+            "Invalid argument. Constraints must be passed as kwargs or as a dictionary."
+        )
 
 
 """

@@ -4,8 +4,7 @@ from typing import List, Tuple
 import numpy as np
 from indexed_zstd import IndexedZstdFile
 
-from .bayesian_network import extract_json
-from .pkgman import VALUES_DATA, VALUES_JSON, __is_module__
+from .pkgman import VALUES_DATA, VALUES_JSON, __is_module__, extract_json
 
 
 def load_values_json() -> List[Tuple[str, List[str]]]:

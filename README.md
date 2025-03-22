@@ -98,12 +98,12 @@ Initializes the Generator with the given options.
 Values passed to the Generator object will be inherited when calling Generator.generate()
 
 Parameters:
-    constraints_dict (dict, optional): Constraints for the network, passed as a dictionary.
+    conditions (dict, optional): Conditions for the generated fingerprint.
     window_bounds (WindowBounds, optional): Constrain the output window size.
-    strict (bool, optional): Whether to raise an exception if the constraints are too strict.
+    strict (bool, optional): Whether to raise an exception if the conditions are too strict.
     flatten (bool, optional): Whether to flatten the output dictionary
     target (Optional[Union[str, StrContainer]]): Only generate specific value(s)
-    **constraints: Constraints for the network.
+    **conditions_kwargs: Conditions for the generated fingerprint (passed as kwargs)
 ```
 
 </details>
@@ -155,41 +155,40 @@ fpgen.generate({
 
 If you are passing many nested constraints, run `fpgen decompress` to improve model performance.
 
-### Control the window size
+### Custom filters
 
-Constrain the minimum/maximum width and height of the window:
+Pass in functions to filter the possible values:
+
+#### Example: Setting a minimum browser version.
 
 ```python
-bounds = fpgen.WindowBounds(
-    min_width=100,
-    max_width=1280,
-    min_height=400,
-    max_height=720,
+# Constrain `client`:
+fpgen.generate(client={'browser': {'major': lambda v: int(v) >= 130}})
+# Or, just pass a dot seperated path:
+fpgen.generate({'client.browser.major': lambda v: int(v) >= 130})
+```
+
+#### Example: Constrain the maximum/minimum window size.
+
+```python
+# Constrain `window`:
+fpgen.generate(
+  window={
+    'outerWidth': lambda w: 1000 <= w <= 2000,
+    'outerHeight': lambda h: 500 <= h <= 1500
+  }
 )
-fpgen.generate(window_bounds=bounds)
-```
-
-<details>
-<summary>
-Parameters for WindowBounds
-</summary>
-
-```
-Constrains the window size of the generated fingerprint.
-At least one parameter must be passed.
-
-Parameters:
-    min_width (int, optional): Lower bound width
-    max_width (int, optional): Upper bound width
-    min_height (int, optional): Lower bound height
-    max_height (int, optional): Upper bound height
+# Or, filter the `window` dict directly:
+fpgen.generate(
+  window=lambda w: w['outerWidth'] >= 1000 and w['outerWidth'] <= 2000
+)
 ```
 
 </details>
 
 ---
 
-## Control what data is generated
+## Only generate specific data
 
 To generate specific data fields, use the `target` parameter with a string (or a list of strings).
 
@@ -228,6 +227,71 @@ You can provide multiple targets as a list.
 
 ---
 
+## Get the probabilities of a target
+
+Calculate the probability distribution of a target given any filter:
+
+```python
+>>> fpgen.trace(target='browser', os='Windows')
+[<Chrome: 71.29276%>, <Edge: 12.96372%>, <Firefox: 12.64484%>, <Opera: 2.12217%>, <Yandex Browser: 0.94575%>, <Whale: 0.03076%>]
+```
+
+Multiple targets can be passed as a list/tuple.
+Here is an example of tracking the probability of browser & OS given a GPU vendor:
+
+```python
+>>> fpgen.trace(
+...   target=('browser', 'os'),
+...   gpu={'vendor': 'Google Inc. (Intel)'}
+... )
+{'browser': [<Chrome: 76.46641%>, <Edge: 13.02665%>, <Firefox: 8.48189%>, <Opera: 1.36188%>, <Yandex Browser: 0.65133%>, <Whale: 0.01184%>],
+ 'os': [<Windows: 84.08380%>, <Linux: 8.07652%>, <MacOS: 7.46072%>, <ChromeOS: 0.37896%>]}
+```
+
+This also works in the Generator object:
+
+```python
+>>> gen = fpgen.Generator(os='ChromeOS')
+>>> gen.trace(target='browser')
+[<Chrome: 100.00000%>]
+```
+
+<details>
+<summary>
+Parameters for trace
+</summary>
+
+```
+Compute the probability distribution(s) of a target variable given conditions.
+
+Parameters:
+    target (str): The target variable name.
+    conditions (Dict[str, Any], optional): A dictionary mapping variable names
+    flatten (bool, optional): If True, return a flattened dictionary.
+    **conditions_kwargs: Additional conditions to apply
+
+Returns:
+    A dictionary mapping probabilities to the target's possible values.
+```
+
+</details>
+
+<hr width=50>
+
+### Reading TraceResult
+
+To read the output `TraceResult` object:
+
+```python
+>>> chrome = fpgen.trace(target='browser', os='ChromeOS')[0]
+>>> chrome.probability
+1.0
+>>> chrome.value
+'Chrome'
+```
+
+---
+
 ## Query possible values
 
 You can get a list of a target's possible values by passing it into `fpgen.query`:
@@ -263,94 +327,7 @@ Parameters:
 </details>
 
 > [!NOTE]
-> Since fpgen is trained on live data, queries may occasionally return invalid or anomalous values. These values will typically only appear in about 1 out of every 20,000 generations.
-
-<hr width=50>
-
-### Custom fingerprint filters
-
-You can manually omit possible values, then pass a new list into the generator:
-
-```python
-# Get possible values for screen.width
-values = fpgen.query('screen.width')
-
-# Only allow values above 1000
-def width_filter(width):
-    return width > 1000
-values = filter(width_filter, values)
-
-# Pass in the new list of possible widths:
-output = fpgen.generate(screen: {'width': values})
-```
-
----
-
-## Get the probabilities of a target
-
-Calculate the probability distribution of a target given any filter:
-
-```python
->>> fpgen.trace(target='browser', os='Windows')
-[<Chrome: 74.94798%>, <Firefox: 14.37555%>, <Edge: 8.41541%>, <Opera: 1.47501%>, <Yandex Browser: 0.75831%>, <Whale: 0.02774%>]
-```
-
-Multiple targets can be passed as a list/tuple.
-Here is an example of tracking the probability of browser & OS given a GPU vendor:
-
-```python
->>> fpgen.trace(
-...   target=('browser', 'os'),
-...   gpu={'vendor': 'Google Inc. (Intel)'}
-... )
-{
-  'browser': [<Chrome: 74.94798%>, <Firefox: 14.37555%>, <Edge: 8.41541%>, <Opera: 1.47501%>, <Yandex Browser: 0.75831%>, <Whale: 0.02774%>],
-  'os': [<Windows: 64.47559%>, <MacOS: 29.20664%>, <Linux: 6.09444%>, <ChromeOS: 0.22333%>]
-}
-```
-
-This also works in the Generator object:
-
-```python
->>> gen = fpgen.Generator(os='ChromeOS')
->>> gen.trace(target='browser')
-[<Chrome: 100.00000%>]
-```
-
-<details>
-<summary>
-Parameters for trace
-</summary>
-
-```
-Compute the probability distribution(s) of a target variable given constraints.
-
-Parameters:
-    target (str): The target variable name.
-    constraints_dict (Dict[str, Any], optional): A dictionary mapping variable names to their observed value.
-    exact (bool, optional): If True, perform full exact inference.
-            Otherwise, perform approximate beam search inference (much faster).
-    flatten (bool, optional): If True, return a flattened dictionary.
-    **constraints: Additional constraints to apply to the target variable.
-Returns:
-    A dictionary mapping probabilities to the target's possible values.
-```
-
-</details>
-
-<hr width=50>
-
-### Reading TraceResult
-
-To read the output `TraceResult` object:
-
-```python
->>> chrome = fpgen.trace(target='browser', os='ChromeOS')[0]
->>> chrome.probability
-1.0
->>> chrome.value
-'Chrome'
-```
+> Since fpgen is trained on live data, queries may occasionally return invalid or anomalous values. Values lower a .001% probability will not appear in traces or generated fingerprints.
 
 ---
 
