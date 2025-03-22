@@ -148,6 +148,14 @@ class Generator:
 
         return _make_output_dict(fingerprint, flatten=flatten)
 
+    def generate_target(
+        self, target: str, conditions: Optional[Dict[str, Any]] = None, **kwargs: Any
+    ) -> Any:
+        """
+        Generates a specific target. Shortcut for the `generate` method.
+        """
+        return self.generate(target=target, conditions=conditions, **kwargs)
+
     @overload
     def trace(
         self,
@@ -234,4 +242,11 @@ def generate(*args, **kwargs) -> Dict[str, Any]:
     return GLOBAL_GENERATOR.generate(*args, **kwargs)
 
 
-__all__ = ('Generator', 'WindowBounds', 'generate')
+def generate_target(target: str, conditions: Optional[Dict[str, Any]] = None, **kwargs) -> Any:
+    """
+    Generates a specific target. Shortcut for the `generate` method.
+    """
+    return generate(target=target, conditions=conditions, **kwargs)
+
+
+__all__ = ('Generator', 'WindowBounds', 'generate', 'generate_target')
