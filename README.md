@@ -144,46 +144,68 @@ This can also be passed as a dictionary.
 
 ### Multiple constraints
 
-Pass in multiple constraints for the generator to select from.
+Pass in multiple constraints for the generator to select from using a tuple.
 
 ```python
-fpgen.generate({
-    'os': ('Windows', 'MacOS'),
-    'browser': ('Firefox', 'Chrome'),
-})
+>>> fpgen.generate({
+...     'os': ('Windows', 'MacOS'),
+...     'browser': ('Firefox', 'Chrome'),
+... })
 ```
 
 If you are passing many nested constraints, run `fpgen decompress` to improve model performance.
 
-### Custom filters
+## Custom filters
 
-Pass in functions to filter the possible values:
+Data can be filtered by passing in callable functions.
 
-#### Example: Setting a minimum browser version.
+### Examples
 
-```python
-# Constrain `client`:
-fpgen.generate(client={'browser': {'major': lambda v: int(v) >= 130}})
-# Or, just pass a dot seperated path:
-fpgen.generate({'client.browser.major': lambda v: int(v) >= 130})
-```
-
-#### Example: Constrain the maximum/minimum window size.
+Set the minimum browser version:
 
 ```python
-# Constrain `window`:
-fpgen.generate(
-  window={
-    'outerWidth': lambda w: 1000 <= w <= 2000,
-    'outerHeight': lambda h: 500 <= h <= 1500
-  }
-)
-# Or, filter the `window` dict directly:
-fpgen.generate(
-  window=lambda w: w['outerWidth'] >= 1000 and w['outerWidth'] <= 2000
-)
+# Constrain client:
+>>> fpgen.generate(client={'browser': {'major': lambda ver: int(ver) >= 130}})
+# Or, just pass a dot seperated path to client.browser.major:
+>>> fpgen.generate({'client.browser.major': lambda ver: int(ver) >= 130})
 ```
 
+Only allow NVIDIA GPUs:
+
+```python
+# Note: Strings are lowercased before they're passed.
+>>> fpgen.generate(gpu={'vendor': lambda vdr: 'nvidia' in vdr})
+```
+
+Limit the maximum/minimum window size:
+
+```python
+# Set allowed ranges for outerWidth & outerHeight:
+>>> fpgen.generate(
+...   window={
+...     'outerWidth': lambda width: 1000 <= width <= 2000,
+...     'outerHeight': lambda height: 500 <= height <= 1500
+...   }
+... )
+```
+
+
+<details>
+<summary>
+Or, filter the window dictionary directly.
+</summary>
+
+```python
+def window_filter(window):
+    if not (1000 <= window['outerWidth'] <= 2000):
+        return False
+    if not (500 <= window['outerHeight'] <= 1500):
+        return False
+    return True
+
+fpgen.generate(window=window_filter)
+```
+</details>
 </details>
 
 ---
@@ -203,7 +225,7 @@ Only generate HTTP headers:
 
 <details>
 <summary>
-Or, by using the generate_target shortcut:
+Or, by using the generate_target shortcut.
 </summary>
 
 ```python
@@ -340,7 +362,7 @@ Parameters:
 </details>
 
 > [!NOTE]
-> Since fpgen is trained on live data, queries may occasionally return invalid or anomalous values. Values lower a .001% probability will not appear in traces or generated fingerprints.
+> Since fpgen is trained on live data, queries may occasionally return invalid or anomalous values. Values lower than a 0.001% probability will not appear in traces or generated fingerprints.
 
 ---
 
