@@ -14,13 +14,13 @@ class InvalidNode(NetworkError):
     """Raises when a node doesn't exist"""
 
 
-class InvalidWindowBounds(InvalidConstraints):
-    """Raises when window bounds are too restrictive"""
-
-
 class NodePathError(InvalidNode):
     """Raises when a key path doesn't exist"""
 
 
 class MissingRelease(Exception):
     """Raised when a required GitHub release asset is missing."""
+
+
+class CannotTraceLargeConfigSpace(ValueError):
+    """Raises when the configuration space of a node is too large to trace with exact inference"""

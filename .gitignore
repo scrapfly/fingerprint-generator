@@ -15,7 +15,6 @@ output/
 # Tests
 test*.py
 diagnostics/
-tests/
 
 # Logs
 *.log
