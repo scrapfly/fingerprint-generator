@@ -67,6 +67,7 @@ class ModelPuller:
         resp.raise_for_status()
 
         releases = resp.json()
+        releases.sort(key=lambda r: r.get('published_at') or '', reverse=True)
 
         for release in releases:
             for asset in release['assets']:
