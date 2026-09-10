@@ -67,8 +67,6 @@ class ModelPuller:
         resp.raise_for_status()
 
         releases = resp.json()
-        # API returns by created_at, not published_at (retagged
-        # releases share created_at), so sort to get true latest first
         releases.sort(key=lambda r: r.get('published_at') or '', reverse=True)
 
         for release in releases:
