@@ -18,7 +18,10 @@ if not __is_module__():
 
 
 def base85_to_int(s: str) -> int:
-    # Decode using base85
+    # A lone trailing base85 character carries no bytes. Python < 3.15 ignored
+    # it; 3.15 raises "Incomplete Base85 group". Drop it to keep the same value.
+    if len(s) % 5 == 1:
+        s = s[:-1]
     decoded_bytes = base64.b85decode(s)
     # Convert bytes to integer
     return int.from_bytes(decoded_bytes, byteorder='big')
