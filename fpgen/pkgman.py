@@ -13,7 +13,7 @@ import zstandard
 from .exceptions import MissingRelease
 
 # Model files
-DATA_DIR = Path(__file__).parent / 'data'
+DATA_DIR = Path(os.getenv('FPGEN_DATA_DIR') or Path(__file__).parent / 'data')
 
 NETWORK_FILE = DATA_DIR / "fingerprint-network.json"
 VALUES_JSON = DATA_DIR / 'values.json'
@@ -205,6 +205,8 @@ def files_are_recent(file_list):
     """
     Checks if all passed files are <5 weeks old
     """
+    if os.getenv('FPGEN_DATA_IS_RECENT') == '1':
+        return True
     cutoff = datetime.now() - timedelta(weeks=5)
     return all(datetime.fromtimestamp(f.stat().st_mtime) >= cutoff for f in file_list)
 
