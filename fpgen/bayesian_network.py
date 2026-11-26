@@ -74,10 +74,11 @@ class BayesianNetwork:
             self.get_all_ancestors(node.name)
 
     def generate_consistent_sample(
-        self, evidence: Mapping[str, Set[str]]
+        self, evidence: Mapping[str, Set[str]], rng: Optional[random.Random] = None
     ) -> Optional[Dict[str, Any]]:
         """
         Generate a full sample from the Bayesian network.
+        Draws from `rng` when given, otherwise from the `random` module.
         """
         result: Dict[str, str] = {}
         # Create a working copy of evidence that we can update in place.
@@ -100,11 +101,11 @@ class BayesianNetwork:
                 else:
                     total = sum(filtered_dist.values())
                     filtered_dist = {k: v / total for k, v in filtered_dist.items()}
-                sampled_value = self.sample_value_from_distribution(filtered_dist)
+                sampled_value = self.sample_value_from_distribution(filtered_dist, rng)
             else:
                 # For unconstrained nodes, use all current evidence.
                 distribution = self.trace(node_name, current_evidence)
-                sampled_value = self.sample_value_from_distribution(distribution)
+                sampled_value = self.sample_value_from_distribution(distribution, rng)
 
             result[node_name] = sampled_value
             # Update current evidence with the newly sampled node value.
@@ -116,13 +117,15 @@ class BayesianNetwork:
         self,
         evidence: Mapping[str, Set[str]],
         targets: Optional[StrContainer] = None,
+        rng: Optional[random.Random] = None,
     ) -> Optional[Dict[str, Any]]:
         """
         Generate values for target nodes given conditions.
+        Draws from `rng` when given, otherwise from the `random` module.
         """
         # If no target specified, generate full sample
         if targets is None:
-            return self.generate_consistent_sample(evidence)
+            return self.generate_consistent_sample(evidence, rng)
 
         # Generate result for each target
         result = {}
@@ -152,7 +155,7 @@ class BayesianNetwork:
 
             # Sample from the distribution
             if distribution:
-                result[target_node] = self.sample_value_from_distribution(distribution)
+                result[target_node] = self.sample_value_from_distribution(distribution, rng)
             else:
                 raise RestrictiveConstraints(
                     f"Cannot generate fingerprint: Empty distribution for {target_node}."
@@ -304,11 +307,14 @@ class BayesianNetwork:
             return {val: p / total_prob for val, p in target_dist.items()}
         return {}
 
-    def sample_value_from_distribution(self, distribution: Mapping[str, float]) -> str:
+    def sample_value_from_distribution(
+        self, distribution: Mapping[str, float], rng: Optional[random.Random] = None
+    ) -> str:
         """
-        Sample a value from a probability distribution
+        Sample a value from a probability distribution.
+        Draws from `rng` when given, otherwise from the `random` module.
         """
-        anchor = random.random()  # nosec
+        anchor = (rng or random).random()  # nosec
         cumulative_probability = 0.0
         for value, probability in distribution.items():
             cumulative_probability += probability

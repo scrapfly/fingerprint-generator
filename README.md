@@ -102,11 +102,21 @@ Parameters:
     window_bounds (WindowBounds, optional): Constrain the output window size.
     strict (bool, optional): Whether to raise an exception if the conditions are too strict.
     flatten (bool, optional): Whether to flatten the output dictionary
+    rng (random.Random, optional): Random number generator to sample from.
+        Defaults to the `random` module's global generator.
     target (Optional[Union[str, StrContainer]]): Only generate specific value(s)
     **conditions_kwargs: Conditions for the generated fingerprint (passed as kwargs)
 ```
 
 </details>
+
+Pass your own `random.Random` to get reproducible fingerprints without seeding the global `random` module:
+
+```python
+>>> import random
+>>> fpgen.generate(os='Windows', rng=random.Random(42)) == fpgen.generate(os='Windows', rng=random.Random(42))
+True
+```
 
 [See example output.](https://raw.githubusercontent.com/scrapfly/fingerprint-generator/refs/heads/main/assets/example-output.json)
 

@@ -1,3 +1,4 @@
+import random
 from dataclasses import dataclass
 from typing import Any, Dict, List, Optional, Set, Union, overload
 
@@ -28,6 +29,7 @@ class Generator:
         *,
         strict: bool = True,
         flatten: bool = False,
+        rng: Optional[random.Random] = None,
         **conditions_kwargs: Any,
     ):
         """
@@ -38,6 +40,8 @@ class Generator:
             conditions (dict, optional): Conditions for the generated fingerprint.
             strict (bool, optional): Whether to raise an exception if the conditions are too strict.
             flatten (bool, optional): Whether to flatten the output dictionary
+            rng (random.Random, optional): Random number generator to sample from.
+                Defaults to the `random` module's global generator.
             target (Optional[Union[str, StrContainer]]): Only generate specific value(s)
             **conditions_kwargs: Conditions for the generated fingerprint (passed as kwargs)
         """
@@ -45,6 +49,7 @@ class Generator:
         # Set default options
         self.strict: bool = strict
         self.flatten: bool = flatten
+        self.rng: Optional[random.Random] = rng
         self.evidence: Dict[str, Set[str]] = {}
 
         if conditions_kwargs:
@@ -59,6 +64,7 @@ class Generator:
         *,
         strict: Optional[bool] = None,
         flatten: Optional[bool] = None,
+        rng: Optional[random.Random] = None,
         target: str,
         **conditions_kwargs: Any,
     ) -> Any: ...
@@ -70,6 +76,7 @@ class Generator:
         *,
         strict: Optional[bool] = None,
         flatten: Optional[bool] = None,
+        rng: Optional[random.Random] = None,
         target: Optional[StrContainer] = None,
         **conditions_kwargs: Any,
     ) -> Dict[str, Any]: ...
@@ -80,6 +87,7 @@ class Generator:
         *,
         strict: Optional[bool] = None,
         flatten: Optional[bool] = None,
+        rng: Optional[random.Random] = None,
         target: Optional[Union[str, StrContainer]] = None,
         **conditions_kwargs: Any,
     ) -> Dict[str, Any]:
@@ -91,6 +99,8 @@ class Generator:
                 These conditions will be inherited by generated fingerprints.
             strict (bool, optional): Whether to raise an exception if the conditions are too strict.
             flatten (bool, optional): Whether to flatten the output dictionary
+            rng (random.Random, optional): Random number generator to sample from.
+                Defaults to the Generator's `rng`, then to the `random` module's global generator.
             target (Optional[Union[str, StrContainer]]): Only generate specific value(s)
             **conditions_kwargs: Conditions for the generated fingerprints (passed as kwargs)
 
@@ -106,6 +116,7 @@ class Generator:
         # Merge new options with old
         strict = _first(strict, self.strict)
         flatten = _first(flatten, self.flatten)
+        rng = _first(rng, self.rng)
 
         # Inherit the evidence from the class instance
         evidence = self.evidence.copy()
@@ -123,9 +134,9 @@ class Generator:
         while True:
             # If we only are searching for certain targets, call generate_certain_nodes
             if target_roots:
-                fingerprint = NETWORK.generate_certain_nodes(evidence, target_roots)
+                fingerprint = NETWORK.generate_certain_nodes(evidence, target_roots, rng)
             else:
-                fingerprint = NETWORK.generate_consistent_sample(evidence)
+                fingerprint = NETWORK.generate_consistent_sample(evidence, rng)
 
             # Found the fingerprint
             if fingerprint is not None:
